@@ -22,8 +22,9 @@ public class Creator {
 
         ArrayList<Node> list = new ArrayList<>();
 
+        //BEGIN------Intenzioni Sociali
         String[] exGreetings = {"ciao", "buongiorno", "buonasera", "buonanotte", "i miei ossequi", "buondì",
-            "buondi", "ehi", "welà","wela","we we", "hi", "salve", "compari", "hola", "gutentag", "trmo", "trmò", "trimone", "buoneos dias", "buena noche", "scemo", "caro", "buon pomeriggio"};
+            "buondi", "ehi", "welà", "wela", "we we", "salve", "compari", "hola", "gutentag", "trmo", "trmò", "trimone", "buoneos dias", "buena noche", "scemo", "caro", "buon pomeriggio"};
         String greetings_name = "greetings";
 
         String message_not_greetings = "Hola";
@@ -62,7 +63,7 @@ public class Creator {
                 Vocabulary.dialogClass);
         list.add(thanks);
 
-        String[] exwell = {"come stare","come andare"};
+        String[] exwell = {"come stare", "come andare"};
         String well_name = "well";
 
         String message_well = "bene bene, sto cercando di capire come parlate voi umani...";
@@ -125,6 +126,26 @@ public class Creator {
                 name_name_question, Vocabulary.dialogClass);
         list.add(name_name);
 
+        String[] excapabilities = {"cosa potere fare", "cosa fare", "quale essere la tua funzione"};
+        String capabilities_name = "capabilities";
+
+        String message_not_capabilities = "Posso aiutarti a gestire i tuoi conti, prendo nota delle spese e degli accrediti e ti fornisco sempre il bilancio aggiornato";
+
+        Node capabilities = new Node(excapabilities, message_not_capabilities, message_null, message_null,
+                capabilities_name, Vocabulary.dialogClass);
+        list.add(capabilities);
+
+        String[] exNoAnswer = {};
+        String noAnswer_name = "noAnswer";
+
+        String message_noAnswer = "";
+
+        Node noAnswer = new Node(exNoAnswer, message_noAnswer, message_null, message_null, noAnswer_name,
+                Vocabulary.noAnswer);
+        list.add(noAnswer);
+
+        //END------Intenzioni Sociali
+        //BEGIN-----RISPOSTE
         String nameRND = "registerNotDomain";
 
         String message_RND = "no so cosa registare, puo ripeterlo?";
@@ -230,6 +251,8 @@ public class Creator {
         Node questionConfirm = new Node(message_questionConfirm, questionConfirm_name, Vocabulary.dialogClass);
         list.add(questionConfirm);
 
+        //END------RISPOSTE
+        //BEGIN------SPECHACT
         String speechActInsertName = "insert";
         Node speechActInsert = new Node(message_null, speechActInsertName, Vocabulary.speechActClass);
         list.add(speechActInsert);
@@ -264,6 +287,8 @@ public class Creator {
                 speechActWhatName, Vocabulary.speechActClass);
         list.add(speechActWhat);
 
+        //END------SPEECHACT
+        //BEGIN------PLAN
         String name_plan_info = "plan.InfoPlan";
         Node plan_info = new Node(message_null, name_plan_info, Vocabulary.planClass);
         //name_info.addRel(Vocabulary.plan, plan_info);
@@ -274,125 +299,141 @@ public class Creator {
         well.addRel(Vocabulary.plan, well_plan);
         list.add(well_plan);
 
-        String[] excapabilities = {"cosa potere fare", "cosa fare", "quale essere la tua funzione"};
-        String capabilities_name = "capabilities";
-
-        String message_not_capabilities = "Posso aiutarti a gestire i tuoi conti, prendo nota delle spese e degli accrediti e ti fornisco sempre il bilancio aggiornato";
-
-        Node capabilities = new Node(excapabilities, message_not_capabilities, message_null, message_null,
-                capabilities_name, Vocabulary.dialogClass);
-        list.add(capabilities);
-
-        String[] exNoAnswer = {};
-        String noAnswer_name = "noAnswer";
-
-        String message_noAnswer = "";
-
-        Node noAnswer = new Node(exNoAnswer, message_noAnswer, message_null, message_null, noAnswer_name,
-                Vocabulary.noAnswer);
-        list.add(noAnswer);
-
-        String[] exregister = {"registrare", "ricordare", "memorizzare", "contabilizzare", "fare di conto", "contabilità","fornire"};
-        String register_name = "contability";
-
-        String message_register = "contabilità";
-        
-
-        Node register = new Node(exregister, message_register,
-                register_name, Vocabulary.actionClass);
-
-        String name_plan_register = "plan.RegisterPlan";
-        Node plan_register = new Node(new String[0], message_null, message_null, message_null, name_plan_register,
-                Vocabulary.planClass);
-        register.addRel(Vocabulary.plan, plan_register);
-        register.addRel(Vocabulary.speechAct, speechActQuestion);
-        register.addRel(Vocabulary.speechAct, speechActQuantifies);
-        register.addRel(Vocabulary.speechAct, speechActHow);
-        register.addRel(Vocabulary.speechAct, speechActWhat);
-        register.addRel(Vocabulary.speechAct, speechActWhy);
-        list.add(plan_register);
-
-        list.add(register);
-
-        String[] exshopping = {"avere spendere","aggiungere"};
-        String shopping_name = "shopping";
-
-        String message_shopping = "hai speso";
-
-        Node shopping = new Node(exshopping, message_shopping,
-                shopping_name, Vocabulary.actionClass);
-
         String name_plan_shopping = "plan.ShoppingPlan";
         Node plan_shopping = new Node(message_null, name_plan_shopping,
                 Vocabulary.planClass);
-        shopping.addRel(Vocabulary.plan, plan_shopping);
-        shopping.addRel(Vocabulary.speechAct, speechActQuestion);
-        shopping.addRel(Vocabulary.speechAct, speechActQuantifies);
-        shopping.addRel(Vocabulary.speechAct, speechActHow);
-        shopping.addRel(Vocabulary.speechAct, speechActWhat);
-        shopping.addRel(Vocabulary.speechAct, speechActWhy);
         list.add(plan_shopping);
 
-        list.add(shopping);
-        
-        
-        String[] exadding = {"avere avere","avere accreditare","avere incassare","avere guadagnare","avere accumulare","avere ricevere","aggiungere"};
-        String adding_name = "adding";
-
-        String message_adding = "hai accreditato";
-
-        Node adding = new Node(exadding, message_adding,
-                adding_name, Vocabulary.actionClass);
+        String name_plan_register = "plan.RegisterPlan";
+        Node plan_register = new Node(message_null, name_plan_register,
+                Vocabulary.planClass);
+        list.add(plan_register);
 
         String name_plan_adding = "plan.AddingPlan";
         Node plan_adding = new Node(message_null, name_plan_adding,
                 Vocabulary.planClass);
-        adding.addRel(Vocabulary.plan, plan_adding);
-        adding.addRel(Vocabulary.speechAct, speechActQuestion);
-        adding.addRel(Vocabulary.speechAct, speechActQuantifies);
-        adding.addRel(Vocabulary.speechAct, speechActHow);
-        adding.addRel(Vocabulary.speechAct, speechActWhat);
-        adding.addRel(Vocabulary.speechAct, speechActWhy);
         list.add(plan_adding);
 
-        list.add(adding);
+        //END------PLAN
+        //BEGIN----KNOLEDGE BASE
+        
+        //BEGIN----ACTION
+        
+        String search_name="search";
+        String message_search="ricerca";
+        Node search=new Node(message_search, search_name, Vocabulary.actionClass);
+        list.add(search);
+        
+//        String[] exregister = {"registrare", "ricordare", "memorizzare", "contabilizzare", "fare di conto", "contabilità", "fornire"};
+//        String register_name = "contability";
+//
+//        String message_register = "contabilità";
+//
+//        Node register = new Node(exregister, message_register,
+//                register_name, Vocabulary.actionClass);
+//
+//        register.addRel(Vocabulary.plan, plan_register);
+//        register.addRel(Vocabulary.speechAct, speechActQuestion);
+//        register.addRel(Vocabulary.speechAct, speechActQuantifies);
+//        register.addRel(Vocabulary.speechAct, speechActHow);
+//        register.addRel(Vocabulary.speechAct, speechActWhat);
+//        register.addRel(Vocabulary.speechAct, speechActWhy);
+//
+//        list.add(register);
+//
+//        String[] exshopping = {"avere spendere", "aggiungere"};
+//        String shopping_name = "shopping";
+//
+//        String message_shopping = "hai speso";
+//        Node shopping = new Node(exshopping, message_shopping,
+//                shopping_name, Vocabulary.actionClass);
+//
+//        shopping.addRel(Vocabulary.plan, plan_shopping);
+//        shopping.addRel(Vocabulary.speechAct, speechActQuestion);
+//        shopping.addRel(Vocabulary.speechAct, speechActQuantifies);
+//        shopping.addRel(Vocabulary.speechAct, speechActHow);
+//        shopping.addRel(Vocabulary.speechAct, speechActWhat);
+//        shopping.addRel(Vocabulary.speechAct, speechActWhy);
+//
+//        list.add(shopping);
+//
+//        String[] exadding = {"avere avere", "avere accreditare", "avere incassare", "avere guadagnare", "avere accumulare", "avere ricevere", "aggiungere"};
+//        String adding_name = "adding";
+//
+//        String message_adding = "hai accreditato";
+//
+//        Node adding = new Node(exadding, message_adding,
+//                adding_name, Vocabulary.actionClass);
+//
+//        adding.addRel(Vocabulary.plan, plan_adding);
+//        adding.addRel(Vocabulary.speechAct, speechActQuestion);
+//        adding.addRel(Vocabulary.speechAct, speechActQuantifies);
+//        adding.addRel(Vocabulary.speechAct, speechActHow);
+//        adding.addRel(Vocabulary.speechAct, speechActWhat);
+//        adding.addRel(Vocabulary.speechAct, speechActWhy);
+//
+//        list.add(adding);
+//        
+//        //END----ACTION
+//        
+//        //BEGIN---DOMAIN OBJECT
 
-        String[] exshop = {"spesa", "uscita"};
-        String shop_name = "shop";
-
-        String messageShop = "spesa";
-
-        Node shop = new Node(exshop, messageShop, shop_name, Vocabulary.domainClass);
-        shopping.addRel(Vocabulary.oneToOne, shop);
-        shop.addRel(Vocabulary._default, shopping);
-        rok.addInTemplate(shop);
-        QtSpesa.addInTemplate(shop);
-        list.add(shop);
-
-        String[] exgain = {"guadagno", "entrata","stipendio"};
-        String gain_name = "gain";
-
-        String message_gain = "entrata";
-
-        Node gain = new Node(exgain, message_gain, gain_name,
-                Vocabulary.domainClass);
-        adding.addRel(Vocabulary.oneToOne, gain);
-        gain.addRel(Vocabulary._default, adding);
-        qtgain.addInTemplate(gain);
-        rok.addInTemplate(gain);
-        list.add(gain);
-
-        String[] exbalance = {"saldo", "resto", "totale", "bilancio"};
-        String balance_name = "balance";
-
-        String messageBalance = "bilancio";
-
-        Node balance = new Node(exbalance, messageBalance, messageBalance, messageBalance, balance_name, Vocabulary.domainClass);
-        register.addRel(Vocabulary.oneToOne, balance);
-        balance.addRel(Vocabulary._default, register);
-        rok.addInTemplate(balance);
-        list.add(balance);
-
+            String[] ex_capsule={"capsula","capsule","cialda","caffè"};
+            String name_capsule="capsule";
+            String message_capsule="capsule";
+            Node capsule=new Node(ex_capsule, message_capsule, name_capsule,Vocabulary.domainClass);
+            search.addRel(Vocabulary.oneToMany, capsule);
+            capsule.addRel(Vocabulary._default, search);
+            list.add(capsule);
+            
+             String[] ex_machine={"macchina da caffè","macchina caffè"};
+            String name_machine="machine";
+            String message_machine="machine";
+            Node machine=new Node(ex_machine, message_machine, name_machine,Vocabulary.domainClass);
+            search.addRel(Vocabulary.oneToMany, machine);
+            machine.addRel(Vocabulary._default, search);
+            list.add(machine);
+//
+//        String[] exshop = {"spesa", "uscita"};
+//        String shop_name = "shop";
+//
+//        String messageShop = "spesa";
+//
+//        Node shop = new Node(exshop, messageShop, shop_name, Vocabulary.domainClass);
+//        shopping.addRel(Vocabulary.oneToOne, shop);
+//        shop.addRel(Vocabulary._default, shopping);
+//        rok.addInTemplate(shop);
+//        QtSpesa.addInTemplate(shop);
+//        list.add(shop);
+//
+//        String[] exgain = {"guadagno", "entrata", "stipendio"};
+//        String gain_name = "gain";
+//
+//        String message_gain = "entrata";
+//
+//        Node gain = new Node(exgain, message_gain, gain_name,
+//                Vocabulary.domainClass);
+//        adding.addRel(Vocabulary.oneToOne, gain);
+//        gain.addRel(Vocabulary._default, adding);
+//        qtgain.addInTemplate(gain);
+//        rok.addInTemplate(gain);
+//        list.add(gain);
+//
+//        String[] exbalance = {"saldo", "resto", "totale", "bilancio"};
+//        String balance_name = "balance";
+//
+//        String messageBalance = "bilancio";
+//
+//        Node balance = new Node(exbalance, messageBalance, messageBalance, messageBalance, balance_name, Vocabulary.domainClass);
+//        register.addRel(Vocabulary.oneToOne, balance);
+//        balance.addRel(Vocabulary._default, register);
+//        rok.addInTemplate(balance);
+//        list.add(balance);
+//        
+        //END----DOMAIN OBJECT
+        
+        //BEGIN--LITERAL
+        
         String[] exInteger = {};
         String Integer_name = "integer";
         String message_token = "{value:token}";
@@ -406,6 +447,8 @@ public class Creator {
 
         Node Float = new Node(exFloat, message_token, message_token, message_token, Float_name, Vocabulary.numberClass);
         list.add(Float);
+        
+        //END----LITERAL
 
         String[] exbill = {"prezzo", "costo", "budget", "budjet"};
         String bill_name = "bill";
@@ -413,40 +456,25 @@ public class Creator {
         String message_bill = "importo";
 
         Node bill = new Node(exbill, message_bill, message_bill, message_bill, bill_name, Vocabulary.propertyClass);
-        shop.addRel(Vocabulary.oneToOne, bill);
+        capsule.addRel(Vocabulary.oneToStart, bill);
         bill.addRel(Vocabulary.oneToStart, integer);
         bill.addRel(Vocabulary.oneToStart, Float);
-        gain.addRel(Vocabulary.oneToOne, bill);
-        //balance.addRel(Vocabulary.oneToStart, bill);
-        //bill.addRel(Vocabulary._default, shop);
+        machine.addRel(Vocabulary.oneToStart, bill);
         list.add(bill);
-        
-        
-//        String[] exdate = {"data"};
-//        String date_name = "date";
-//
-//        String message_date = "data";
-//
-//        Node date = new Node(exdate, message_date, message_date, message_date, date_name, Vocabulary.propertyClass);
-//        shop.addRel(Vocabulary.oneToOne, date);
-//        gain.addRel(Vocabulary.oneToOne, date);
-//        balance.addRel(Vocabulary.oneToStart, date);
-//        list.add(date);
-        
-//        String[] exTempExp = {"oggi"};
-//        String tempexp_name = "tempexp";
-//        String message_tempexp="oggi";
-//
-//        Node tempexp = new Node(exTempExp, message_tempexp, tempexp_name, Vocabulary.unitClass);
-//        date.addRel(Vocabulary.oneToStart, tempexp);
-//        list.add(tempexp);
-        
+
         String[] exEuro = {"euro", "€", "\u20ac"};
         String euro_name = "euro";
 
         Node euro = new Node(exEuro, euro_name, euro_name, euro_name, euro_name, Vocabulary.unitClass);
         bill.addRel(Vocabulary.oneToStart, euro);
         list.add(euro);
+        
+        
+        
+         //END LITERAL
+    
+    //END--- KNOWLEDGE BASE
+    
         // create an empty Model
         OntModel model = Vocabulary.define();
 
@@ -461,6 +489,8 @@ public class Creator {
             now.addProperty(Vocabulary.message_not, n.not);
             n.addResource(now);
         }
+        
+   
 
         for (Node n : list) {
             HashMap<Node, Property> rel = n.rel;
