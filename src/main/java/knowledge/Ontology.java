@@ -13,7 +13,7 @@ import com.hp.hpl.jena.rdf.model.*;
 
 import configuration.Config;
 
-public class Vocabulary {
+public class Ontology {
 
 	private static String url_onto = Config.getPathOntology();
 	public static final String NO_MESSAGE = "NO_MESSAGE";
@@ -36,7 +36,7 @@ public class Vocabulary {
 
 	public static final ObjectProperty oneToMany = m_model.createObjectProperty(NS + "oneToMany");
 
-	public static final ObjectProperty oneToStart = m_model.createObjectProperty(NS + "oneToStart");
+	public static final ObjectProperty oneToStar = m_model.createObjectProperty(NS + "oneToStar");
 
 	// DEFAULT properity
 	public static final String _defaultPropertyName = NS + "default";
@@ -114,7 +114,7 @@ public class Vocabulary {
 
 	public static final OntProperty relation = m_model.createOntProperty(NS + "classRelation");
 
-	public static final ObjectProperty[] listProperty = { oneToMany, oneToOne, oneToStart };
+	public static final ObjectProperty[] listProperty = { oneToMany, oneToOne, oneToStar };
 
 	public static final OntClass[] listClass = { dialogClass, actionClass, domainClass, propertyClass, valueClass,
 			numberClass, unitClass, modClass, speechActClass };
@@ -136,8 +136,8 @@ public class Vocabulary {
 		oneToOne.addProperty(min_card, "1");
 		oneToOne.addProperty(max_card, "1");
 
-		oneToStart.addProperty(min_card, "0");
-		oneToStart.addProperty(max_card, "1");
+		oneToStar.addProperty(min_card, "0");
+		oneToStar.addProperty(max_card, "1");
 
 		/* Template definition */
 		actionClass.addProperty(template, template_action);
@@ -151,7 +151,7 @@ public class Vocabulary {
 
 		m_model.add(speechActClass, relation, actionClass).add(actionClass, relation, domainClass).add(domainClass, relation, propertyClass)
 				.add(propertyClass, relation, modClass).add(modClass, relation, numberClass)
-				.add(numberClass, relation, valueClass).add(valueClass, relation, unitClass);
+				.add(numberClass, relation, unitClass).add(unitClass, relation, valueClass);
 
 		try {
 			m_model.write(new FileOutputStream(url_onto));

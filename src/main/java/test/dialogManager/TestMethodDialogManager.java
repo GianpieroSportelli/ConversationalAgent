@@ -8,13 +8,13 @@ import java.util.List;
 import org.json.JSONObject;
 
 import configuration.Config;
-import knowledge.SemanticNet;
+import knowledge.KnowledgeBase;
 
 
 public class TestMethodDialogManager {
 
 	public static void main(String[] args) {
-		SemanticNet net=new SemanticNet(Config.getPathSemanticNet());
+		KnowledgeBase net=new KnowledgeBase(Config.getPathSemanticNet());
 		List<String> classes=new ArrayList<>();
 		classes.add("action");
 		classes.add("domain");

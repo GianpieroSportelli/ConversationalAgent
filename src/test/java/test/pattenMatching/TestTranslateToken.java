@@ -6,7 +6,7 @@ import java.util.Scanner;
 import org.json.JSONObject;
 
 import configuration.Config;
-import knowledge.Reader;
+import knowledge.KnowledgeBase_Reader;
 import patternMatching.Token;
 import patternMatching.TranslateToken;
 
@@ -17,7 +17,7 @@ public class TestTranslateToken {
 	public static void main(String[] args) {
 		String url = Config.getPathSemanticNet();
 		float threshold=0.9f;
-		JSONObject read=Reader.readNLU(Reader.readModel(url));
+		JSONObject read=KnowledgeBase_Reader.readNLU(KnowledgeBase_Reader.readModel(url));
 		TranslateToken translater=new TranslateToken(read, threshold);
 		System.out.println(translater);
 		String input = "";

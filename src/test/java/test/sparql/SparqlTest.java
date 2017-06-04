@@ -8,15 +8,15 @@ import com.hp.hpl.jena.rdf.model.*;
 import com.hp.hpl.jena.vocabulary.RDF;
 
 import configuration.Config;
-import knowledge.Reader;
-import knowledge.Vocabulary;
+import knowledge.KnowledgeBase_Reader;
+import knowledge.Ontology;
 
 public class SparqlTest {
 		public static void main(String[] args){
-			OntModel model =Reader.readModel(Config.getPathSemanticNet());
-			//System.out.println(Vocabulary.example);
+			OntModel model =KnowledgeBase_Reader.readModel(Config.getPathSemanticNet());
+			//System.out.println(Ontology.example);
 			  //String queryString = "SELECT ?rel WHERE{?a ?rel ?b}" ;
-			String queryString="SELECT ?a ?b \n WHERE{?a <"+Vocabulary.oneToOne+"> ?b. \n ?b <"+Vocabulary.name+"> \"capsule\"}";
+			String queryString="SELECT ?a ?b \n WHERE{?a <"+Ontology.oneToOne+"> ?b. \n ?b <"+Ontology.name+"> \"capsule\"}";
 			System.out.println(queryString);
 			  Query query = QueryFactory.create(queryString) ;
 			  try{
@@ -41,13 +41,13 @@ public class SparqlTest {
 			    sup.put("name", "search");
 			    
 			    queryString="SELECT ?n ?sup \n WHERE{?obj <"+RDF.type+"> ?obj_class.\n "
-			    		+ "?obj_class <"+Vocabulary.name+"> \""+obj.getString("category")+"\".\n "
-			    		+ "?obj <"+Vocabulary.name+"> \""+obj.getString("name")+"\".\n "
+			    		+ "?obj_class <"+Ontology.name+"> \""+obj.getString("category")+"\".\n "
+			    		+ "?obj <"+Ontology.name+"> \""+obj.getString("name")+"\".\n "
 			    		+ "?sup <"+RDF.type+"> ?sup_class.\n "
-			    		+ "?sup_class <"+Vocabulary.name+"> \""+sup.getString("category")+"\".\n "
-			    		+ "?sup <"+Vocabulary.name+"> \""+sup.getString("name")+"\".\n "
+			    		+ "?sup_class <"+Ontology.name+"> \""+sup.getString("category")+"\".\n "
+			    		+ "?sup <"+Ontology.name+"> \""+sup.getString("name")+"\".\n "
 			    		+ "?sup ?rel ?obj.\n "
-			    		+ "?rel <"+Vocabulary.min_card+"> ?n }";
+			    		+ "?rel <"+Ontology.min_card+"> ?n }";
 			    
 				System.out.println(queryString);
 				  query = QueryFactory.create(queryString) ;
@@ -61,19 +61,19 @@ public class SparqlTest {
 				      //RDFNode rel = soln.get("rel") ;       // Get a result variable by name.
 				      Resource rel = soln.getResource("sup") ; // Get a result variable - must be a resource
 				      Literal n= soln.getLiteral("n");
-				      int number=Vocabulary.cardinality().get(n.toString());
+				      int number=Ontology.cardinality().get(n.toString());
 				      // Literal l = soln.getLiteral("VarL") ;   // Get a result variable - must be a literal
 				      System.out.println(rel+" min cardinality:"+number);
 				    }
 				    
 				    queryString="SELECT ?name ?category \n"
 				    		+ "WHERE{?obj <"+RDF.type+"> ?obj_class.\n "
-				    		+ "?obj_class <"+Vocabulary.name+"> \""+obj.getString("category")+"\".\n "
-				    		+ "?obj <"+Vocabulary.name+"> \""+obj.getString("name")+"\".\n "
-				    		+ "?obj <"+Vocabulary._default+"> ?sup.\n "
+				    		+ "?obj_class <"+Ontology.name+"> \""+obj.getString("category")+"\".\n "
+				    		+ "?obj <"+Ontology.name+"> \""+obj.getString("name")+"\".\n "
+				    		+ "?obj <"+Ontology._default+"> ?sup.\n "
 				    		+ "?sup <"+RDF.type+"> ?sup_class.\n "
-				    		+ "?sup_class <"+Vocabulary.name+"> ?category. \n"
-				    		+ "?sup <"+Vocabulary.name+"> ?name}";
+				    		+ "?sup_class <"+Ontology.name+"> ?category. \n"
+				    		+ "?sup <"+Ontology.name+"> ?name}";
 				    
 					System.out.println(queryString);
 					  query = QueryFactory.create(queryString) ;

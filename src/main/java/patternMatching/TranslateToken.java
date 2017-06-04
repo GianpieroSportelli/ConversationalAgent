@@ -10,7 +10,6 @@ import configuration.Config;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import nlProcess.OpeNER;
 import nlProcess.TintParser;
 
 public class TranslateToken {
@@ -177,10 +176,10 @@ public class TranslateToken {
 
     public ArrayList<Token> parse(String input) {
         // Memorizzo l'input originale che verrà modificato dai passi successivi
-        input=input.replaceAll("€", "euro");
+        input = input.replaceAll("€", "euro");
         String originalInput = input;
-        if(DEBUG){
-            log.log(Level.INFO,"PRIMA DEL LEMMING: "+input);
+        if (DEBUG) {
+            log.log(Level.INFO, "PRIMA DEL LEMMING: " + input);
         }
 
         try {
@@ -635,20 +634,25 @@ public class TranslateToken {
                 String val = sentences.get(i).toString();
                 JSONObject sentence = new JSONObject(val);
                 JSONArray tokens = sentence.getJSONArray("tokens");
+                JSONObject last = null;
                 for (int j = 0; j < tokens.length(); j++) {
-                    JSONObject term = tokens.getJSONObject(j);
-                    String lemma = term.getString("lemma");
-                    if (lemma.equals("[PUNCT]")) {
-                        lemma = term.getString("word");
+                    JSONObject token = tokens.getJSONObject(j);
+                    String lemma = token.getString("lemma");
+                    if (lemma.charAt(0)=='[') {
+                        lemma = token.getString("word");
                     }
-                    if (result.length() == 0) {
-                        result = lemma;
-                    } else {
-                        result += " " + lemma;
+                    String add = lemma;
+                    if (last != null) {
+                        if (last.getInt("characterOffsetEnd") != token.getInt("characterOffsetBegin")) {
+                            add = " " + add;
+                        }
                     }
+                    last=token;
+                    result+=add;
                 }
             }
         }
+
         return result;
     }
 

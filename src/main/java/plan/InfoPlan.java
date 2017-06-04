@@ -3,7 +3,7 @@ package plan;
 import configuration.Config;
 import java.util.ArrayList;
 import java.util.List;
-import knowledge.SemanticNet;
+import knowledge.KnowledgeBase;
 
 import org.json.JSONObject;
 
@@ -19,7 +19,7 @@ public class InfoPlan implements ActionPlan {
 	}
 
 	@Override
-	public List<JSONObject> execute(JSONObject sem,SemanticNet net,Config conf,int epoch,String id_user) {
+	public List<JSONObject> execute(JSONObject sem,KnowledgeBase net,Config conf,int epoch,String id_user) {
 		JSONObject result=new JSONObject();
 		result.accumulate("category", "dialog");
 		result.accumulate("name", "name_question");

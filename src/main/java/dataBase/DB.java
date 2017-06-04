@@ -8,7 +8,7 @@ import org.json.JSONObject;
 
 import Utils.JSON_utils;
 import configuration.Config;
-import knowledge.SemanticNet;
+import knowledge.KnowledgeBase;
 
 public class DB {
 	static ArrayList<Domain> capsule;
@@ -120,7 +120,7 @@ public class DB {
 		machine.add(m8);
 	}
 
-	public static List<JSONObject> query(List<String> queries, SemanticNet net) {
+	public static List<JSONObject> query(List<String> queries, KnowledgeBase net) {
 		List<JSONObject> result = new ArrayList<>();
 		ArrayList<Domain> obj_result = new ArrayList<>();
 

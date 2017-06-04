@@ -8,8 +8,8 @@ import org.json.JSONObject;
 
 import configuration.Config;
 import dialogManager.DialogManager;
-import knowledge.Reader;
-import knowledge.SemanticNet;
+import knowledge.KnowledgeBase_Reader;
+import knowledge.KnowledgeBase;
 
 public class ConversationSimulation {
 	
@@ -18,9 +18,9 @@ public class ConversationSimulation {
 	public static void main(String[] args){
 		String url = Config.getPathSemanticNet();
 		float threshold = 0.9f;
-		SemanticNet net=new SemanticNet(url);
+		KnowledgeBase net=new KnowledgeBase(url);
 		//net.printModel();
-		JSONObject read=Reader.readNLU(net.getModel());
+		JSONObject read=KnowledgeBase_Reader.readNLU(net.getModel());
 		//System.out.println(read.toString(4));
                 Config conf=Config.getInstance();
 		DialogManager contex = new DialogManager(net, threshold,read,conf);

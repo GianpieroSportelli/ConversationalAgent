@@ -5,13 +5,13 @@ import java.util.List;
 import org.json.JSONObject;
 
 import configuration.Config;
-import knowledge.SemanticNet;
+import knowledge.KnowledgeBase;
 
 public class TestSemNet {
 
 	public static void main(String[] args) {
 		String url=Config.getPathSemanticNet();
-		SemanticNet net=new SemanticNet(url);
+		KnowledgeBase net=new KnowledgeBase(url);
 				
 		List<String> h=net.getHierarchy();
 		for(String x:h){

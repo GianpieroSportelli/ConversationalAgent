@@ -7,15 +7,34 @@
     xmlns:j.2="http://project.contabile#class/"
     xmlns:j.3="http://project.contabile#input/"
     xmlns:xsd="http://www.w3.org/2001/XMLSchema#" > 
-  <rdf:Description rdf:about="http://eu.reply.it/plan.ShoppingPlan">
-    <j.1:message_not></j.1:message_not>
-    <j.1:message_plural></j.1:message_plural>
-    <j.1:message_singular></j.1:message_singular>
-    <rdf:type rdf:resource="http://project.contabile#class/plan"/>
-    <j.0:name>plan.ShoppingPlan</j.0:name>
+  <rdf:Description rdf:nodeID="A0">
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+    <rdf:first rdf:resource="http://eu.reply.it/quantity"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://project.contabile#default">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  <rdf:Description rdf:about="http://eu.reply.it/name_capsule">
+    <j.0:oneToStar rdf:resource="http://eu.reply.it/lavazza tierra"/>
+    <j.0:oneToStar rdf:resource="http://eu.reply.it/lavazza dolce"/>
+    <j.0:oneToStar rdf:resource="http://eu.reply.it/lavazza divino"/>
+    <j.3:example>chiamano</j.3:example>
+    <j.0:oneToStar rdf:resource="http://eu.reply.it/lavazza delizioso"/>
+    <j.0:oneToStar rdf:resource="http://eu.reply.it/lavazza deck cremoso"/>
+    <j.0:oneToStar rdf:resource="http://eu.reply.it/lavazza cereja passita"/>
+    <j.0:oneToStar rdf:resource="http://eu.reply.it/lavazza orzo"/>
+    <j.0:oneToStar rdf:resource="http://eu.reply.it/lavazza caffè ginseng"/>
+    <j.0:oneToStar rdf:resource="http://eu.reply.it/lavazza intenso"/>
+    <j.0:oneToStar rdf:resource="http://eu.reply.it/lavazza aromatico"/>
+    <j.1:message_not>dal nome</j.1:message_not>
+    <j.1:message_singular></j.1:message_singular>
+    <j.0:oneToStar rdf:resource="http://eu.reply.it/lavazza selva alta"/>
+    <j.0:oneToStar rdf:resource="http://eu.reply.it/lavazza passionale"/>
+    <j.0:oneToStar rdf:resource="http://eu.reply.it/lavazza qualità rossa"/>
+    <j.3:example>nome</j.3:example>
+    <j.1:message_plural></j.1:message_plural>
+    <j.0:oneToStar rdf:resource="http://eu.reply.it/lavazza soave"/>
+    <j.3:example>chiama</j.3:example>
+    <rdf:type rdf:resource="http://project.contabile#class/property"/>
+    <j.0:oneToStar rdf:resource="http://eu.reply.it/lavazza ricco"/>
+    <j.0:name>name_capsule</j.0:name>
   </rdf:Description>
   <rdf:Description rdf:about="http://eu.reply.it/question">
     <j.1:message_not></j.1:message_not>
@@ -26,38 +45,24 @@
     <rdf:type rdf:resource="http://project.contabile#class/speechAct"/>
     <j.0:name>question</j.0:name>
   </rdf:Description>
-  <rdf:Description rdf:about="http://eu.reply.it/howMuch">
-    <j.1:message_not>quanti euri? scrivilo a numeri pls</j.1:message_not>
-    <j.1:message_plural></j.1:message_plural>
-    <j.1:message_singular></j.1:message_singular>
-    <rdf:type rdf:resource="http://project.contabile#class/dialog"/>
-    <j.0:name>howMuch</j.0:name>
+  <rdf:Description rdf:about="http://eu.reply.it/false_dec">
+    <j.1:message_not>con caffeina</j.1:message_not>
+    <j.1:message_plural>con caffeina</j.1:message_plural>
+    <j.1:message_singular>con caffeina</j.1:message_singular>
+    <j.3:example>caffeina</j.3:example>
+    <j.3:example>non decaffeinate</j.3:example>
+    <j.3:example>non decaffeinato</j.3:example>
+    <rdf:type rdf:resource="http://project.contabile#class/value"/>
+    <j.0:name>false_dec</j.0:name>
   </rdf:Description>
   <rdf:Description rdf:about="http://project.contabile#class/noAnswer">
     <j.0:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">noAnswer</j.0:name>
     <j.0:salience rdf:datatype="http://www.w3.org/2001/XMLSchema#long">-1</j.0:salience>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://project.contabile#class/property">
-    <j.0:classRelation rdf:resource="http://project.contabile#class/mod"/>
-    <j.0:template rdf:nodeID="A0"/>
-    <j.0:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">property</j.0:name>
-    <j.0:salience rdf:datatype="http://www.w3.org/2001/XMLSchema#long">80</j.0:salience>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://eu.reply.it/scongiuroNode">
-    <j.1:message_not>amici come prima :)</j.1:message_not>
-    <j.1:message_plural></j.1:message_plural>
-    <j.1:message_singular></j.1:message_singular>
-    <j.3:example>scherzare</j.3:example>
-    <j.3:example>no dai</j.3:example>
-    <j.3:example>non te la prendere</j.3:example>
-    <rdf:type rdf:resource="http://project.contabile#class/dialog"/>
-    <j.0:name>scongiuroNode</j.0:name>
-  </rdf:Description>
   <rdf:Description rdf:nodeID="A1">
-    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-    <rdf:first rdf:resource="http://project.contabile#class/dialog"/>
+    <rdf:rest rdf:nodeID="A2"/>
+    <rdf:first rdf:resource="http://eu.reply.it/roasting"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://eu.reply.it/well_response">
     <j.1:message_not>grande! allora continuiamo :)</j.1:message_not>
@@ -80,53 +85,92 @@
     <rdf:type rdf:resource="http://project.contabile#class/plan"/>
     <j.0:name>plan.InfoPlan</j.0:name>
   </rdf:Description>
-  <rdf:Description rdf:about="http://project.contabile#class/action">
-    <j.0:classRelation rdf:resource="http://project.contabile#class/domain"/>
-    <j.0:template rdf:nodeID="A2"/>
-    <j.0:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">action</j.0:name>
-    <j.0:salience rdf:datatype="http://www.w3.org/2001/XMLSchema#long">100</j.0:salience>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-  </rdf:Description>
   <rdf:Description rdf:about="http://project.contabile#classRelation">
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://project.contabile#output/message_singular">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A3">
-    <rdf:rest rdf:nodeID="A4"/>
-    <rdf:first rdf:resource="http://project.contabile#class/mod"/>
+  <rdf:Description rdf:about="http://eu.reply.it/arabic">
+    <j.1:message_not>miscela arabica</j.1:message_not>
+    <j.1:message_plural></j.1:message_plural>
+    <j.1:message_singular></j.1:message_singular>
+    <j.3:example>cento per cento arabic</j.3:example>
+    <j.3:example>100% arabic</j.3:example>
+    <j.3:example>arabic</j.3:example>
+    <rdf:type rdf:resource="http://project.contabile#class/value"/>
+    <j.0:name>arabic</j.0:name>
   </rdf:Description>
   <rdf:Description rdf:about="http://project.contabile#class/domain">
     <j.0:classRelation rdf:resource="http://project.contabile#class/property"/>
-    <j.0:template rdf:nodeID="A5"/>
+    <j.0:template rdf:nodeID="A3"/>
     <j.0:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">domain</j.0:name>
     <j.0:salience rdf:datatype="http://www.w3.org/2001/XMLSchema#long">90</j.0:salience>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://project.contabile#oneToStart">
-    <j.0:maxCardinality>1</j.0:maxCardinality>
-    <j.0:minCardinality>0</j.0:minCardinality>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  <rdf:Description rdf:about="http://eu.reply.it/lavazza qualità rossa">
+    <j.1:message_not>lavazza qualità rossa</j.1:message_not>
+    <j.1:message_plural></j.1:message_plural>
+    <j.1:message_singular></j.1:message_singular>
+    <j.3:example>lavazza qualità rossa</j.3:example>
+    <j.3:example>qualità rossa</j.3:example>
+    <rdf:type rdf:resource="http://project.contabile#class/value"/>
+    <j.0:name>lavazza qualità rossa</j.0:name>
   </rdf:Description>
-  <rdf:Description rdf:about="http://project.contabile#class/unit">
-    <j.0:template rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-    <j.0:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">unit</j.0:name>
-    <j.0:salience rdf:datatype="http://www.w3.org/2001/XMLSchema#long">60</j.0:salience>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  <rdf:Description rdf:nodeID="A4">
+    <rdf:rest rdf:nodeID="A0"/>
+    <rdf:first rdf:resource="http://eu.reply.it/name_capsule"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://eu.reply.it/milk">
+    <j.1:message_not>latte in polvere</j.1:message_not>
+    <j.1:message_plural></j.1:message_plural>
+    <j.1:message_singular></j.1:message_singular>
+    <j.3:example>latte in polvere</j.3:example>
+    <rdf:type rdf:resource="http://project.contabile#class/value"/>
+    <j.0:name>milk</j.0:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://eu.reply.it/bio">
+    <j.0:oneToStar rdf:resource="http://eu.reply.it/false_bio"/>
+    <j.0:oneToStar rdf:resource="http://eu.reply.it/true_bio"/>
+    <j.1:message_not></j.1:message_not>
+    <j.1:message_plural></j.1:message_plural>
+    <j.1:message_singular></j.1:message_singular>
+    <rdf:type rdf:resource="http://project.contabile#class/property"/>
+    <j.0:name>bio</j.0:name>
   </rdf:Description>
   <rdf:Description rdf:about="http://eu.reply.it/capsule">
+    <j.0:oneToOne rdf:resource="http://eu.reply.it/bill"/>
     <j.3:example>capsula</j.3:example>
     <j.1:message_singular></j.1:message_singular>
+    <j.0:template rdf:nodeID="A5"/>
+    <j.0:oneToOne rdf:resource="http://eu.reply.it/expensive"/>
     <j.1:message_not>capsule</j.1:message_not>
+    <j.0:oneToOne rdf:resource="http://eu.reply.it/bio"/>
+    <j.0:oneToOne rdf:resource="http://eu.reply.it/roasting"/>
+    <j.0:oneToOne rdf:resource="http://eu.reply.it/quantity"/>
     <j.0:default rdf:resource="http://eu.reply.it/search"/>
+    <j.0:oneToOne rdf:resource="http://eu.reply.it/promo"/>
     <j.1:message_plural></j.1:message_plural>
     <j.0:name>capsule</j.0:name>
     <j.3:example>cialda</j.3:example>
-    <j.0:oneToStart rdf:resource="http://eu.reply.it/bill"/>
+    <j.0:oneToOne rdf:resource="http://eu.reply.it/dec"/>
     <rdf:type rdf:resource="http://project.contabile#class/domain"/>
     <j.3:example>capsule</j.3:example>
+    <j.0:oneToOne rdf:resource="http://eu.reply.it/name_capsule"/>
+    <j.0:oneToOne rdf:resource="http://eu.reply.it/composition"/>
     <j.3:example>caffè</j.3:example>
+    <j.0:oneToOne rdf:resource="http://eu.reply.it/cheap"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://eu.reply.it/false_cheap">
+    <j.1:message_not>non economiche</j.1:message_not>
+    <j.1:message_plural>non economiche</j.1:message_plural>
+    <j.1:message_singular>non economica</j.1:message_singular>
+    <j.3:example>nè economic</j.3:example>
+    <j.3:example>ne' economic</j.3:example>
+    <j.3:example>meno economic</j.3:example>
+    <j.3:example>non economic</j.3:example>
+    <rdf:type rdf:resource="http://project.contabile#class/value"/>
+    <j.0:name>false_cheap</j.0:name>
   </rdf:Description>
   <rdf:Description rdf:about="http://eu.reply.it/insert">
     <j.1:message_not></j.1:message_not>
@@ -135,88 +179,107 @@
     <rdf:type rdf:resource="http://project.contabile#class/speechAct"/>
     <j.0:name>insert</j.0:name>
   </rdf:Description>
-  <rdf:Description rdf:about="http://eu.reply.it/qtRegSpesa">
-    <j.1:message_not>l'ammontare della</j.1:message_not>
-    <j.1:message_plural></j.1:message_plural>
-    <j.1:message_singular></j.1:message_singular>
-    <rdf:type rdf:resource="http://project.contabile#class/dialog"/>
-    <j.0:name>qtRegSpesa</j.0:name>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://eu.reply.it/plan.AddingPlan">
-    <j.1:message_not></j.1:message_not>
-    <j.1:message_plural></j.1:message_plural>
-    <j.1:message_singular></j.1:message_singular>
-    <rdf:type rdf:resource="http://project.contabile#class/plan"/>
-    <j.0:name>plan.AddingPlan</j.0:name>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://project.contabile#output/message_not">
+  <rdf:Description rdf:about="http://project.contabile#oneToStar">
+    <j.0:maxCardinality>1</j.0:maxCardinality>
+    <j.0:minCardinality>0</j.0:minCardinality>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://eu.reply.it/howReg">
-    <j.1:message_not>registro tutto su un file dentro di me XD</j.1:message_not>
+  <rdf:Description rdf:about="http://eu.reply.it/false_promo">
+    <j.1:message_not>non in promozione</j.1:message_not>
+    <j.1:message_plural>non in promozione</j.1:message_plural>
+    <j.1:message_singular>non in promozione</j.1:message_singular>
+    <j.3:example>non in offerta</j.3:example>
+    <j.3:example>non in promozione</j.3:example>
+    <rdf:type rdf:resource="http://project.contabile#class/value"/>
+    <j.0:name>false_promo</j.0:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://eu.reply.it/quantity">
+    <j.3:example>pacco</j.3:example>
+    <j.3:example>scatole</j.3:example>
+    <j.1:message_plural></j.1:message_plural>
+    <j.3:example>confezione</j.3:example>
+    <j.0:name>quantity</j.0:name>
+    <j.0:oneToStar rdf:resource="http://eu.reply.it/integer"/>
+    <j.3:example>scatola</j.3:example>
+    <j.0:oneToStar rdf:resource="http://eu.reply.it/float"/>
+    <j.3:example>formato</j.3:example>
+    <j.1:message_not>con dimensione scatola</j.1:message_not>
+    <rdf:type rdf:resource="http://project.contabile#class/property"/>
+    <j.1:message_singular></j.1:message_singular>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://eu.reply.it/lavazza soave">
+    <j.1:message_not>lavazza soave</j.1:message_not>
     <j.1:message_plural></j.1:message_plural>
     <j.1:message_singular></j.1:message_singular>
-    <rdf:type rdf:resource="http://project.contabile#class/dialog"/>
-    <j.0:name>howReg</j.0:name>
+    <j.3:example>lavazza soave</j.3:example>
+    <j.3:example>soave</j.3:example>
+    <rdf:type rdf:resource="http://project.contabile#class/value"/>
+    <j.0:name>lavazza soave</j.0:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://eu.reply.it/lavazza aromatico">
+    <j.1:message_not>lavazza aromatico</j.1:message_not>
+    <j.1:message_plural></j.1:message_plural>
+    <j.1:message_singular></j.1:message_singular>
+    <j.3:example>lavazza aromatico</j.3:example>
+    <j.3:example>aromatico</j.3:example>
+    <rdf:type rdf:resource="http://project.contabile#class/value"/>
+    <j.0:name>lavazza aromatico</j.0:name>
   </rdf:Description>
   <rdf:Description rdf:nodeID="A5">
     <rdf:rest rdf:nodeID="A1"/>
-    <rdf:first rdf:resource="http://project.contabile#class/property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://eu.reply.it/machine">
-    <j.0:oneToStart rdf:resource="http://eu.reply.it/bill"/>
-    <j.0:default rdf:resource="http://eu.reply.it/search"/>
-    <j.1:message_not>machine</j.1:message_not>
-    <j.1:message_plural></j.1:message_plural>
-    <j.1:message_singular></j.1:message_singular>
-    <j.3:example>macchina caffè</j.3:example>
-    <j.3:example>macchina da caffè</j.3:example>
-    <rdf:type rdf:resource="http://project.contabile#class/domain"/>
-    <j.0:name>machine</j.0:name>
+    <rdf:first rdf:resource="http://eu.reply.it/bill"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://eu.reply.it/integer">
     <j.1:message_not>{value:token}</j.1:message_not>
-    <j.1:message_plural>{value:token}</j.1:message_plural>
-    <j.1:message_singular>{value:token}</j.1:message_singular>
+    <j.1:message_plural></j.1:message_plural>
+    <j.1:message_singular></j.1:message_singular>
     <rdf:type rdf:resource="http://project.contabile#class/number"/>
     <j.0:name>integer</j.0:name>
   </rdf:Description>
   <rdf:Description rdf:about="http://project.contabile#class/number">
-    <j.0:classRelation rdf:resource="http://project.contabile#class/value"/>
+    <j.0:classRelation rdf:resource="http://project.contabile#class/unit"/>
     <j.0:template rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
     <j.0:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">number</j.0:name>
     <j.0:salience rdf:datatype="http://www.w3.org/2001/XMLSchema#long">50</j.0:salience>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://eu.reply.it/euro">
-    <j.1:message_not>euro</j.1:message_not>
-    <j.1:message_plural>euro</j.1:message_plural>
-    <j.1:message_singular>euro</j.1:message_singular>
-    <j.3:example>€</j.3:example>
-    <j.3:example>euro</j.3:example>
-    <rdf:type rdf:resource="http://project.contabile#class/unit"/>
-    <j.0:name>euro</j.0:name>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://eu.reply.it/regNoGain">
-    <j.1:message_not>non ci sono entrate</j.1:message_not>
+  <rdf:Description rdf:about="http://eu.reply.it/tea">
+    <j.1:message_not>tè</j.1:message_not>
     <j.1:message_plural></j.1:message_plural>
     <j.1:message_singular></j.1:message_singular>
-    <rdf:type rdf:resource="http://project.contabile#class/dialog"/>
-    <j.0:name>regNoGain</j.0:name>
+    <j.3:example>tea</j.3:example>
+    <j.3:example>the</j.3:example>
+    <j.3:example>tè</j.3:example>
+    <rdf:type rdf:resource="http://project.contabile#class/value"/>
+    <j.0:name>tea</j.0:name>
   </rdf:Description>
-  <rdf:Description rdf:about="http://eu.reply.it/capabilities">
-    <j.1:message_not>Posso aiutarti a gestire i tuoi conti, prendo nota delle spese e degli accrediti e ti fornisco sempre il bilancio aggiornato</j.1:message_not>
+  <rdf:Description rdf:about="http://eu.reply.it/true_dec">
+    <j.1:message_not>senza caffeina</j.1:message_not>
+    <j.1:message_plural>senza caffeina</j.1:message_plural>
+    <j.1:message_singular>senza caffeina</j.1:message_singular>
+    <j.3:example>senza caffeina</j.3:example>
+    <j.3:example>decaffeinato</j.3:example>
+    <j.3:example>decaffeinate</j.3:example>
+    <j.3:example>dec</j.3:example>
+    <rdf:type rdf:resource="http://project.contabile#class/value"/>
+    <j.0:name>true_dec</j.0:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://eu.reply.it/robust">
+    <j.1:message_not>miscela robusta</j.1:message_not>
     <j.1:message_plural></j.1:message_plural>
     <j.1:message_singular></j.1:message_singular>
-    <j.3:example>quale essere la tua funzione</j.3:example>
-    <j.3:example>cosa fare</j.3:example>
-    <j.3:example>cosa potere fare</j.3:example>
-    <rdf:type rdf:resource="http://project.contabile#class/dialog"/>
-    <j.0:name>capabilities</j.0:name>
+    <j.3:example>robust</j.3:example>
+    <rdf:type rdf:resource="http://project.contabile#class/value"/>
+    <j.0:name>robust</j.0:name>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A0">
-    <rdf:rest rdf:nodeID="A3"/>
-    <rdf:first rdf:resource="http://project.contabile#class/value"/>
+  <rdf:Description rdf:about="http://eu.reply.it/lavazza ricco">
+    <j.1:message_not>lavazza ricco</j.1:message_not>
+    <j.1:message_plural></j.1:message_plural>
+    <j.1:message_singular></j.1:message_singular>
+    <j.3:example>lavazza ricco</j.3:example>
+    <j.3:example>ricco</j.3:example>
+    <rdf:type rdf:resource="http://project.contabile#class/value"/>
+    <j.0:name>lavazza ricco</j.0:name>
   </rdf:Description>
   <rdf:Description rdf:about="http://eu.reply.it/creator_info">
     <j.1:message_not>Sono stato creato da Gianpiero Sportelli.</j.1:message_not>
@@ -230,41 +293,40 @@
     <j.0:name>creator_info</j.0:name>
   </rdf:Description>
   <rdf:Description rdf:about="http://eu.reply.it/bill">
-    <j.0:oneToStart rdf:resource="http://eu.reply.it/float"/>
-    <j.0:oneToStart rdf:resource="http://eu.reply.it/euro"/>
     <j.1:message_not>importo</j.1:message_not>
     <j.3:example>budjet</j.3:example>
+    <j.0:oneToStar rdf:resource="http://eu.reply.it/float"/>
     <rdf:type rdf:resource="http://project.contabile#class/property"/>
     <j.1:message_singular>importo</j.1:message_singular>
     <j.1:message_plural>importo</j.1:message_plural>
     <j.3:example>budget</j.3:example>
-    <j.0:oneToStart rdf:resource="http://eu.reply.it/integer"/>
     <j.0:name>bill</j.0:name>
+    <j.0:oneToStar rdf:resource="http://eu.reply.it/integer"/>
     <j.3:example>costo</j.3:example>
+    <j.0:oneToStar rdf:resource="http://eu.reply.it/euro"/>
     <j.3:example>prezzo</j.3:example>
   </rdf:Description>
-  <rdf:Description rdf:about="http://eu.reply.it/plan.RegisterPlan">
-    <j.1:message_not></j.1:message_not>
+  <rdf:Description rdf:about="http://eu.reply.it/true_cheap">
+    <j.1:message_not>economiche</j.1:message_not>
+    <j.1:message_plural>economiche</j.1:message_plural>
+    <j.1:message_singular>economica</j.1:message_singular>
+    <j.3:example>più economic</j.3:example>
+    <j.3:example>economic</j.3:example>
+    <rdf:type rdf:resource="http://project.contabile#class/value"/>
+    <j.0:name>true_cheap</j.0:name>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A3">
+    <rdf:rest rdf:nodeID="A6"/>
+    <rdf:first rdf:resource="http://project.contabile#class/property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://eu.reply.it/lavazza selva alta">
+    <j.1:message_not>lavazza selva alta</j.1:message_not>
     <j.1:message_plural></j.1:message_plural>
     <j.1:message_singular></j.1:message_singular>
-    <rdf:type rdf:resource="http://project.contabile#class/plan"/>
-    <j.0:name>plan.RegisterPlan</j.0:name>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://project.contabile#input/example">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A6">
-    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-    <rdf:first rdf:resource="http://project.contabile#class/domain"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://eu.reply.it/quantifies">
-    <j.1:message_not></j.1:message_not>
-    <j.1:message_plural></j.1:message_plural>
-    <j.1:message_singular></j.1:message_singular>
-    <j.3:example>dimmi</j.3:example>
-    <j.3:example>quanto</j.3:example>
-    <rdf:type rdf:resource="http://project.contabile#class/speechAct"/>
-    <j.0:name>quantifies</j.0:name>
+    <j.3:example>lavazza selva alta</j.3:example>
+    <j.3:example>selva alta</j.3:example>
+    <rdf:type rdf:resource="http://project.contabile#class/value"/>
+    <j.0:name>lavazza selva alta</j.0:name>
   </rdf:Description>
   <rdf:Description rdf:about="http://project.contabile#class/mod">
     <j.0:classRelation rdf:resource="http://project.contabile#class/number"/>
@@ -281,30 +343,43 @@
     <rdf:type rdf:resource="http://project.contabile#class/speechAct"/>
     <j.0:name>what</j.0:name>
   </rdf:Description>
-  <rdf:Description rdf:about="http://eu.reply.it/regNoShop">
-    <j.1:message_not>non hai speso nulla ;)</j.1:message_not>
-    <j.1:message_plural></j.1:message_plural>
-    <j.1:message_singular></j.1:message_singular>
-    <rdf:type rdf:resource="http://project.contabile#class/dialog"/>
-    <j.0:name>regNoShop</j.0:name>
+  <rdf:Description rdf:nodeID="A7">
+    <rdf:rest rdf:nodeID="A8"/>
+    <rdf:first rdf:resource="http://project.contabile#class/value"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://eu.reply.it/whatReg">
-    <j.1:message_not>gestisco il tuo bilancio mediante 3 entità</j.1:message_not>
+  <rdf:Description rdf:about="http://eu.reply.it/lavazza dolce">
+    <j.1:message_not>lavazza dolce</j.1:message_not>
     <j.1:message_plural></j.1:message_plural>
     <j.1:message_singular></j.1:message_singular>
-    <rdf:type rdf:resource="http://project.contabile#class/dialog"/>
-    <j.0:name>whatReg</j.0:name>
+    <j.3:example>lavazza dolce</j.3:example>
+    <j.3:example>dolce</j.3:example>
+    <rdf:type rdf:resource="http://project.contabile#class/value"/>
+    <j.0:name>lavazza dolce</j.0:name>
   </rdf:Description>
-  <rdf:Description rdf:about="http://eu.reply.it/okNode">
-    <j.1:message_not>:)</j.1:message_not>
+  <rdf:Description rdf:about="http://eu.reply.it/black">
+    <j.1:message_not>scura</j.1:message_not>
     <j.1:message_plural></j.1:message_plural>
     <j.1:message_singular></j.1:message_singular>
-    <j.3:example>accordo</j.3:example>
-    <j.3:example>perfetto</j.3:example>
-    <j.3:example>va bene</j.3:example>
-    <j.3:example>ok</j.3:example>
-    <rdf:type rdf:resource="http://project.contabile#class/dialog"/>
-    <j.0:name>okNode</j.0:name>
+    <j.3:example>amaro</j.3:example>
+    <j.3:example>forte</j.3:example>
+    <j.3:example>scura</j.3:example>
+    <rdf:type rdf:resource="http://project.contabile#class/value"/>
+    <j.0:name>black</j.0:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://eu.reply.it/lavazza deck cremoso">
+    <j.1:message_not>lavazza deck cremoso</j.1:message_not>
+    <j.1:message_plural></j.1:message_plural>
+    <j.1:message_singular></j.1:message_singular>
+    <j.3:example>lavazza dek cremoso</j.3:example>
+    <j.3:example>dek cremoso</j.3:example>
+    <j.3:example>lavazza deck cremoso</j.3:example>
+    <j.3:example>deck cremoso</j.3:example>
+    <rdf:type rdf:resource="http://project.contabile#class/value"/>
+    <j.0:name>lavazza deck cremoso</j.0:name>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A9">
+    <rdf:rest rdf:nodeID="A10"/>
+    <rdf:first rdf:resource="http://eu.reply.it/expensive"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://eu.reply.it/addioNode">
     <j.1:message_not>addio per sempre...</j.1:message_not>
@@ -314,24 +389,6 @@
     <j.3:example>addio</j.3:example>
     <rdf:type rdf:resource="http://project.contabile#class/dialog"/>
     <j.0:name>addioNode</j.0:name>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A2">
-    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-    <rdf:first rdf:resource="http://project.contabile#class/domain"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://eu.reply.it/qtRegBalance">
-    <j.1:message_not>il</j.1:message_not>
-    <j.1:message_plural></j.1:message_plural>
-    <j.1:message_singular></j.1:message_singular>
-    <rdf:type rdf:resource="http://project.contabile#class/dialog"/>
-    <j.0:name>qtRegBalance</j.0:name>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://eu.reply.it/detail">
-    <j.1:message_not>Ancora non posso gestire le informazioni su</j.1:message_not>
-    <j.1:message_plural></j.1:message_plural>
-    <j.1:message_singular></j.1:message_singular>
-    <rdf:type rdf:resource="http://project.contabile#class/dialog"/>
-    <j.0:name>detail</j.0:name>
   </rdf:Description>
   <rdf:Description rdf:about="http://eu.reply.it/greetings">
     <j.3:example>scemo</j.3:example>
@@ -363,72 +420,35 @@
     <j.1:message_plural></j.1:message_plural>
     <j.3:example>buon pomeriggio</j.3:example>
   </rdf:Description>
-  <rdf:Description rdf:about="http://project.contabile#name">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  <rdf:Description rdf:about="http://eu.reply.it/true_expensive">
+    <j.1:message_not>care</j.1:message_not>
+    <j.1:message_plural>care</j.1:message_plural>
+    <j.1:message_singular>cara</j.1:message_singular>
+    <j.3:example>più costos</j.3:example>
+    <j.3:example>costos</j.3:example>
+    <j.3:example>più car</j.3:example>
+    <j.3:example>car</j.3:example>
+    <rdf:type rdf:resource="http://project.contabile#class/value"/>
+    <j.0:name>true_expensive</j.0:name>
   </rdf:Description>
-  <rdf:Description rdf:about="http://eu.reply.it/questionConfirm">
-    <j.1:message_not>so che chiedi qualcosa, ci sto lavorando...</j.1:message_not>
+  <rdf:Description rdf:about="http://eu.reply.it/lavazza tierra">
+    <j.1:message_not>lavazza tierra</j.1:message_not>
     <j.1:message_plural></j.1:message_plural>
     <j.1:message_singular></j.1:message_singular>
-    <rdf:type rdf:resource="http://project.contabile#class/dialog"/>
-    <j.0:name>questionConfirm</j.0:name>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://eu.reply.it/registerNotDomain">
-    <j.1:message_not>no so cosa registare, puo ripeterlo?</j.1:message_not>
-    <j.1:message_plural></j.1:message_plural>
-    <j.1:message_singular></j.1:message_singular>
-    <rdf:type rdf:resource="http://project.contabile#class/dialog"/>
-    <j.0:name>registerNotDomain</j.0:name>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://project.contabile#oneToMany">
-    <j.0:maxCardinality>N</j.0:maxCardinality>
-    <j.0:minCardinality>0</j.0:minCardinality>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <j.3:example>lavazza tierra</j.3:example>
+    <j.3:example>tierra</j.3:example>
+    <j.3:example>¡tierra!</j.3:example>
+    <rdf:type rdf:resource="http://project.contabile#class/value"/>
+    <j.0:name>lavazza tierra</j.0:name>
   </rdf:Description>
   <rdf:Description rdf:about="http://project.contabile#oneToOne">
     <j.0:maxCardinality>1</j.0:maxCardinality>
     <j.0:minCardinality>1</j.0:minCardinality>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://eu.reply.it/plan.WellPlan">
-    <j.1:message_not></j.1:message_not>
-    <j.1:message_plural></j.1:message_plural>
-    <j.1:message_singular></j.1:message_singular>
-    <rdf:type rdf:resource="http://project.contabile#class/plan"/>
-    <j.0:name>plan.WellPlan</j.0:name>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://eu.reply.it/registerNotBill">
-    <j.1:message_not>non è completa, dimmi l'importo in formato numerico. mi sto allenando per diventare impeccabile :)</j.1:message_not>
-    <j.1:message_plural></j.1:message_plural>
-    <j.1:message_singular></j.1:message_singular>
-    <rdf:type rdf:resource="http://project.contabile#class/dialog"/>
-    <j.0:name>registerNotBill</j.0:name>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://project.contabile#planLink">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://eu.reply.it/whyReg">
-    <j.1:message_not>è la mia ragione di vita</j.1:message_not>
-    <j.1:message_plural></j.1:message_plural>
-    <j.1:message_singular></j.1:message_singular>
-    <rdf:type rdf:resource="http://project.contabile#class/dialog"/>
-    <j.0:name>whyReg</j.0:name>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://eu.reply.it/search">
-    <j.0:oneToMany rdf:resource="http://eu.reply.it/machine"/>
-    <j.0:oneToMany rdf:resource="http://eu.reply.it/capsule"/>
-    <j.1:message_not>ricerca</j.1:message_not>
-    <j.1:message_plural></j.1:message_plural>
-    <j.1:message_singular></j.1:message_singular>
-    <rdf:type rdf:resource="http://project.contabile#class/action"/>
-    <j.0:name>search</j.0:name>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://eu.reply.it/registerOK">
-    <j.1:message_not>ho preso nota: </j.1:message_not>
-    <j.1:message_plural></j.1:message_plural>
-    <j.1:message_singular></j.1:message_singular>
-    <rdf:type rdf:resource="http://project.contabile#class/dialog"/>
-    <j.0:name>registerOK</j.0:name>
+  <rdf:Description rdf:nodeID="A11">
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+    <rdf:first rdf:resource="http://project.contabile#class/domain"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://eu.reply.it/noAnswer">
     <j.1:message_not></j.1:message_not>
@@ -437,63 +457,29 @@
     <rdf:type rdf:resource="http://project.contabile#class/noAnswer"/>
     <j.0:name>noAnswer</j.0:name>
   </rdf:Description>
-  <rdf:Description rdf:about="http://project.contabile#class/speechAct">
-    <j.0:classRelation rdf:resource="http://project.contabile#class/action"/>
-    <j.0:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">speechAct</j.0:name>
-    <j.0:salience rdf:datatype="http://www.w3.org/2001/XMLSchema#long">0</j.0:salience>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A7">
+  <rdf:Description rdf:nodeID="A12">
     <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-    <rdf:first rdf:resource="http://project.contabile#class/unit"/>
+    <rdf:first rdf:resource="http://eu.reply.it/bill"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://project.contabile#class/plan">
     <j.0:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">plan</j.0:name>
     <j.0:salience rdf:datatype="http://www.w3.org/2001/XMLSchema#long">0</j.0:salience>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://eu.reply.it/thanks">
-    <j.1:message_not>you're welcome!!</j.1:message_not>
-    <j.1:message_plural></j.1:message_plural>
-    <j.1:message_singular></j.1:message_singular>
-    <j.3:example>grazia</j.3:example>
-    <j.3:example>grazie</j.3:example>
-    <rdf:type rdf:resource="http://project.contabile#class/dialog"/>
-    <j.0:name>thanks</j.0:name>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://project.contabile#template">
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://eu.reply.it/errorReg">
-    <j.1:message_not>ops... errre nel piano di contabilità. guarda il log sul Raspberry</j.1:message_not>
-    <j.1:message_plural></j.1:message_plural>
-    <j.1:message_singular></j.1:message_singular>
-    <rdf:type rdf:resource="http://project.contabile#class/dialog"/>
-    <j.0:name>errorReg</j.0:name>
-  </rdf:Description>
   <rdf:Description rdf:about="http://eu.reply.it/float">
     <j.1:message_not>{value:token}</j.1:message_not>
-    <j.1:message_plural>{value:token}</j.1:message_plural>
-    <j.1:message_singular>{value:token}</j.1:message_singular>
+    <j.1:message_plural></j.1:message_plural>
+    <j.1:message_singular></j.1:message_singular>
     <rdf:type rdf:resource="http://project.contabile#class/number"/>
     <j.0:name>float</j.0:name>
   </rdf:Description>
-  <rdf:Description rdf:about="http://project.contabile#output/message_plural">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://eu.reply.it/how">
-    <j.1:message_not></j.1:message_not>
+  <rdf:Description rdf:about="http://eu.reply.it/average">
+    <j.1:message_not>media</j.1:message_not>
     <j.1:message_plural></j.1:message_plural>
     <j.1:message_singular></j.1:message_singular>
-    <j.3:example>come</j.3:example>
-    <rdf:type rdf:resource="http://project.contabile#class/speechAct"/>
-    <j.0:name>how</j.0:name>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://project.contabile#class/dialog">
-    <j.0:template rdf:nodeID="A6"/>
-    <j.0:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">dialog</j.0:name>
-    <j.0:salience rdf:datatype="http://www.w3.org/2001/XMLSchema#long">20</j.0:salience>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <j.3:example>media</j.3:example>
+    <rdf:type rdf:resource="http://project.contabile#class/value"/>
+    <j.0:name>average</j.0:name>
   </rdf:Description>
   <rdf:Description rdf:about="http://eu.reply.it/name_question">
     <j.1:message_not>come posso chiamarti?</j.1:message_not>
@@ -502,33 +488,35 @@
     <rdf:type rdf:resource="http://project.contabile#class/dialog"/>
     <j.0:name>name_question</j.0:name>
   </rdf:Description>
-  <rdf:Description rdf:about="http://eu.reply.it/well_done">
-    <j.1:message_not>tu?</j.1:message_not>
+  <rdf:Description rdf:nodeID="A2">
+    <rdf:rest rdf:nodeID="A9"/>
+    <rdf:first rdf:resource="http://eu.reply.it/cheap"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://eu.reply.it/ginseng">
+    <j.1:message_not>ginseng</j.1:message_not>
     <j.1:message_plural></j.1:message_plural>
     <j.1:message_singular></j.1:message_singular>
-    <rdf:type rdf:resource="http://project.contabile#class/dialog"/>
-    <j.0:name>well_done</j.0:name>
+    <j.3:example>ginseng</j.3:example>
+    <rdf:type rdf:resource="http://project.contabile#class/value"/>
+    <j.0:name>ginseng</j.0:name>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A4">
-    <rdf:rest rdf:nodeID="A7"/>
-    <rdf:first rdf:resource="http://project.contabile#class/number"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://project.contabile#class/value">
-    <j.0:classRelation rdf:resource="http://project.contabile#class/unit"/>
-    <j.0:template rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-    <j.0:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">value</j.0:name>
-    <j.0:salience rdf:datatype="http://www.w3.org/2001/XMLSchema#long">40</j.0:salience>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://project.contabile#speechAct">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://eu.reply.it/qtRegGain">
-    <j.1:message_not>l'</j.1:message_not>
+  <rdf:Description rdf:about="http://eu.reply.it/dec">
+    <j.0:oneToStar rdf:resource="http://eu.reply.it/false_dec"/>
+    <j.0:oneToStar rdf:resource="http://eu.reply.it/true_dec"/>
+    <j.1:message_not></j.1:message_not>
     <j.1:message_plural></j.1:message_plural>
     <j.1:message_singular></j.1:message_singular>
-    <rdf:type rdf:resource="http://project.contabile#class/dialog"/>
-    <j.0:name>qtRegGain</j.0:name>
+    <rdf:type rdf:resource="http://project.contabile#class/property"/>
+    <j.0:name>dec</j.0:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://eu.reply.it/lavazza passionale">
+    <j.1:message_not>lavazza passionale</j.1:message_not>
+    <j.1:message_plural></j.1:message_plural>
+    <j.1:message_singular></j.1:message_singular>
+    <j.3:example>lavazza passionale</j.3:example>
+    <j.3:example>passionale</j.3:example>
+    <rdf:type rdf:resource="http://project.contabile#class/value"/>
+    <j.0:name>lavazza passionale</j.0:name>
   </rdf:Description>
   <rdf:Description rdf:about="http://eu.reply.it/well">
     <j.0:planLink rdf:resource="http://eu.reply.it/plan.WellPlan"/>
@@ -561,5 +549,382 @@
     <j.3:example>quale essere il tuo nome</j.3:example>
     <j.3:example>chi essere</j.3:example>
     <rdf:type rdf:resource="http://project.contabile#class/dialog"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://project.contabile#default">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A13">
+    <rdf:rest rdf:nodeID="A14"/>
+    <rdf:first rdf:resource="http://project.contabile#class/number"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://project.contabile#class/property">
+    <j.0:classRelation rdf:resource="http://project.contabile#class/mod"/>
+    <j.0:template rdf:nodeID="A7"/>
+    <j.0:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">property</j.0:name>
+    <j.0:salience rdf:datatype="http://www.w3.org/2001/XMLSchema#long">80</j.0:salience>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://eu.reply.it/scongiuroNode">
+    <j.1:message_not>amici come prima :)</j.1:message_not>
+    <j.1:message_plural></j.1:message_plural>
+    <j.1:message_singular></j.1:message_singular>
+    <j.3:example>scherzare</j.3:example>
+    <j.3:example>no dai</j.3:example>
+    <j.3:example>non te la prendere</j.3:example>
+    <rdf:type rdf:resource="http://project.contabile#class/dialog"/>
+    <j.0:name>scongiuroNode</j.0:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://project.contabile#class/action">
+    <j.0:classRelation rdf:resource="http://project.contabile#class/domain"/>
+    <j.0:template rdf:nodeID="A11"/>
+    <j.0:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">action</j.0:name>
+    <j.0:salience rdf:datatype="http://www.w3.org/2001/XMLSchema#long">100</j.0:salience>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://eu.reply.it/lavazza delizioso">
+    <j.1:message_not>lavazza delizioso</j.1:message_not>
+    <j.1:message_plural></j.1:message_plural>
+    <j.1:message_singular></j.1:message_singular>
+    <j.3:example>lavazza delizioso</j.3:example>
+    <j.3:example>delizioso</j.3:example>
+    <rdf:type rdf:resource="http://project.contabile#class/value"/>
+    <j.0:name>lavazza delizioso</j.0:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://eu.reply.it/cheap">
+    <j.0:oneToStar rdf:resource="http://eu.reply.it/false_cheap"/>
+    <j.0:oneToStar rdf:resource="http://eu.reply.it/true_cheap"/>
+    <j.1:message_not></j.1:message_not>
+    <j.1:message_plural></j.1:message_plural>
+    <j.1:message_singular></j.1:message_singular>
+    <rdf:type rdf:resource="http://project.contabile#class/property"/>
+    <j.0:name>cheap</j.0:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://eu.reply.it/promo">
+    <j.0:oneToStar rdf:resource="http://eu.reply.it/true_promo"/>
+    <j.0:oneToStar rdf:resource="http://eu.reply.it/false_promo"/>
+    <j.1:message_not></j.1:message_not>
+    <j.1:message_plural></j.1:message_plural>
+    <j.1:message_singular></j.1:message_singular>
+    <rdf:type rdf:resource="http://project.contabile#class/property"/>
+    <j.0:name>promo</j.0:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://project.contabile#class/unit">
+    <j.0:classRelation rdf:resource="http://project.contabile#class/value"/>
+    <j.0:template rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+    <j.0:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">unit</j.0:name>
+    <j.0:salience rdf:datatype="http://www.w3.org/2001/XMLSchema#long">60</j.0:salience>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A6">
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+    <rdf:first rdf:resource="http://project.contabile#class/dialog"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://eu.reply.it/lavazza intenso">
+    <j.1:message_not>lavazza intenso</j.1:message_not>
+    <j.1:message_plural></j.1:message_plural>
+    <j.1:message_singular></j.1:message_singular>
+    <j.3:example>lavazza intenso</j.3:example>
+    <rdf:type rdf:resource="http://project.contabile#class/value"/>
+    <j.0:name>lavazza intenso</j.0:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://eu.reply.it/false_expensive">
+    <j.0:name>false_expensive</j.0:name>
+    <j.3:example>nè car</j.3:example>
+    <j.1:message_singular>non cara</j.1:message_singular>
+    <j.3:example>nè costos</j.3:example>
+    <j.3:example>meno costos</j.3:example>
+    <j.3:example>meno car</j.3:example>
+    <rdf:type rdf:resource="http://project.contabile#class/value"/>
+    <j.3:example>non costos</j.3:example>
+    <j.3:example>non car</j.3:example>
+    <j.3:example>ne' costos</j.3:example>
+    <j.1:message_not>non care</j.1:message_not>
+    <j.1:message_plural>non care</j.1:message_plural>
+    <j.3:example>ne' car</j.3:example>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://eu.reply.it/composition">
+    <j.1:message_singular>composta da</j.1:message_singular>
+    <j.1:message_not>composte da</j.1:message_not>
+    <j.0:oneToStar rdf:resource="http://eu.reply.it/milk"/>
+    <j.0:oneToStar rdf:resource="http://eu.reply.it/barley"/>
+    <j.0:oneToStar rdf:resource="http://eu.reply.it/robust"/>
+    <j.0:name>composition</j.0:name>
+    <j.3:example>gusto</j.3:example>
+    <j.3:example>composizioni</j.3:example>
+    <rdf:type rdf:resource="http://project.contabile#class/property"/>
+    <j.0:oneToStar rdf:resource="http://eu.reply.it/ginseng"/>
+    <j.3:example>contiene</j.3:example>
+    <j.1:message_plural>composte da</j.1:message_plural>
+    <j.3:example>compost</j.3:example>
+    <j.3:example>composizione</j.3:example>
+    <j.0:oneToStar rdf:resource="http://eu.reply.it/tea"/>
+    <j.0:oneToStar rdf:resource="http://eu.reply.it/arabic"/>
+    <j.3:example>gusti</j.3:example>
+    <j.3:example>miscela</j.3:example>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://eu.reply.it/barley">
+    <j.1:message_not>orzo</j.1:message_not>
+    <j.1:message_plural></j.1:message_plural>
+    <j.1:message_singular></j.1:message_singular>
+    <j.3:example>orzo</j.3:example>
+    <rdf:type rdf:resource="http://project.contabile#class/value"/>
+    <j.0:name>barley</j.0:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://project.contabile#output/message_not">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A8">
+    <rdf:rest rdf:nodeID="A13"/>
+    <rdf:first rdf:resource="http://project.contabile#class/mod"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://eu.reply.it/machine">
+    <j.1:message_plural></j.1:message_plural>
+    <j.0:default rdf:resource="http://eu.reply.it/search"/>
+    <j.1:message_not>machine</j.1:message_not>
+    <j.0:name>machine</j.0:name>
+    <j.0:template rdf:nodeID="A12"/>
+    <j.3:example>macchina caffè</j.3:example>
+    <j.3:example>macchina da caffè</j.3:example>
+    <j.0:oneToOne rdf:resource="http://eu.reply.it/bill"/>
+    <j.1:message_singular></j.1:message_singular>
+    <rdf:type rdf:resource="http://project.contabile#class/domain"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://eu.reply.it/euro">
+    <j.1:message_not>euro</j.1:message_not>
+    <j.1:message_plural></j.1:message_plural>
+    <j.1:message_singular></j.1:message_singular>
+    <j.3:example>€</j.3:example>
+    <j.3:example>euro</j.3:example>
+    <rdf:type rdf:resource="http://project.contabile#class/unit"/>
+    <j.0:name>euro</j.0:name>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A10">
+    <rdf:rest rdf:nodeID="A15"/>
+    <rdf:first rdf:resource="http://eu.reply.it/promo"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://eu.reply.it/capabilities">
+    <j.1:message_not>Posso aiutarti a a cercare capsule e macchine da caffè di marca lavazza, chiedimi pure :)</j.1:message_not>
+    <j.1:message_plural></j.1:message_plural>
+    <j.1:message_singular></j.1:message_singular>
+    <j.3:example>quale essere la tua funzione</j.3:example>
+    <j.3:example>cosa fare</j.3:example>
+    <j.3:example>cosa potere fare</j.3:example>
+    <rdf:type rdf:resource="http://project.contabile#class/dialog"/>
+    <j.0:name>capabilities</j.0:name>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A16">
+    <rdf:rest rdf:nodeID="A4"/>
+    <rdf:first rdf:resource="http://eu.reply.it/composition"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://project.contabile#input/example">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://eu.reply.it/true_promo">
+    <j.1:message_plural>in promozione</j.1:message_plural>
+    <rdf:type rdf:resource="http://project.contabile#class/value"/>
+    <j.3:example>promozioni</j.3:example>
+    <j.3:example>offerte</j.3:example>
+    <j.1:message_not>in promozione</j.1:message_not>
+    <j.3:example>sconto</j.3:example>
+    <j.1:message_singular>in promozione</j.1:message_singular>
+    <j.3:example>sconti</j.3:example>
+    <j.0:name>true_promo</j.0:name>
+    <j.3:example>in offerta</j.3:example>
+    <j.3:example>in promozione</j.3:example>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://eu.reply.it/lavazza cereja passita">
+    <j.1:message_not>lavazza cereja passita</j.1:message_not>
+    <j.1:message_plural></j.1:message_plural>
+    <j.1:message_singular></j.1:message_singular>
+    <j.3:example>lavazza cereja passita</j.3:example>
+    <j.3:example>cereja passita</j.3:example>
+    <rdf:type rdf:resource="http://project.contabile#class/value"/>
+    <j.0:name>lavazza cereja passita</j.0:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://eu.reply.it/quantifies">
+    <j.1:message_not></j.1:message_not>
+    <j.1:message_plural></j.1:message_plural>
+    <j.1:message_singular></j.1:message_singular>
+    <j.3:example>dimmi</j.3:example>
+    <j.3:example>quanto</j.3:example>
+    <rdf:type rdf:resource="http://project.contabile#class/speechAct"/>
+    <j.0:name>quantifies</j.0:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://eu.reply.it/false_bio">
+    <rdf:type rdf:resource="http://project.contabile#class/value"/>
+    <j.1:message_not>non biodegradabili</j.1:message_not>
+    <j.3:example>non compostabile</j.3:example>
+    <j.1:message_singular>non biodegradabile</j.1:message_singular>
+    <j.3:example>non biodegradabile</j.3:example>
+    <j.0:name>false_bio</j.0:name>
+    <j.3:example>non bio</j.3:example>
+    <j.3:example>non compostabili</j.3:example>
+    <j.3:example>non biodegradabili</j.3:example>
+    <j.1:message_plural>non biodegradabili</j.1:message_plural>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://eu.reply.it/expensive">
+    <j.0:oneToStar rdf:resource="http://eu.reply.it/true_expensive"/>
+    <j.0:oneToStar rdf:resource="http://eu.reply.it/false_expensive"/>
+    <j.1:message_not></j.1:message_not>
+    <j.1:message_plural></j.1:message_plural>
+    <j.1:message_singular></j.1:message_singular>
+    <rdf:type rdf:resource="http://project.contabile#class/property"/>
+    <j.0:name>expensive</j.0:name>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A17">
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+    <rdf:first rdf:resource="http://project.contabile#class/domain"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://eu.reply.it/okNode">
+    <j.1:message_not>:)</j.1:message_not>
+    <j.1:message_plural></j.1:message_plural>
+    <j.1:message_singular></j.1:message_singular>
+    <j.3:example>accordo</j.3:example>
+    <j.3:example>perfetto</j.3:example>
+    <j.3:example>va bene</j.3:example>
+    <j.3:example>ok</j.3:example>
+    <rdf:type rdf:resource="http://project.contabile#class/dialog"/>
+    <j.0:name>okNode</j.0:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://project.contabile#name">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://eu.reply.it/lavazza orzo">
+    <j.1:message_not>lavazza orzo</j.1:message_not>
+    <j.1:message_plural></j.1:message_plural>
+    <j.1:message_singular></j.1:message_singular>
+    <j.3:example>lavazza orzo</j.3:example>
+    <rdf:type rdf:resource="http://project.contabile#class/value"/>
+    <j.0:name>lavazza orzo</j.0:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://eu.reply.it/roasting">
+    <j.0:oneToStar rdf:resource="http://eu.reply.it/average"/>
+    <j.0:oneToStar rdf:resource="http://eu.reply.it/black"/>
+    <j.1:message_not>con tostatura</j.1:message_not>
+    <j.1:message_plural></j.1:message_plural>
+    <j.1:message_singular></j.1:message_singular>
+    <j.3:example>tostato</j.3:example>
+    <j.3:example>tostatura</j.3:example>
+    <rdf:type rdf:resource="http://project.contabile#class/property"/>
+    <j.0:name>roasting</j.0:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://project.contabile#oneToMany">
+    <j.0:maxCardinality>N</j.0:maxCardinality>
+    <j.0:minCardinality>0</j.0:minCardinality>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://eu.reply.it/plan.WellPlan">
+    <j.1:message_not></j.1:message_not>
+    <j.1:message_plural></j.1:message_plural>
+    <j.1:message_singular></j.1:message_singular>
+    <rdf:type rdf:resource="http://project.contabile#class/plan"/>
+    <j.0:name>plan.WellPlan</j.0:name>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A18">
+    <rdf:rest rdf:nodeID="A16"/>
+    <rdf:first rdf:resource="http://eu.reply.it/bio"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://project.contabile#planLink">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://eu.reply.it/search">
+    <j.0:oneToMany rdf:resource="http://eu.reply.it/machine"/>
+    <j.0:oneToMany rdf:resource="http://eu.reply.it/capsule"/>
+    <j.1:message_not>stai cercando</j.1:message_not>
+    <j.1:message_plural></j.1:message_plural>
+    <j.1:message_singular></j.1:message_singular>
+    <rdf:type rdf:resource="http://project.contabile#class/action"/>
+    <j.0:name>search</j.0:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://project.contabile#class/speechAct">
+    <j.0:classRelation rdf:resource="http://project.contabile#class/action"/>
+    <j.0:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">speechAct</j.0:name>
+    <j.0:salience rdf:datatype="http://www.w3.org/2001/XMLSchema#long">0</j.0:salience>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://eu.reply.it/lavazza caffè ginseng">
+    <j.1:message_not>lavazza caffè ginseng</j.1:message_not>
+    <j.1:message_plural></j.1:message_plural>
+    <j.1:message_singular></j.1:message_singular>
+    <j.3:example>lavazza caffè ginseng</j.3:example>
+    <j.3:example>caffè ginseng</j.3:example>
+    <rdf:type rdf:resource="http://project.contabile#class/value"/>
+    <j.0:name>lavazza caffè ginseng</j.0:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://eu.reply.it/thanks">
+    <j.1:message_not>you're welcome!!</j.1:message_not>
+    <j.1:message_plural></j.1:message_plural>
+    <j.1:message_singular></j.1:message_singular>
+    <j.3:example>grazia</j.3:example>
+    <j.3:example>grazie</j.3:example>
+    <rdf:type rdf:resource="http://project.contabile#class/dialog"/>
+    <j.0:name>thanks</j.0:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://project.contabile#template">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://project.contabile#output/message_plural">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://eu.reply.it/how">
+    <j.1:message_not></j.1:message_not>
+    <j.1:message_plural></j.1:message_plural>
+    <j.1:message_singular></j.1:message_singular>
+    <j.3:example>come</j.3:example>
+    <rdf:type rdf:resource="http://project.contabile#class/speechAct"/>
+    <j.0:name>how</j.0:name>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A14">
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+    <rdf:first rdf:resource="http://project.contabile#class/unit"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://project.contabile#class/dialog">
+    <j.0:template rdf:nodeID="A17"/>
+    <j.0:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">dialog</j.0:name>
+    <j.0:salience rdf:datatype="http://www.w3.org/2001/XMLSchema#long">20</j.0:salience>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://eu.reply.it/well_done">
+    <j.1:message_not>tu?</j.1:message_not>
+    <j.1:message_plural></j.1:message_plural>
+    <j.1:message_singular></j.1:message_singular>
+    <rdf:type rdf:resource="http://project.contabile#class/dialog"/>
+    <j.0:name>well_done</j.0:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://eu.reply.it/true_bio">
+    <j.3:example>compostabile</j.3:example>
+    <j.1:message_not>biodegradabili</j.1:message_not>
+    <j.3:example>100% biodegradabile</j.3:example>
+    <j.1:message_singular>biodegradabile</j.1:message_singular>
+    <j.3:example>biodegradabile</j.3:example>
+    <j.1:message_plural>biodegradabili</j.1:message_plural>
+    <j.3:example>compostabili</j.3:example>
+    <j.3:example>biodegradabili</j.3:example>
+    <j.3:example>100% biodegradabili</j.3:example>
+    <j.3:example>bio</j.3:example>
+    <j.0:name>true_bio</j.0:name>
+    <rdf:type rdf:resource="http://project.contabile#class/value"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://project.contabile#class/value">
+    <j.0:template rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+    <j.0:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">value</j.0:name>
+    <j.0:salience rdf:datatype="http://www.w3.org/2001/XMLSchema#long">40</j.0:salience>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://project.contabile#speechAct">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://eu.reply.it/lavazza divino">
+    <j.1:message_not>lavazza divino</j.1:message_not>
+    <j.1:message_plural></j.1:message_plural>
+    <j.1:message_singular></j.1:message_singular>
+    <j.3:example>lavazza divino</j.3:example>
+    <j.3:example>divino</j.3:example>
+    <rdf:type rdf:resource="http://project.contabile#class/value"/>
+    <j.0:name>lavazza divino</j.0:name>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A15">
+    <rdf:rest rdf:nodeID="A18"/>
+    <rdf:first rdf:resource="http://eu.reply.it/dec"/>
   </rdf:Description>
 </rdf:RDF>

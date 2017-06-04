@@ -9,18 +9,18 @@ import org.json.JSONObject;
 
 import Utils.JSON_utils;
 import configuration.Config;
-import knowledge.SemanticNet;
-import knowledge.Vocabulary;
+import knowledge.KnowledgeBase;
+import knowledge.Ontology;
 
 public class NLG {
 
-    SemanticNet net;
+    KnowledgeBase net;
     static final boolean DEBUG = Config.getNLGDebug();
     private static final int NO_RESULT = 1;
     private static final int SINGULAR = 2;
     private static final int PLURAL = 3;
 
-    public NLG(SemanticNet net) {
+    public NLG(KnowledgeBase net) {
         this.net = net;
     }
 
@@ -91,9 +91,9 @@ public class NLG {
 
         String message = "";
         String m = "";
-        if (query.has(Vocabulary.MESSAGE)) {
-            m = query.getString(Vocabulary.MESSAGE);
-        } else if (!query.has(Vocabulary.NO_MESSAGE)) {
+        if (query.has(Ontology.MESSAGE)) {
+            m = query.getString(Ontology.MESSAGE);
+        } else if (!query.has(Ontology.NO_MESSAGE)) {
             switch (type) {
                 case NO_RESULT:
                     m = net.get_message_not(query);
@@ -105,6 +105,9 @@ public class NLG {
                     m = net.get_message_plural(query);
                     break;
             }
+        }
+        if (DEBUG) {
+            System.out.println("message: " + m);
         }
         if (m.length() > 0) {
             message += m + " ";
@@ -121,29 +124,30 @@ public class NLG {
                     for (int j = 0; j < category_array.length(); j++) {
                         JSONObject sub_query = category_array.getJSONObject(j);
                         if (DEBUG) {
-                            System.out.println("sub query:\n" + sub_query.toString(4));
+                            System.out.println("sub query by category:\n" + sub_query.toString(4));
                         }
-                        if (net.incomplete(sub_query)) {
-                            incomplete.add("{\"name\":\"" + sub_query.getString("name") + "\",\"category\":\""
-                                    + sub_query.getString("category") + "\"}");
-                        } else {
-                            message += getMessage(null, sub_query, incomplete, type);
-                        }
+//                        if (net.incomplete(sub_query)) {
+//                            incomplete.add("{\"name\":\"" + sub_query.getString("name") + "\",\"category\":\""
+//                                    + sub_query.getString("category") + "\"}");
+//                        } else {
+                        message += getMessage(null, sub_query, incomplete, type);
+//                        }
                     }
                 } else {
                     for (String name : template_name) {
                         for (int j = 0; j < category_array.length(); j++) {
                             JSONObject sub_query = category_array.getJSONObject(j);
-                            if (DEBUG) {
-                            System.out.println("sub query:\n" + sub_query.toString(4));
-                        }
+
                             if (sub_query.getString("name").equals(name)) {
-                                if (net.incomplete(sub_query)) {
-                                    incomplete.add("{\"name\":\"" + sub_query.getString("name")
-                                            + "\",\"category\":\"" + sub_query.getString("category") + "\"}");
-                                } else {
-                                    message += getMessage(null, sub_query, incomplete, type);
+                                if (DEBUG) {
+                                    System.out.println("sub query by name:\n" + sub_query.toString(4));
                                 }
+//                                if (net.incomplete(sub_query) && false) {
+//                                    incomplete.add("{\"name\":\"" + sub_query.getString("name")
+//                                            + "\",\"category\":\"" + sub_query.getString("category") + "\"}");
+//                                } else {
+                                message += getMessage(null, sub_query, incomplete, type);
+//                                }
                             }
                         }
                     }

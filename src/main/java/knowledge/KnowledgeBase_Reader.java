@@ -24,7 +24,7 @@ import com.hp.hpl.jena.vocabulary.RDFS;
 
 import configuration.Config;
 
-public class Reader {
+public class KnowledgeBase_Reader {
 
     public static void main(String[] args) {
         System.out.print(readNLU(readModel(Config.getPathSemanticNet())));
@@ -80,14 +80,14 @@ public class Reader {
         }
 
         // read the RDF/XML file
-        model.read(in, Creator.format);
+        model.read(in, KnowledgeBase_Creator.format);
         return model;
     }
 
     private static String resName(Resource res) {
         String result = null;
-        if (res.hasProperty(Vocabulary.name)) {
-            result = ((Literal) res.getProperty(Vocabulary.name).getObject()).getString();
+        if (res.hasProperty(Ontology.name)) {
+            result = ((Literal) res.getProperty(Ontology.name).getObject()).getString();
         }
         return result;
     }
@@ -98,9 +98,9 @@ public class Reader {
         while (iterClass.hasNext()) {
             Statement stmClass = iterClass.next();
             Resource res = stmClass.getSubject();
-            Statement resName = res.getProperty(Vocabulary.name);
+            Statement resName = res.getProperty(Ontology.name);
             if (resName != null) {
-                Statement stmSalience = res.getProperty(Vocabulary.salience);
+                Statement stmSalience = res.getProperty(Ontology.salience);
                 Integer salience = ((Literal) stmSalience.getObject()).getInt();
                 map.put(res, salience);
             }
@@ -121,8 +121,8 @@ public class Reader {
 
     private static List<String> ExampleQuery(Model model, Resource c) {
         List<String> list = new ArrayList<>();
-        if (c.hasProperty(Vocabulary.example)) {
-            NodeIterator itrExample = model.listObjectsOfProperty(c, Vocabulary.example);
+        if (c.hasProperty(Ontology.example)) {
+            NodeIterator itrExample = model.listObjectsOfProperty(c, Ontology.example);
             while (itrExample.hasNext()) {
                 RDFNode NodeEx = itrExample.next();
                 String ex = ((Literal) NodeEx).getString();

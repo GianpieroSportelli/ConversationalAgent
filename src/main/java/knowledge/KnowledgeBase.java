@@ -28,7 +28,7 @@ import com.hp.hpl.jena.vocabulary.RDFS;
 
 import Utils.JSON_utils;
 
-public class SemanticNet {
+public class KnowledgeBase {
 
     OntModel model;
     Map<String, Resource> cache;
@@ -47,13 +47,13 @@ public class SemanticNet {
         hierarchy = relationClass();
     }
 
-    public SemanticNet(String url) {
-        this.model = Reader.readModel(url);
+    public KnowledgeBase(String url) {
+        this.model = KnowledgeBase_Reader.readModel(url);
         common();
 
     }
 
-    public SemanticNet(OntModel model) {
+    public KnowledgeBase(OntModel model) {
         this.model = model;
         common();
     }
@@ -176,11 +176,11 @@ public class SemanticNet {
             }
             JSONObject def = getDefault(res);
             if (def != null) {
-                jsonMessage.accumulate(Vocabulary._defaultPropertyName, def);
+                jsonMessage.accumulate(Ontology._defaultPropertyName, def);
             }
             String plan = getPlan(res);
             if (plan != null) {
-                jsonMessage.accumulate(Vocabulary.planName, plan);
+                jsonMessage.accumulate(Ontology.planName, plan);
             }
             return jsonMessage.toString();
         }
@@ -188,8 +188,8 @@ public class SemanticNet {
 
     private String getName(Resource res) {
         String result = null;
-        if (res.hasProperty(Vocabulary.name)) {
-            result = ((Literal) res.getProperty(Vocabulary.name).getObject()).getString();
+        if (res.hasProperty(Ontology.name)) {
+            result = ((Literal) res.getProperty(Ontology.name).getObject()).getString();
         }
         return result;
     }
@@ -211,8 +211,8 @@ public class SemanticNet {
         String semElement = json.getString("name");
 
         if (!cache.containsKey(json.toString())) {
-            String queryString = "SELECT ?n \n WHERE{?n <" + RDF.type + "> ?category.\n ?category <" + Vocabulary.name
-                    + "> \"" + category + "\".\n?n <" + Vocabulary.name + "> \"" + semElement + "\"}";
+            String queryString = "SELECT ?n \n WHERE{?n <" + RDF.type + "> ?category.\n ?category <" + Ontology.name
+                    + "> \"" + category + "\".\n?n <" + Ontology.name + "> \"" + semElement + "\"}";
 
             Query query = QueryFactory.create(queryString);
 
@@ -237,7 +237,7 @@ public class SemanticNet {
             result = cache_in.get(res);
         } else {
             result = new ArrayList<>();
-            for (ObjectProperty p : Vocabulary.listProperty) {
+            for (ObjectProperty p : Ontology.listProperty) {
                 String queryString = null;
                 queryString = "SELECT ?n \n WHERE {?n <" + p + "> <" + res + ">}";
                 Query query = QueryFactory.create(queryString);
@@ -260,7 +260,7 @@ public class SemanticNet {
             result = cache_out.get(res);
         } else {
             result = new ArrayList<>();
-            for (ObjectProperty p : Vocabulary.listProperty) {
+            for (ObjectProperty p : Ontology.listProperty) {
                 String queryString = null;
                 queryString = "SELECT ?n \n WHERE {<" + res + "> <" + p + "> ?n}";
                 Query query = QueryFactory.create(queryString);
@@ -280,7 +280,7 @@ public class SemanticNet {
     public JSONObject getDefault(Resource res) {
         JSONObject result = null;
         String queryString = null;
-        queryString = "SELECT ?n \n WHERE{<" + res + "> <" + Vocabulary._default + "> ?n}";
+        queryString = "SELECT ?n \n WHERE{<" + res + "> <" + Ontology._default + "> ?n}";
         Query query = QueryFactory.create(queryString);
         QueryExecution qexec = QueryExecutionFactory.create(query, model);
         ResultSet results = qexec.execSelect();
@@ -298,7 +298,7 @@ public class SemanticNet {
     public String getPlan(Resource res) {
         String result = null;
         String queryString = null;
-        queryString = "SELECT ?n \n WHERE {<" + res + "> <" + Vocabulary.plan + "> ?n}";
+        queryString = "SELECT ?n \n WHERE {<" + res + "> <" + Ontology.plan + "> ?n}";
         Query query = QueryFactory.create(queryString);
         QueryExecution qexec = QueryExecutionFactory.create(query, model);
         ResultSet results = qexec.execSelect();
@@ -314,9 +314,9 @@ public class SemanticNet {
     public String getPlan(JSONObject obj) {
         String result = null;
 //        System.out.println("FIND PLAN: \n"+obj.toString(4));
-//        System.out.println(Vocabulary.planName);
-        if (obj.has(Vocabulary.planName)) {
-            result = obj.getString(Vocabulary.planName);
+//        System.out.println(Ontology.planName);
+        if (obj.has(Ontology.planName)) {
+            result = obj.getString(Ontology.planName);
         }
         return result;
     }
@@ -328,7 +328,7 @@ public class SemanticNet {
         json.accumulate("category", obj.get("category"));
 
         Resource res = getResource(json);
-        NodeIterator itrNot = model.listObjectsOfProperty(res, Vocabulary.message_not);
+        NodeIterator itrNot = model.listObjectsOfProperty(res, Ontology.message_not);
         while (itrNot.hasNext()) {
             RDFNode NodeEx = itrNot.next();
             result = ((Literal) NodeEx).getString();
@@ -347,7 +347,7 @@ public class SemanticNet {
         json.accumulate("category", obj.get("category"));
 
         Resource res = getResource(json);
-        NodeIterator itrNot = model.listObjectsOfProperty(res, Vocabulary.message_singular);
+        NodeIterator itrNot = model.listObjectsOfProperty(res, Ontology.message_singular);
         while (itrNot.hasNext()) {
             RDFNode NodeEx = itrNot.next();
             result = ((Literal) NodeEx).getString();
@@ -366,7 +366,7 @@ public class SemanticNet {
         json.accumulate("category", obj.get("category"));
 
         Resource res = getResource(json);
-        NodeIterator itrNot = model.listObjectsOfProperty(res, Vocabulary.message_plural);
+        NodeIterator itrNot = model.listObjectsOfProperty(res, Ontology.message_plural);
         while (itrNot.hasNext()) {
             RDFNode NodeEx = itrNot.next();
             result = ((Literal) NodeEx).getString();
@@ -391,10 +391,10 @@ public class SemanticNet {
         String queryString = null;
         if (father == null) {
             queryString = "SELECT ?n \n WHERE { ?n <" + RDF.type + "> <" + RDFS.Class + ">.\n OPTIONAL {?a <"
-                    + Vocabulary.relation + "> ?n }.  FILTER (!BOUND(?a))}";
+                    + Ontology.relation + "> ?n }.  FILTER (!BOUND(?a))}";
         } else {
-            queryString = "SELECT ?n \n WHERE { ?n <" + Vocabulary.name + "> ?name.\n <" + father + "> <"
-                    + Vocabulary.relation + "> ?n }";
+            queryString = "SELECT ?n \n WHERE { ?n <" + Ontology.name + "> ?name.\n <" + father + "> <"
+                    + Ontology.relation + "> ?n }";
         }
         // System.out.println("Query: " + queryString);
         com.hp.hpl.jena.query.Query query = QueryFactory.create(queryString);
@@ -428,8 +428,8 @@ public class SemanticNet {
         Resource resSup = getResource(sup);
         Resource resObj = getResource(obj);
         String queryString = "SELECT ?n \n WHERE{<" + resSup + ">  ?rel <" + resObj + ">.\n ?rel <"
-                + Vocabulary.min_card + "> ?n }";
-
+                + Ontology.min_card + "> ?n }";
+        //System.out.println("Query Min Cardinality:"+queryString);
         Query query = QueryFactory.create(queryString);
 
         QueryExecution qexec = QueryExecutionFactory.create(query, model);
@@ -442,7 +442,7 @@ public class SemanticNet {
             // must be a resource
             Literal n = soln.getLiteral("n");
             if (n != null) {
-                int number = Vocabulary.cardinality().get(n.toString());
+                int number = Ontology.cardinality().get(n.toString());
                 return number;
             }
         }
@@ -453,7 +453,7 @@ public class SemanticNet {
         Resource resSup = getResource(sup);
         Resource resObj = getResource(obj);
         String queryString = "SELECT ?n \n WHERE{<" + resSup + ">  ?rel <" + resObj + ">.\n ?rel <"
-                + Vocabulary.min_card + "> ?n }";
+                + Ontology.min_card + "> ?n }";
         Query query = QueryFactory.create(queryString);
 
         QueryExecution qexec = QueryExecutionFactory.create(query, model);
@@ -465,7 +465,7 @@ public class SemanticNet {
             // must be a resource
             Literal n = soln.getLiteral("n");
             if (n != null) {
-                int number = Vocabulary.cardinality().get(n.toString());
+                int number = Ontology.cardinality().get(n.toString());
                 return number;
             }
         }
@@ -539,11 +539,11 @@ public class SemanticNet {
             result = template.get(name);
         } else {
             result = new ArrayList<>();
-            StmtIterator iterClass = model.listStatements(new SimpleSelector(null, Vocabulary.name, name));
+            StmtIterator iterClass = model.listStatements(new SimpleSelector(null, Ontology.name, name));
             while (iterClass.hasNext()) {
                 Statement stmClass = iterClass.next();
                 Resource res = stmClass.getSubject();
-                Statement listTemplate = res.getProperty(Vocabulary.template);
+                Statement listTemplate = res.getProperty(Ontology.template);
                 if (listTemplate != null) {
                     Resource list = (Resource) listTemplate.getObject();
                     while (list != null && list.hasProperty(RDF.first)) {
@@ -571,7 +571,7 @@ public class SemanticNet {
     public List<String> getInfluence(JSONObject obj) {
         List<String> result = null;
         Resource res = getResource(obj);
-        String queryString = "SELECT ?n \n WHERE{?n <" + Vocabulary.speechAct + "> <" + res + "> }";
+        String queryString = "SELECT ?n \n WHERE{?n <" + Ontology.speechAct + "> <" + res + "> }";
         if (!cacheSpeechAct.containsKey(obj.toString())) {
             Query query = QueryFactory.create(queryString);
 

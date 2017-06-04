@@ -21,8 +21,8 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import knowledge.KnowledgePlan;
-import knowledge.SemanticNet;
-import knowledge.Vocabulary;
+import knowledge.KnowledgeBase;
+import knowledge.Ontology;
 import nlGeneration.NLG;
 import nlProcess.TintParser;
 import patternMatching.Token;
@@ -36,7 +36,7 @@ public class DialogManager {
     private static final boolean DEBUG = Config.getDialogManagerDebug();
     private static final boolean DEEP_DEBUG = Config.getDialogManagerDeepDebug();
 
-    SemanticNet net;
+    KnowledgeBase net;
     String last_input;
     List<Token> phrase;
 
@@ -56,7 +56,7 @@ public class DialogManager {
     TintParser parser;
     public String id_user;
 
-    public DialogManager(SemanticNet net, float t, JSONObject read, Config conf) {
+    public DialogManager(KnowledgeBase net, float t, JSONObject read, Config conf) {
         id_user = "DEVELOP";
         this.conf = conf;
         threshold = t;
@@ -72,7 +72,7 @@ public class DialogManager {
         }
     }
 
-    public DialogManager(SemanticNet net, float t, JSONObject read, Config conf, String user_id) {
+    public DialogManager(KnowledgeBase net, float t, JSONObject read, Config conf, String user_id) {
         this.id_user = user_id;
         this.conf = conf;
         threshold = t;
@@ -94,7 +94,7 @@ public class DialogManager {
             //workingMemory = new HashMap<>();
             readMemory();
         } catch (IOException ex) {
-            resultToken.add((new JSONObject().accumulate("name", "errorReadMemory").accumulate("category", "dialog").accumulate(Vocabulary.MESSAGE, "errore nella lettura delle memorie da file il contesto verrà perso :( chiedi spiegazioni al mio creatore")).toString());
+            resultToken.add((new JSONObject().accumulate("name", "errorReadMemory").accumulate("category", "dialog").accumulate(Ontology.MESSAGE, "errore nella lettura delle memorie da file il contesto verrà perso :( chiedi spiegazioni al mio creatore")).toString());
             Logger.getLogger(DialogManager.class.getName()).log(Level.SEVERE, null, ex);
             Logger.getLogger(DialogManager.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -188,7 +188,7 @@ public class DialogManager {
         try {
             writeMemory();
         } catch (IOException ex) {
-            resultToken.add((new JSONObject().accumulate("name", "errorWriteMemory").accumulate("category", "dialog").accumulate(Vocabulary.MESSAGE, "errore nella scrittuare delle memorie su file il contesto verrà perso :( chiedi spiegazioni al mio creatore")).toString());
+            resultToken.add((new JSONObject().accumulate("name", "errorWriteMemory").accumulate("category", "dialog").accumulate(Ontology.MESSAGE, "errore nella scrittuare delle memorie su file il contesto verrà perso :( chiedi spiegazioni al mio creatore")).toString());
             Logger.getLogger(DialogManager.class.getName()).log(Level.SEVERE, null, ex);
         }
 
@@ -248,8 +248,8 @@ public class DialogManager {
      * @return
      */
     private void reasoning(List<Token> list) {
-        if (discourseMemory.containsKey(Vocabulary.speechActClassName)) {
-            discourseMemory.remove(Vocabulary.speechActClassName);
+        if (discourseMemory.containsKey(Ontology.speechActClassName)) {
+            discourseMemory.remove(Ontology.speechActClassName);
         }
 
         boolean last_in = false;
@@ -1278,8 +1278,8 @@ public class DialogManager {
                         String val_out = obj.get(proto_out.getString("category")).toString();
                         if (JSON_utils.isJSONObject(val_out)) {
                             JSONObject obj_out = new JSONObject(val_out);
-                            if (obj_out.has(Vocabulary._defaultPropertyName)) {
-                                JSONObject def_obj = obj_out.getJSONObject(Vocabulary._defaultPropertyName);
+                            if (obj_out.has(Ontology._defaultPropertyName)) {
+                                JSONObject def_obj = obj_out.getJSONObject(Ontology._defaultPropertyName);
                                 String def_name = def_obj.getString("name");
                                 String def_category = def_obj.getString("category");
                                 if (name.equals(def_name) && category.equals(def_category)) {
@@ -1496,7 +1496,7 @@ public class DialogManager {
             discourseMemory.put(category, list);
         }
 
-        String sActClass = Vocabulary.speechActClassName;
+        String sActClass = Ontology.speechActClassName;
         if (category.equals(sActClass)) {
             if (DEBUG) {
                 System.out.println(
@@ -1521,8 +1521,8 @@ public class DialogManager {
                         if (DEBUG) {
                             System.out.println("trovato un candidato..");
                         }
-                        if (!result_obj.has(Vocabulary.speechActClassName)) {
-                            result_obj.accumulate(Vocabulary.speechActClassName, obj);
+                        if (!result_obj.has(Ontology.speechActClassName)) {
+                            result_obj.accumulate(Ontology.speechActClassName, obj);
                             resultToken.remove(i);
                             resultToken.add(i, result_obj.toString());
                         }
@@ -1637,11 +1637,11 @@ public class DialogManager {
 
     public JSONObject exit(JSONObject obj) {
         // è pronto per uscire
-        if (discourseMemory.containsKey(Vocabulary.speechActClassName)) {
+        if (discourseMemory.containsKey(Ontology.speechActClassName)) {
             if (DEBUG) {
                 System.out.println("ho quancosa in DiscourseMemory per SpeechAct");
             }
-            List<String> speechMemory = discourseMemory.get(Vocabulary.speechActClassName);
+            List<String> speechMemory = discourseMemory.get(Ontology.speechActClassName);
             for (String sa : speechMemory) {
                 if (DEBUG) {
                     System.out.println("esamino lo speechAct:\n" + sa);
@@ -1652,8 +1652,8 @@ public class DialogManager {
                     JSONObject cand = new JSONObject().accumulate("category", obj.getString("category")).accumulate("name", obj.getString("name"));
 
                     if (influence.contains(cand.toString())) {
-                        if (!obj.has(Vocabulary.speechActClassName) || obj.getJSONObject(Vocabulary.speechActClassName).getInt("epoch") < epoch) {
-                            obj.put(Vocabulary.speechActClassName, saObj);
+                        if (!obj.has(Ontology.speechActClassName) || obj.getJSONObject(Ontology.speechActClassName).getInt("epoch") < epoch) {
+                            obj.put(Ontology.speechActClassName, saObj);
                         }
                     }
                     break;
