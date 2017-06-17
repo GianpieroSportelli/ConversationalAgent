@@ -21,7 +21,7 @@ public class Ontology {
 
 	private static OntModel m_model = ModelFactory.createOntologyModel();
 
-	public static final String NS = "http://project.contabile#";
+	public static final String NS = "http://project.article#";
 
 	public static Map<String, Integer> cardinality = new HashMap<>();
 
