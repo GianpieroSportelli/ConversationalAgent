@@ -1,5 +1,6 @@
 package test.dialogManager;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -15,7 +16,7 @@ public class ConversationSimulation {
 	
 	private static Scanner s;
 	
-	public static void main(String[] args){
+	public static void main(String[] args) throws IOException{
 		String url = Config.getPathSemanticNet();
 		float threshold = 0.9f;
 		KnowledgeBase net=new KnowledgeBase(url);

@@ -379,6 +379,7 @@ public class KnowledgeBase {
     }
 
     public List<String> relationClass() {
+    	System.out.println("relationClass");
         List<String> result = new ArrayList<>();
         result = readChild(null, 0);
         return result;
@@ -396,7 +397,7 @@ public class KnowledgeBase {
             queryString = "SELECT ?n \n WHERE { ?n <" + Ontology.name + "> ?name.\n <" + father + "> <"
                     + Ontology.relation + "> ?n }";
         }
-        // System.out.println("Query: " + queryString);
+         System.out.println("Query: " + queryString);
         com.hp.hpl.jena.query.Query query = QueryFactory.create(queryString);
 
         QueryExecution qexec = QueryExecutionFactory.create(query, model);
@@ -408,7 +409,7 @@ public class KnowledgeBase {
             String name = getName(r);
 
             if (name != null && !result.contains(name)) {
-                // System.out.println("class"+deep+": " + name);
+                 System.out.println("class"+deep+": " + name);
                 result.add(name);
                 listR.add(r);
             }

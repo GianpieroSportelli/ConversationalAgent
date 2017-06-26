@@ -54,14 +54,14 @@ public class KnowledgeBase_Reader {
                 element.accumulate("name", Elementname);
 
                 List<String> examples = ExampleQuery(model, e);
-                if (examples.size() > 0) {
+                //if (examples.size() > 0) {
                     for (String ex : examples) {
                         element.accumulate("examples", ex);
                         //System.out.println("			"+ex);
                     }
                     hasElement = true;
                     ontoClass.accumulate("elements", element);
-                }
+                //}
             }
             if (hasElement) {
                 result.accumulate("result", ontoClass);

@@ -24,9 +24,9 @@ import knowledge.KnowledgePlan;
 import knowledge.KnowledgeBase;
 import knowledge.Ontology;
 import nlGeneration.NLG;
-import nlProcess.TintParser;
 import patternMatching.Token;
-import patternMatching.TranslateToken;
+import patternMatching.WatsonTranslateToken;
+//import patternMatching.TranslateToken;
 import plan.ActionPlan;
 import plan.ResolveAmbiguityPlan;
 
@@ -43,7 +43,7 @@ public class DialogManager {
 	List<String> hierarchy;
 
 	// String url;
-	TranslateToken translater;
+	WatsonTranslateToken translater;
 	float threshold;
 	int epoch = 0;
 
@@ -53,7 +53,6 @@ public class DialogManager {
 	List<String> resultToken;
 
 	private final int memoryLenght = 9;
-	TintParser parser;
 	public String id_user;
 
 	public DialogManager(KnowledgeBase net, float t, JSONObject read, Config conf) {
@@ -61,11 +60,12 @@ public class DialogManager {
 		this.conf = conf;
 		threshold = t;
 		this.net = net;
-		translater = new TranslateToken(read, t);
+		translater = new WatsonTranslateToken(read, t);
 		workingMemory = new HashMap<>();
 		discourseMemory = new HashMap<>();
 		hierarchy = net.getHierarchy();
 		if (DEBUG) {
+			System.out.println("GERARCHIA");
 			for (int i = 0; i < hierarchy.size(); i++) {
 				System.out.println(i + " " + hierarchy.get(i));
 			}
@@ -77,18 +77,19 @@ public class DialogManager {
 		this.conf = conf;
 		threshold = t;
 		this.net = net;
-		translater = new TranslateToken(read, t);
+		translater = new WatsonTranslateToken(read, t);
 		workingMemory = new HashMap<>();
 		discourseMemory = new HashMap<>();
 		hierarchy = net.getHierarchy();
 		if (DEBUG) {
+			System.out.println("GERARCHIA");
 			for (int i = 0; i < hierarchy.size(); i++) {
 				System.out.println(i + " " + hierarchy.get(i));
 			}
 		}
 	}
 
-	public List<String> streamMessage(String input) {
+	public List<String> streamMessage(String input) throws IOException {
 
 		try {
 			// workingMemory = new HashMap<>();
@@ -137,6 +138,9 @@ public class DialogManager {
 				if (JSON_utils.isJSONArray(res)) {
 					JSONObject sem = new JSONObject();
 					sem.accumulate("amb", res);
+					if(DEBUG){
+						System.out.println(sem.toString(4));
+					}
 					ActionPlan plan = new ResolveAmbiguityPlan();
 					List<JSONObject> resultplan = plan.execute(sem, net, conf, epoch, id_user);
 					int i = 0;
@@ -152,6 +156,9 @@ public class DialogManager {
 					workingMemory.put(category, res);
 				} else {
 					JSONObject sem = new JSONObject(res);
+					if(DEBUG){
+						System.out.println(sem.toString(4));
+					}
 					String planClass = net.getPlan(sem);
 					if (planClass != null) {
 						System.out.println("c'è un piano!!!");
@@ -208,7 +215,7 @@ public class DialogManager {
 		id_user = id;
 	}
 
-	public String compose(String input) {
+	public String compose(String input) throws IOException {
 		input = input.toLowerCase();
 		String output = "";
 		last_input = input;
