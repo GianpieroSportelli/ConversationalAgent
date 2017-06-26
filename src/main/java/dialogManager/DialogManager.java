@@ -1581,6 +1581,7 @@ public class DialogManager {
 
 		FileOutputStream out = new FileOutputStream(memory);
 		out.write(write_memory.toString().getBytes());
+		out.flush();
 		out.close();
 	}
 
