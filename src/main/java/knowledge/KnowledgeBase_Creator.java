@@ -22,7 +22,7 @@ public class KnowledgeBase_Creator {
 
 		ArrayList<Node> list = new ArrayList<>();
 
-		// BEGIN------Intenzioni Sociali
+//		// BEGIN------Intenzioni Sociali
 //		String[] exGreetings = { "ciao", "buongiorno", "buonasera", "buonanotte", "i miei ossequi", "buondì", "buondi",
 //				"ehi", "welà", "wela", "we we", "salve", "compari", "hola", "gutentag", "trmo", "trmò", "trimone",
 //				"buoneos dias", "buena noche", "scemo", "buon pomeriggio" };
@@ -194,7 +194,7 @@ public class KnowledgeBase_Creator {
 //		// END------PLAN
 //
 //		// BEGIN----KNOLEDGE BASE
-//
+
 //		// BEGIN----ACTION
 //		String search_name = "search";
 //		String message_search = "stai cercando";
@@ -1251,7 +1251,6 @@ public class KnowledgeBase_Creator {
 //
 //		// END LITERAL
 //		// END--- KNOWLEDGE BASE
-		 
 		String desire_name = "desire";
 		String message_desire = "vuoi";
 		Node desire = new Node(message_desire, desire_name, Ontology.actionClass);
@@ -1259,26 +1258,18 @@ public class KnowledgeBase_Creator {
 		
 		String preventivo_name = "preventivo";
 		String message_preventivo = "un preventivo";
-		Node preventivo = new Node( message_preventivo, preventivo_name, Ontology.domainClass);
+		Node preventivo = new Node(message_preventivo, preventivo_name, Ontology.domainClass);
 		desire.addRel(Ontology.oneToOne, preventivo);
 		preventivo.addRel(Ontology._default, desire);
 		list.add(preventivo);
 		
 		String plate_name = "plate";
 		String message_token = "{value:token}";
-		Node plate = new Node( message_token, plate_name, Ontology.propertyClass);
+		Node plate = new Node(message_token, plate_name, Ontology.propertyClass);
 		preventivo.addRel(Ontology.oneToMany, plate);
 		plate.addRel(Ontology._default,preventivo);
 		list.add(plate);
-		
-//		String bill_name = "bill";
-//		String message_bill = "importo";
-//		Node bill = new Node(exbill, message_bill, message_bill, message_bill, bill_name, Ontology.propertyClass);
-//		capsule.addRel(Ontology.oneToMany, bill);
-//		machine.addRel(Ontology.oneToMany, bill);
-//		list.add(bill);
-//		capsule.addInTemplate(bill);
-		
+			
 		// create an empty Model
 		OntModel model = Ontology.define();
 

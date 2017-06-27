@@ -18,22 +18,22 @@ public class TestSemNet {
 			System.out.println(x);
 		}
 		
-		JSONObject obj=new JSONObject();
-		obj.accumulate("category", "action");
-		obj.accumulate("name", "register");
-		
-		System.out.println(net.enrich(obj.toString()));
-		obj=new JSONObject();
-		obj.accumulate("category", "domain");
-		obj.accumulate("name", "shop");
-		
-		System.out.println(net.enrich(obj.toString()));
-
-		obj=new JSONObject();
-		obj.accumulate("category", "property");
-		obj.accumulate("name", "bill");
-		
-		System.out.println(net.enrich(obj.toString()));
+//		JSONObject obj=new JSONObject();
+//		obj.accumulate("category", "action");
+//		obj.accumulate("name", "register");
+//		
+//		System.out.println(net.enrich(obj.toString()));
+//		obj=new JSONObject();
+//		obj.accumulate("category", "domain");
+//		obj.accumulate("name", "shop");
+//		
+//		System.out.println(net.enrich(obj.toString()));
+//
+//		obj=new JSONObject();
+//		obj.accumulate("category", "property");
+//		obj.accumulate("name", "bill");
+//		
+//		System.out.println(net.enrich(obj.toString()));
 
 	}
 
