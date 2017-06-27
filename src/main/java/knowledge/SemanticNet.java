@@ -390,7 +390,7 @@ public class SemanticNet {
         List<Resource> listR = new ArrayList<>();
         String queryString = null;
         if (father == null) {
-            queryString = "SELECT ?n \n WHERE{ ?n <" + RDF.type + "> <" + RDFS.Class + ">.\n OPTIONAL{?a <" + RDF.type + "> <" + RDFS.Class + ">.\n?a <"
+            queryString = "SELECT ?n \n WHERE{ ?n <" + RDF.type + "> <" + RDFS.Class + ">.\n OPTIONAL{?a <"
                     + Vocabulary.relation + "> ?n .}\n  FILTER(!bound(?a))}";
         } else {
             queryString = "SELECT ?n \n WHERE { ?n <" + Vocabulary.name + "> ?name.\n <" + father + "> <"
