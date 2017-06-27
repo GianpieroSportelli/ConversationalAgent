@@ -18,6 +18,7 @@ public class WatsonRealTimeNLP {
 	public static JSONArray analysis(String text) throws IOException{
 		JSONArray result=null;
 		text=text.replaceAll(" ", "%20");
+		addInLog(text);
 		String url="http://localhost:8393/api/v10/analysis/text?collection=bot_unipol&language=it&output=application/json&text="+text;
 		URL call=new URL(url);
 		URLConnection connection=call.openConnection();
@@ -36,6 +37,13 @@ public class WatsonRealTimeNLP {
 		//System.out.println(result.toString(4));
 		buff.close();
 		return result;
+	}
+
+	private static void addInLog(String text) throws IOException {
+		String url="http://localhost:8393/api/v10/search?collection=bot_unipol&output=application/json&query="+text;
+		URL call=new URL(url);
+		URLConnection connection=call.openConnection();
+		connection.connect();
 	}
 	
 	

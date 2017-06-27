@@ -151,11 +151,11 @@ public class KnowledgeBase_Creator {
 //		Node speechActInsert = new Node(message_null, speechActInsertName, Ontology.speechActClass);
 //		list.add(speechActInsert);
 //
-//		String[] speechActQuantifiesEx = { "quanto", "dimmi" };
-//		String speechActQuantifiesName = "quantifies";
-//		Node speechActQuantifies = new Node(speechActQuantifiesEx, message_null, speechActQuantifiesName,
-//				Ontology.speechActClass);
-//		list.add(speechActQuantifies);
+		String[] speechActQuantifiesEx = { "quanto", "dimmi" };
+		String speechActQuantifiesName = "quantifies";
+		Node speechActQuantifies = new Node(speechActQuantifiesEx, "", speechActQuantifiesName,
+				Ontology.speechActClass);
+		list.add(speechActQuantifies);
 //
 //		String[] speechActQuestionEx = { "quale", "?" };
 //		String speechActQuestionName = "question";
@@ -1252,23 +1252,52 @@ public class KnowledgeBase_Creator {
 //		// END LITERAL
 //		// END--- KNOWLEDGE BASE
 		String desire_name = "desire";
-		String message_desire = "vuoi";
+		String message_desire = "vuoi fare";
 		Node desire = new Node(message_desire, desire_name, Ontology.actionClass);
 		list.add(desire);
 		
 		String preventivo_name = "preventivo";
-		String message_preventivo = "un preventivo";
+		String message_preventivo = "un preventivo per un'auto";
 		Node preventivo = new Node(message_preventivo, preventivo_name, Ontology.domainClass);
 		desire.addRel(Ontology.oneToOne, preventivo);
 		preventivo.addRel(Ontology._default, desire);
 		list.add(preventivo);
 		
-		String plate_name = "plate";
-		String message_token = "{value:token}";
-		Node plate = new Node(message_token, plate_name, Ontology.propertyClass);
-		preventivo.addRel(Ontology.oneToMany, plate);
-		plate.addRel(Ontology._default,preventivo);
+		String complaint_name = "complaint";
+		String message_complaint = "una denuncia";
+		Node complaint = new Node(message_complaint, complaint_name, Ontology.domainClass);
+		desire.addRel(Ontology.oneToOne, complaint);
+		complaint.addRel(Ontology._default, desire);
+		list.add(complaint);
+		
+		String plateProp_name = "plateProp";
+		String plateProp_message = "con targa";
+		Node plateProp = new Node(plateProp_message, plateProp_name, Ontology.propertyClass);
+		preventivo.addRel(Ontology.oneToMany, plateProp);
+		plateProp.addRel(Ontology._default,preventivo);
+		preventivo.addInTemplate(plateProp);
+		list.add(plateProp);
+		
+		String plateValue_name="plate";
+		String plateValue_message="{value:token}";
+		Node plate=new Node(plateValue_message, plateValue_name, Ontology.valueClass);
+		plateProp.addRel(Ontology.oneToStar, plate);
+		plate.addRel(Ontology._default, plateProp);
 		list.add(plate);
+		
+		String Integer_name = "integer";
+		String message_token = "{value:token}";
+		Node integer = new Node(message_token, Integer_name, Ontology.numberClass);
+		list.add(integer);
+		
+		String injuredProp_name = "injuredProp";
+		String injuredProp_message = "\n feriti:";
+		Node injuredProp = new Node(injuredProp_message, injuredProp_name, Ontology.propertyClass);
+		complaint.addRel(Ontology.oneToMany, injuredProp);
+		injuredProp.addRel(Ontology._default,complaint);
+		complaint.addInTemplate(injuredProp);
+		injuredProp.addRel(Ontology.oneToOne, integer);
+		list.add(injuredProp);
 			
 		// create an empty Model
 		OntModel model = Ontology.define();

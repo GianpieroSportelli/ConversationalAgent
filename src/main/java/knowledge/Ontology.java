@@ -149,7 +149,7 @@ public class Ontology {
 		unitClass.addProperty(template, template_unit);
                 dialogClass.addProperty(template, template_dialog);
 
-		m_model.add(speechActClass, relation, actionClass).add(actionClass, relation, domainClass).add(domainClass, relation, propertyClass)
+		m_model.add(dialogClass, relation, actionClass).add(speechActClass, relation, actionClass).add(actionClass, relation, domainClass).add(domainClass, relation, propertyClass)
 				.add(propertyClass, relation, modClass).add(modClass, relation, numberClass)
 				.add(numberClass, relation, unitClass).add(unitClass, relation, valueClass);
 
