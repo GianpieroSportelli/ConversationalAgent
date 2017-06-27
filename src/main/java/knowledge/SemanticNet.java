@@ -390,14 +390,14 @@ public class SemanticNet {
         List<Resource> listR = new ArrayList<>();
         String queryString = null;
         if (father == null) {
-            queryString = "SELECT ?n \n WHERE { ?n <" + RDF.type + "> <" + RDFS.Class + ">.\n OPTIONAL {?a <"
-                    + Vocabulary.relation + "> ?n }.  FILTER (!BOUND(?a))}";
+            queryString = "SELECT ?n \n WHERE{ ?n <" + RDF.type + "> <" + RDFS.Class + ">.\n OPTIONAL{?a <" + RDF.type + "> <" + RDFS.Class + ">.\n?a <"
+                    + Vocabulary.relation + "> ?n .}\n  FILTER(!bound(?a))}";
         } else {
             queryString = "SELECT ?n \n WHERE { ?n <" + Vocabulary.name + "> ?name.\n <" + father + "> <"
                     + Vocabulary.relation + "> ?n }";
         }
-        // System.out.println("Query: " + queryString);
-        com.hp.hpl.jena.query.Query query = QueryFactory.create(queryString);
+         //System.out.println("Query: " + queryString);
+        Query query = QueryFactory.create(queryString);
 
         QueryExecution qexec = QueryExecutionFactory.create(query, model);
         ResultSet results = qexec.execSelect();
@@ -408,7 +408,7 @@ public class SemanticNet {
             String name = getName(r);
 
             if (name != null && !result.contains(name)) {
-                // System.out.println("class"+deep+": " + name);
+                 //System.out.println("class"+deep+": " + name);
                 result.add(name);
                 listR.add(r);
             }
