@@ -52,7 +52,7 @@ public class DialogManager {
 	String garbageToken;
 	List<String> resultToken;
 
-	private final int memoryLenght = 9;
+	private final int memoryLenght = 15;
 	public String id_user;
 
 	public DialogManager(KnowledgeBase net, float t, JSONObject read, Config conf) {
@@ -138,11 +138,11 @@ public class DialogManager {
 				if (JSON_utils.isJSONArray(res)) {
 					JSONObject sem = new JSONObject();
 					sem.accumulate("amb", res);
-					if(DEBUG){
+					if (DEBUG) {
 						System.out.println(sem.toString(4));
 					}
 					ActionPlan plan = new ResolveAmbiguityPlan();
-					List<JSONObject> resultplan = plan.execute(sem, net, conf, epoch, id_user);
+					List<JSONObject> resultplan = plan.execute(sem, net, conf, epoch, id_user, this);
 					int i = 0;
 					for (JSONObject r : resultplan) {
 						if (DEBUG) {
@@ -156,7 +156,7 @@ public class DialogManager {
 					workingMemory.put(category, res);
 				} else {
 					JSONObject sem = new JSONObject(res);
-					if(DEBUG){
+					if (DEBUG) {
 						System.out.println(sem.toString(4));
 					}
 					String planClass = net.getPlan(sem);
@@ -164,7 +164,7 @@ public class DialogManager {
 						System.out.println("c'è un piano!!!");
 						try {
 							ActionPlan plan = KnowledgePlan.plan(planClass);
-							List<JSONObject> resultplan = plan.execute(sem, net, conf, epoch, id_user);
+							List<JSONObject> resultplan = plan.execute(sem, net, conf, epoch, id_user, this);
 							int i = 0;
 							for (JSONObject r : resultplan) {
 								if (DEBUG) {
@@ -192,7 +192,11 @@ public class DialogManager {
 				}
 			}
 		} else {
-			resList.add(nlg.message(null));
+			JSONObject result_fake=new JSONObject();
+			result_fake.accumulate("category", "dialog");
+			result_fake.accumulate("name", "fake");
+			result_fake.accumulate(Ontology.MESSAGE, "non ti ho capito. puoi ripetere?");
+			resList.add(nlg.message(result_fake));
 		}
 		if (DEEP_DEBUG) {
 			printDiscourseMemory();
@@ -311,10 +315,11 @@ public class DialogManager {
 				if (DEBUG) {
 					System.out.println("esporto in result il token poichè non è utile nella memoria");
 				}
+				addDiscourseMemory(message);
 				resultToken.add(message);
 			} else // Se nella memoria di lavoro è presente qualcosa
 			if (workingMemory.containsKey(category)) {
-				boolean insert = false;
+				// boolean insert = false;
 				// Prendo ciò che è contenuto nella memoria di lavoro
 				String val_category = workingMemory.get(category);
 
@@ -327,64 +332,65 @@ public class DialogManager {
 				// basandomi
 				// solo
 				// sulla conversazione
-				if (JSON_utils.isJSONArray(val_category)) {
+				// if (JSON_utils.isJSONArray(val_category)) {
+				// if (DEBUG) {
+				// System.out.println("elemento in memoria ambiguo, provo a
+				// risolvere l'ambiguità.");
+				// }
+				// val_category = resolve_ambiguity(val_category);
+				// }
+
+				// if (!insert) {
+				// Converto in JSONArray
+				JSONArray array = JSON_utils.convertJSONArray(val_category);
+				String element = null;
+
+				JSONArray ambiguos_message = JSON_utils.convertJSONArray(message);
+				// cerco di risolvere l'ambiguità con il nuovo messaggio
+				for (int i = 0; i < array.length(); i++) {
+					JSONObject obj = array.getJSONObject(i);
+					String amb_name = obj.getString("name");
+
+					for (int j = 0; j < ambiguos_message.length(); j++) {
+						JSONObject single_message = ambiguos_message.getJSONObject(j);
+						String name = single_message.getString("name");
+						// se esiste un elemento nel set di ambiguità con lo
+						// stesso
+						// nome
+						// del messaggio allora esiste una possibilità
+						if (amb_name.equals(name) && !net.isTerminal(obj)) {
+							// se l'ambiugità è stata inferita allora è
+							// possibile
+							// risolvere
+							// if (!obj.has("token")) {
+							element = obj.toString();
+							break;
+						}
+					}
+				}
+
+				// se il token in esame risolve l'ambiguità
+				if (element != null) {
 					if (DEBUG) {
-						System.out.println("elemento in memoria ambiguo, provo a risolvere l'ambiguità.");
+						System.out
+								.println("elemento in memoria e quello attuale sono compatibili sostituisco in memoria "
+										+ category + ":" + element);
 					}
-					val_category = resolve_ambiguity(val_category);
+					// inserisco l'elemento disambiguato nella memoria
+					workingMemory.put(category, element);
+				} else {
+					if (DEBUG) {
+						System.out.println("elemento in memoria non compatibile con l'attuale. elevo " + category);
+					}
+					// ambiguty non risolta
+					elevate_category(category);
+					if (DEBUG) {
+						System.out.println("inserisco in " + category + " il token " + message);
+					}
+					// lascia lo spazio per il nuovo messaggio
+					workingMemory.put(category, message);
 				}
-
-				if (!insert) {
-					// Converto in JSONArray
-					JSONArray array = JSON_utils.convertJSONArray(val_category);
-					String element = null;
-
-					JSONArray ambiguos_message = JSON_utils.convertJSONArray(message);
-					// cerco di risolvere l'ambiguità con il nuovo messaggio
-					for (int i = 0; i < array.length(); i++) {
-						JSONObject obj = array.getJSONObject(i);
-						String amb_name = obj.getString("name");
-
-						for (int j = 0; j < ambiguos_message.length(); j++) {
-							JSONObject single_message = ambiguos_message.getJSONObject(j);
-							String name = single_message.getString("name");
-							// se esiste un elemento nel set di ambiguità con lo
-							// stesso
-							// nome
-							// del messaggio allora esiste una possibilità
-							if (amb_name.equals(name) && !net.isTerminal(obj)) {
-								// se l'ambiugità è stata inferita allora è
-								// possibile
-								// risolvere
-								// if (!obj.has("token")) {
-								element = obj.toString();
-								break;
-							}
-						}
-					}
-
-					// se il token in esame risolve l'ambiguità
-					if (element != null) {
-						if (DEBUG) {
-							System.out.println(
-									"elemento in memoria e quello attuale sono compatibili sostituisco in memoria "
-											+ category + ":" + element);
-						}
-						// inserisco l'elemento disambiguato nella memoria
-						workingMemory.put(category, element);
-					} else {
-						if (DEBUG) {
-							System.out.println("elemento in memoria non compatibile con l'attuale. elevo " + category);
-						}
-						// ambiguty non risolta
-						elevate_category(category);
-						if (DEBUG) {
-							System.out.println("inserisco in " + category + " il token " + message);
-						}
-						// lascia lo spazio per il nuovo messaggio
-						workingMemory.put(category, message);
-					}
-				}
+				// }
 			} else {
 				// non presente
 				if (DEBUG) {
@@ -405,6 +411,62 @@ public class DialogManager {
 
 		// compongo il contenuto della memoria di lavoro
 		compose();
+		refine();
+	}
+
+	private void refine() {
+		if(DEBUG)
+			System.out.println("Processo di raffinamento");
+		if (resultToken.size() > 0) {
+			if(DEBUG)
+				System.out.println("ci sono risultati");
+			if (resultToken.size() == 1) {
+				if(DEBUG)
+					System.out.println("unico risultato");
+				String result = resultToken.get(0);
+				if (JSON_utils.isJSONObject(result)) {
+					if(DEBUG)
+						System.out.println("è non ambiguo");
+					JSONObject obj = new JSONObject(result);
+					if (obj.getString("category").equals(Ontology.speechActClassName)) {
+						// prova ad aggiungere lo speechact a qualcosa presente
+						// in memoria
+						List<String> element = net.getInfluence(obj);
+						if (element != null) {
+							Map<String, Integer> findBest = new HashMap<String, Integer>();
+							for (String possible : element) {
+								JSONObject speechPossible = new JSONObject(possible);
+								String speech_category = speechPossible.getString("category");
+								String speech_name = speechPossible.getString("name");
+								if (discourseMemory.containsKey(speech_category)) {
+									List<String> dis_category = discourseMemory.get(speech_category);
+									for (String dis_element : dis_category) {
+										JSONObject dis_obj = new JSONObject(dis_element);
+										if (dis_obj.getString("name").equals(speech_name)) {
+											findBest.put(dis_element, dis_obj.getInt("epoch"));
+										}
+									}
+								}
+							}
+							int max = 0;
+							String win = null;
+							for (String candidate : findBest.keySet()) {
+								if (findBest.get(candidate) > max) {
+									win = new JSONObject(candidate).put(Ontology.speechActClassName, obj).toString();
+									max = findBest.get(candidate);
+								}
+							}
+							if (win != null) {
+								resultToken.remove(0);
+								resultToken.add(win);
+							}
+						}
+					}
+				}
+			} else {
+				//più risultati, provare a legare lo speech act presenti agli elementi arrivati in seguito FORSE
+			}
+		}
 
 	}
 
@@ -437,6 +499,9 @@ public class DialogManager {
 					System.out.println("è presente qualcosa a livello superiore!!! " + super_category);
 				}
 				String sup_val = workingMemory.get(super_category);
+				if (JSON_utils.isJSONArray(sup_val) && JSON_utils.convertJSONArray(sup_val).length() == 1) {
+					sup_val = JSON_utils.convertJSONArray(sup_val).getJSONObject(0).toString();
+				}
 				if (JSON_utils.isJSONObject(sup_val)) {
 					if (DEBUG) {
 						System.out.println("il livello " + super_category + " non è ambiguo!! perfetto!");
@@ -479,7 +544,7 @@ public class DialogManager {
 										// la categoria
 										if (real_in.has(category)) {
 											if (DEBUG) {
-												System.out.println("Sfortunatamente contine già " + category
+												System.out.println("1) Sfortunatamente contine già " + category
 														+ " provo a vedere se è compatibile...");
 											}
 											String category_val = real_in.get(category).toString();
@@ -495,6 +560,11 @@ public class DialogManager {
 												JSONObject potential = category_array.getJSONObject(k);
 												if (potential.getString("name").equals(name)) {
 													insert = false;
+													if (DEBUG) {
+														System.out.println("provo a vedere se i due sono compatibili:");
+														System.out.println(potential);
+														System.out.println(obj);
+													}
 													JSONObject merge = compatibile(potential, obj);
 													if (merge != null) {
 														// category_array.remove(k);
@@ -504,6 +574,9 @@ public class DialogManager {
 												}
 											}
 											if (insert) {
+												if (DEBUG) {
+													System.out.println("Non contiene l'elemento, lo inserisco");
+												}
 												category_array.put(obj);
 												find = true;
 											}
@@ -584,7 +657,7 @@ public class DialogManager {
 											// la categoria
 											if (real_in.has(category)) {
 												if (DEBUG) {
-													System.out.println("Sfortunatamente contine già " + category
+													System.out.println("2) Sfortunatamente contine già " + category
 															+ " provo a vedere se è compatibile...");
 												}
 												String category_val = real_in.get(category).toString();
@@ -749,13 +822,18 @@ public class DialogManager {
 	 */
 	private void elevate_category(String category) {
 		// se la categoria è occupata
+
 		if (workingMemory.containsKey(category)) {
 			if (DEBUG) {
 				System.out.println("ho qualcosa in " + category);
+				// printDiscourseMemory();
 			}
 
 			String level_str = workingMemory.get(category);
 			boolean ambiguity = JSON_utils.isJSONArray(level_str);
+			// if(){
+			// ambiguity=JSON_utils.convertJSONArray(level_str).length()!=1;
+			// }
 			JSONArray level = JSON_utils.convertJSONArray(level_str);
 
 			JSONObject one = level.getJSONObject(0);
@@ -1338,11 +1416,12 @@ public class DialogManager {
 		return result;
 	}
 
-	private void addDiscourseMemory(String message) {
+	public void addDiscourseMemory(String message) {
 		JSONObject obj = new JSONObject(message);
 		String category = obj.getString("category");
-		obj.put("epoch", epoch);
-		
+		if (!obj.has("epoch")) {
+			obj.put("epoch", epoch);
+		}
 		if (!discourseMemory.containsKey(category)) {
 			List<String> list = new ArrayList<>();
 			discourseMemory.put(category, list);
@@ -1383,22 +1462,53 @@ public class DialogManager {
 						System.out.println(e);
 					}
 				}
-				for (int i = 0; i < resultToken.size(); i++) {
-					String r = resultToken.get(i);
-					JSONObject result_obj = new JSONObject(r);
-					JSONObject proj_r = new JSONObject();
-					proj_r.accumulate("category", result_obj.getString("category"));
-					proj_r.accumulate("name", result_obj.getString("name"));
+				if (resultToken.size() > 0) {
+					for (int i = 0; i < resultToken.size(); i++) {
+						String r = resultToken.get(i);
+						JSONObject result_obj = new JSONObject(r);
+						JSONObject proj_r = new JSONObject();
+						proj_r.accumulate("category", result_obj.getString("category"));
+						proj_r.accumulate("name", result_obj.getString("name"));
 
-					if (element.contains(proj_r.toString())) {
-						if (DEBUG) {
-							System.out.println("trovato un candidato..");
+						if (element.contains(proj_r.toString())) {
+							if (DEBUG) {
+								System.out.println("trovato un candidato..");
+							}
+							if (!result_obj.has(Ontology.speechActClassName)) {
+								result_obj.accumulate(Ontology.speechActClassName, obj);
+								resultToken.remove(i);
+								resultToken.add(i, result_obj.toString());
+							}
 						}
-						if (!result_obj.has(Ontology.speechActClassName)) {
-							result_obj.accumulate(Ontology.speechActClassName, obj);
-							resultToken.remove(i);
-							resultToken.add(i, result_obj.toString());
+					}
+				} else if (false) {
+					// prova ad aggiungere lo speechact a qualcosa presente in
+					// memoria
+					Map<String, Integer> findBest = new HashMap<String, Integer>();
+					for (String possible : element) {
+						JSONObject speechPossible = new JSONObject(possible);
+						String speech_category = speechPossible.getString("category");
+						String speech_name = speechPossible.getString("name");
+						if (discourseMemory.containsKey(speech_category)) {
+							List<String> dis_category = discourseMemory.get(speech_category);
+							for (String dis_element : dis_category) {
+								JSONObject dis_obj = new JSONObject(dis_element);
+								if (dis_obj.getString("name").equals(speech_name)) {
+									findBest.put(dis_element, dis_obj.getInt("epoch"));
+								}
+							}
 						}
+					}
+					int max = 0;
+					String win = null;
+					for (String candidate : findBest.keySet()) {
+						if (findBest.get(candidate) > max) {
+							win = new JSONObject(candidate).put(Ontology.speechActClassName, obj).toString();
+							max = findBest.get(candidate);
+						}
+					}
+					if (win != null) {
+						resultToken.add(win);
 					}
 				}
 			}
@@ -1462,27 +1572,29 @@ public class DialogManager {
 		System.out.println("------------------------------------------------------------------");
 	}
 
-//	private void printworkingMemory() {
-//		System.out.println("------------------------------------------------------------------");
-//		System.out.println("|                           WORK MEMORY                          |");
-//		System.out.println("------------------------------------------------------------------");
-//		for (String key : workingMemory.keySet()) {
-//			String entry = workingMemory.get(key);
-//			System.out.println("----------------------KEY:" + key + "----------------------");
-//			if (JSON_utils.isJSONObject(entry)) {
-//				JSONObject o = new JSONObject(entry);
-//				System.out.println(o.toString(1));
-//			} else {
-//				JSONArray a = JSON_utils.convertJSONArray(entry);
-//				System.out.println(a.toString(1));
-//			}
-//			System.out.println("--------------------END KEY:" + key + "--------------------");
-//		}
-//		System.out.println("------------------------------------------------------------------");
-//		System.out.println("|                        END WORK MEMORY                         |");
-//		System.out.println("------------------------------------------------------------------");
-//
-//	}
+	// private void printworkingMemory() {
+	// System.out.println("------------------------------------------------------------------");
+	// System.out.println("| WORK MEMORY |");
+	// System.out.println("------------------------------------------------------------------");
+	// for (String key : workingMemory.keySet()) {
+	// String entry = workingMemory.get(key);
+	// System.out.println("----------------------KEY:" + key +
+	// "----------------------");
+	// if (JSON_utils.isJSONObject(entry)) {
+	// JSONObject o = new JSONObject(entry);
+	// System.out.println(o.toString(1));
+	// } else {
+	// JSONArray a = JSON_utils.convertJSONArray(entry);
+	// System.out.println(a.toString(1));
+	// }
+	// System.out.println("--------------------END KEY:" + key +
+	// "--------------------");
+	// }
+	// System.out.println("------------------------------------------------------------------");
+	// System.out.println("| END WORK MEMORY |");
+	// System.out.println("------------------------------------------------------------------");
+	//
+	// }
 
 	public JSONObject getWorkingMemory() {
 		return new JSONObject(workingMemory);
@@ -1510,7 +1622,7 @@ public class DialogManager {
 			discourseMemory.put(key, list);
 		}
 	}
-	
+
 	public void readMemory() throws IOException {
 		String real_path = Config.PATH_MEMORY + "-" + id_user + "." + Config.MEMORY_EXT;
 		File memory = new File(real_path);
@@ -1592,8 +1704,6 @@ public class DialogManager {
 		out.close();
 	}
 
-	
-
 	private void forgetDiscourseMemory() {
 		for (String category : discourseMemory.keySet()) {
 			List<String> list = discourseMemory.get(category);
@@ -1608,42 +1718,56 @@ public class DialogManager {
 			}
 		}
 	}
-	
-	
-	//BACK UP
-	
-//	public JSONObject exit(JSONObject obj) {
-//		// è pronto per uscire
-//		if (discourseMemory.containsKey(Ontology.speechActClassName)) {
-//			if (DEBUG) {
-//				System.out.println("ho quancosa in DiscourseMemory per SpeechAct");
-//			}
-//			List<String> speechMemory = discourseMemory.get(Ontology.speechActClassName);
-//			for (String sa : speechMemory) {
-//				if (DEBUG) {
-//					System.out.println("esamino lo speechAct:\n" + sa);
-//				}
-//				JSONObject saObj = new JSONObject(sa);
-//				if (saObj.getInt("epoch") < epoch) {
-//					List<String> influence = net.getInfluence(saObj);
-//					JSONObject cand = new JSONObject().accumulate("category", obj.getString("category"))
-//							.accumulate("name", obj.getString("name"));
-//
-//					if (influence.contains(cand.toString())) {
-//						if (!obj.has(Ontology.speechActClassName)
-//								|| obj.getJSONObject(Ontology.speechActClassName).getInt("epoch") < epoch) {
-//							obj.put(Ontology.speechActClassName, saObj);
-//						}
-//					}
-//					break;
-//				}
-//			}
-//		}
-//		// lo aggiungo alla memoria di discorso
-//		addDiscourseMemory(obj.toString());
-//
-//		return obj;
-//
-//	}
+
+	public void removeFromDiscorseMemory(String string) {
+		JSONObject sem = new JSONObject(string);
+		String category = sem.getString("category");
+		if (discourseMemory.containsKey(category)) {
+			List<String> disc = discourseMemory.get(category);
+			if (disc.contains(string)) {
+				disc.remove(string);
+			}
+		}
+
+	}
+
+	// BACK UP
+
+	// public JSONObject exit(JSONObject obj) {
+	// // è pronto per uscire
+	// if (discourseMemory.containsKey(Ontology.speechActClassName)) {
+	// if (DEBUG) {
+	// System.out.println("ho quancosa in DiscourseMemory per SpeechAct");
+	// }
+	// List<String> speechMemory =
+	// discourseMemory.get(Ontology.speechActClassName);
+	// for (String sa : speechMemory) {
+	// if (DEBUG) {
+	// System.out.println("esamino lo speechAct:\n" + sa);
+	// }
+	// JSONObject saObj = new JSONObject(sa);
+	// if (saObj.getInt("epoch") < epoch) {
+	// List<String> influence = net.getInfluence(saObj);
+	// JSONObject cand = new JSONObject().accumulate("category",
+	// obj.getString("category"))
+	// .accumulate("name", obj.getString("name"));
+	//
+	// if (influence.contains(cand.toString())) {
+	// if (!obj.has(Ontology.speechActClassName)
+	// || obj.getJSONObject(Ontology.speechActClassName).getInt("epoch") <
+	// epoch) {
+	// obj.put(Ontology.speechActClassName, saObj);
+	// }
+	// }
+	// break;
+	// }
+	// }
+	// }
+	// // lo aggiungo alla memoria di discorso
+	// addDiscourseMemory(obj.toString());
+	//
+	// return obj;
+	//
+	// }
 
 }

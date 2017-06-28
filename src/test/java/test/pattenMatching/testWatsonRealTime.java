@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import patternMatching.WatsonRealTimeNLP;
+import nlProcess.WatsonRealTimeNLP;
 
 public class testWatsonRealTime {
 

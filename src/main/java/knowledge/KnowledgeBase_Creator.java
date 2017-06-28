@@ -151,11 +151,11 @@ public class KnowledgeBase_Creator {
 //		Node speechActInsert = new Node(message_null, speechActInsertName, Ontology.speechActClass);
 //		list.add(speechActInsert);
 //
-		String[] speechActQuantifiesEx = { "quanto", "dimmi" };
-		String speechActQuantifiesName = "quantifies";
-		Node speechActQuantifies = new Node(speechActQuantifiesEx, "", speechActQuantifiesName,
-				Ontology.speechActClass);
-		list.add(speechActQuantifies);
+//		String[] speechActQuantifiesEx = { "quanto", "dimmi" };
+//		String speechActQuantifiesName = "quantifies";
+//		Node speechActQuantifies = new Node(speechActQuantifiesEx, "", speechActQuantifiesName,
+//				Ontology.speechActClass);
+//		list.add(speechActQuantifies);
 //
 //		String[] speechActQuestionEx = { "quale", "?" };
 //		String speechActQuestionName = "question";
@@ -1251,9 +1251,79 @@ public class KnowledgeBase_Creator {
 //
 //		// END LITERAL
 //		// END--- KNOWLEDGE BASE
+		
+		String speechActAffermativeName = "affermative";
+		Node speechActAffermative = new Node("", speechActAffermativeName,
+				Ontology.speechActClass);
+		list.add(speechActAffermative);
+		
+		String speechActNegativeName = "negative";
+		Node speechActNegative = new Node("", speechActNegativeName,
+				Ontology.speechActClass);
+		list.add(speechActNegative);
+		
+		String desire_plan_info = "plan.DesirePlan";
+		Node desire_plan = new Node("", desire_plan_info, Ontology.planClass);
+		list.add(desire_plan);
+		
+//		String dump_name="dump";
+//		Node dump=new Node("", dump_name, Ontology.valueClass);
+//		list.add(dump);
+		
+//		String yes_police_name="yes_police";
+//		Node yes_police=new Node("", yes_police_name, Ontology.valueClass);
+//		list.add(yes_police);
+//		
+//		String no_police_name="no_police";
+//		Node no_police=new Node("", no_police_name, Ontology.valueClass);
+//		list.add(no_police);
+		
+		String yes_call_police_name="yes_call_police";
+		Node yes_call_police=new Node("si", yes_call_police_name, Ontology.valueClass);
+		list.add(yes_call_police);
+		
+		String no_call_police_name="no_call_police";
+		Node no_call_police=new Node("no", no_call_police_name, Ontology.valueClass);
+		list.add(no_call_police);
+		
+//		String yes_ambulance_name="yes_ambulance";
+//		Node yes_ambulance=new Node("", yes_ambulance_name, Ontology.valueClass);
+//		list.add(yes_ambulance);
+//		
+//		String no_ambulance_name="no_ambulance";
+//		Node no_ambulance=new Node("", no_ambulance_name, Ontology.valueClass);
+//		list.add(no_ambulance);
+		
+		String yes_call_ambulance_name="yes_call_ambulance";
+		Node yes_call_ambulance=new Node("si", yes_call_ambulance_name, Ontology.valueClass);
+		list.add(yes_call_ambulance);
+		
+		String no_call_ambulance_name="no_call_ambulance";
+		Node no_call_ambulance=new Node("no", no_call_ambulance_name, Ontology.valueClass);
+		list.add(no_call_ambulance);
+		
+//		String yes_tow_truck_name="yes_tow_truck";
+//		Node yes_tow_truck=new Node("", yes_tow_truck_name, Ontology.valueClass);
+//		list.add(yes_tow_truck);
+//		
+//		String no_tow_truck_name="no_tow_truck";
+//		Node no_tow_truck=new Node("", no_tow_truck_name, Ontology.valueClass);
+//		list.add(no_tow_truck);
+		
+		String yes_call_tow_truck_name="yes_call_tow_truck";
+		Node yes_call_tow_truck=new Node("si", yes_call_tow_truck_name, Ontology.valueClass);
+		list.add(yes_call_tow_truck);
+		
+		String no_call_tow_truck_name="no_call_tow_truck";
+		Node no_call_tow_truck=new Node("no", no_call_tow_truck_name, Ontology.valueClass);
+		list.add(no_call_tow_truck);
+		
 		String desire_name = "desire";
 		String message_desire = "vuoi fare";
 		Node desire = new Node(message_desire, desire_name, Ontology.actionClass);
+		desire.addRel(Ontology.speechAct, speechActAffermative);
+		desire.addRel(Ontology.speechAct, speechActNegative);
+		desire.addRel(Ontology.plan, desire_plan);
 		list.add(desire);
 		
 		String preventivo_name = "preventivo";
@@ -1264,7 +1334,7 @@ public class KnowledgeBase_Creator {
 		list.add(preventivo);
 		
 		String complaint_name = "complaint";
-		String message_complaint = "una denuncia";
+		String message_complaint = "una denuncia sinistro";
 		Node complaint = new Node(message_complaint, complaint_name, Ontology.domainClass);
 		desire.addRel(Ontology.oneToOne, complaint);
 		complaint.addRel(Ontology._default, desire);
@@ -1290,7 +1360,7 @@ public class KnowledgeBase_Creator {
 		Node integer = new Node(message_token, Integer_name, Ontology.numberClass);
 		list.add(integer);
 		
-		String injuredProp_name = "injuredProp";
+		String injuredProp_name = "injured";
 		String injuredProp_message = "\n feriti:";
 		Node injuredProp = new Node(injuredProp_message, injuredProp_name, Ontology.propertyClass);
 		complaint.addRel(Ontology.oneToMany, injuredProp);
@@ -1298,6 +1368,100 @@ public class KnowledgeBase_Creator {
 		complaint.addInTemplate(injuredProp);
 		injuredProp.addRel(Ontology.oneToOne, integer);
 		list.add(injuredProp);
+		
+//		String ambulanceProp_name = "ambulance";
+//		String ambulanceProp_message = "\n richiede ambulanza";
+//		Node ambulanceProp = new Node(ambulanceProp_message, ambulanceProp_name, Ontology.propertyClass);
+//		complaint.addRel(Ontology.oneToMany, ambulanceProp);
+//		ambulanceProp.addRel(Ontology._default,complaint);
+//		complaint.addInTemplate(ambulanceProp);
+//		ambulanceProp.addRel(Ontology.oneToOne, yes_ambulance);
+//		ambulanceProp.addRel(Ontology.oneToOne, no_ambulance);
+//		list.add(ambulanceProp);
+		
+		String call_ambulanceProp_name = "call_ambulance";
+		String call_ambulanceProp_message = "\n richiede ambulanza: ";
+		Node call_ambulanceProp = new Node(call_ambulanceProp_message, call_ambulanceProp_name, Ontology.propertyClass);
+		complaint.addRel(Ontology.oneToMany, call_ambulanceProp);
+		call_ambulanceProp.addRel(Ontology._default,complaint);
+		complaint.addInTemplate(call_ambulanceProp);
+		call_ambulanceProp.addRel(Ontology.oneToOne, yes_call_ambulance);
+		call_ambulanceProp.addRel(Ontology.oneToOne, no_call_ambulance);
+		list.add(call_ambulanceProp);
+		
+		String vehicleProp_name = "vehicle";
+		String vehicleProp_message = "\n veicoli:";
+		Node vehicleProp = new Node(vehicleProp_message, vehicleProp_name, Ontology.propertyClass);
+		complaint.addRel(Ontology.oneToMany, vehicleProp);
+		vehicleProp.addRel(Ontology._default,complaint);
+		complaint.addInTemplate(vehicleProp);
+		vehicleProp.addRel(Ontology.oneToOne, integer);
+		list.add(vehicleProp);
+		
+//		String policeProp_name = "police";
+//		String policeProp_message = "\n ha chiamato la polizia";
+//		Node policeProp = new Node(policeProp_message, policeProp_name, Ontology.propertyClass);
+//		complaint.addRel(Ontology.oneToMany, policeProp);
+//		policeProp.addRel(Ontology._default,complaint);
+//		complaint.addInTemplate(policeProp);
+//		policeProp.addRel(Ontology.oneToOne, yes_police);
+//		policeProp.addRel(Ontology.oneToOne, no_police);
+//		list.add(policeProp);
+		
+		String call_policeProp_name = "call_police";
+		String call_policeProp_message = "\n richiede polizia: ";
+		Node call_policeProp = new Node(call_policeProp_message,call_policeProp_name, Ontology.propertyClass);
+		complaint.addRel(Ontology.oneToMany,call_policeProp);
+		call_policeProp.addRel(Ontology._default,complaint);
+		complaint.addInTemplate(call_policeProp);
+		call_policeProp.addRel(Ontology.oneToOne, yes_call_police);
+		call_policeProp.addRel(Ontology.oneToOne, no_call_police);
+		list.add(call_policeProp);
+		
+		String deadProp_name = "dead";
+		String deadProp_message = "\n deceduti:";
+		Node deadProp = new Node(deadProp_message, deadProp_name, Ontology.propertyClass);
+		complaint.addRel(Ontology.oneToMany, deadProp);
+		deadProp.addRel(Ontology._default,complaint);
+		complaint.addInTemplate(deadProp);
+		deadProp.addRel(Ontology.oneToOne, integer);
+		list.add(deadProp);
+		
+//		String tow_truckProp_name = "tow_truck";
+//		String tow_truckProp_message = "\n richiede carroattrezzi";
+//		Node tow_truckProp = new Node(tow_truckProp_message, tow_truckProp_name, Ontology.propertyClass);
+//		complaint.addRel(Ontology.oneToMany, tow_truckProp);
+//		tow_truckProp.addRel(Ontology._default,complaint);
+//		complaint.addInTemplate(tow_truckProp);
+//		tow_truckProp.addRel(Ontology.oneToOne, yes_tow_truck);
+//		tow_truckProp.addRel(Ontology.oneToOne, no_tow_truck);
+//		list.add(tow_truckProp);
+		
+		String call_tow_truckProp_name = "call_tow_truck";
+		String call_tow_truckProp_message = "\n richiede carroattrezzi: ";
+		Node call_tow_truckProp = new Node(call_tow_truckProp_message, call_tow_truckProp_name, Ontology.propertyClass);
+		complaint.addRel(Ontology.oneToMany, call_tow_truckProp);
+		call_tow_truckProp.addRel(Ontology._default,complaint);
+		complaint.addInTemplate(call_tow_truckProp);
+		call_tow_truckProp.addRel(Ontology.oneToOne, yes_call_tow_truck);
+		call_tow_truckProp.addRel(Ontology.oneToOne, no_call_tow_truck);
+		list.add(call_tow_truckProp);
+		
+		String address_name = "address";
+		String message_address = "{value:token}";
+		Node address = new Node(message_address, address_name, Ontology.valueClass);
+		list.add(address);
+		
+		String locationProp_name = "location";
+		String locationProp_message = "\n indirizzo:";
+		Node locationProp = new Node(locationProp_message, locationProp_name, Ontology.propertyClass);
+		complaint.addRel(Ontology.oneToMany, locationProp);
+		locationProp.addRel(Ontology._default,complaint);
+		complaint.addInTemplate(locationProp);
+		locationProp.addRel(Ontology.oneToMany, address);
+		list.add(locationProp);
+		
+		
 			
 		// create an empty Model
 		OntModel model = Ontology.define();

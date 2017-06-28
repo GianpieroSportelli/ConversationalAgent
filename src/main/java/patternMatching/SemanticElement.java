@@ -32,28 +32,28 @@ public class SemanticElement implements Serializable {
 	 * @param input frase di input
 	 * @return valore di confidenza
 	 */
-	public JSONObject confidence(String input){
-		double max=0d;
-		JSONObject result=null;
-		String best_pattern="";
-		//per ogni esempio presente nel insieme
-		for(String pattern:example){
-			//Imposto il modello di allineamento
-			TokenAlignment allign=new TokenAlignment(input, pattern);
-			JSONObject resultAllign=allign.score();
-			double score=resultAllign.getDouble("score");
-			if(score>max){
-				max=score;
-				result=resultAllign;
-				best_pattern=pattern;
-			}else if(score==max && pattern.length()>best_pattern.length()){
-				max=score;
-				result=resultAllign;
-				best_pattern=pattern;
-			}
-		}
-		return result;
-	}
+//	public JSONObject confidence(String input){
+//		double max=0d;
+//		JSONObject result=null;
+//		String best_pattern="";
+//		//per ogni esempio presente nel insieme
+//		for(String pattern:example){
+//			//Imposto il modello di allineamento
+//			TokenAlignment allign=new TokenAlignment(input, pattern);
+//			JSONObject resultAllign=allign.score();
+//			double score=resultAllign.getDouble("score");
+//			if(score>max){
+//				max=score;
+//				result=resultAllign;
+//				best_pattern=pattern;
+//			}else if(score==max && pattern.length()>best_pattern.length()){
+//				max=score;
+//				result=resultAllign;
+//				best_pattern=pattern;
+//			}
+//		}
+//		return result;
+//	}
 	/**
 	 * Metodo che permette l'inserimento di nuove frasi d'esempio
 	 * @param example frase d'esempio

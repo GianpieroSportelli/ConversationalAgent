@@ -7,10 +7,11 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import configuration.Config;
+import nlProcess.WatsonRealTimeNLP;
+
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import nlProcess.TintParser;
 
 public class WatsonTranslateToken {
 
@@ -21,7 +22,7 @@ public class WatsonTranslateToken {
 	ArrayList<SemanticPool> knowledge;
 	// carattere nullo utilizzato per la sostituzione degli elementi
 	// indifividuati nel input
-	char nullChar = TokenAlignment.blank;
+	//char nullChar = TokenAlignment.blank;
 
 	// pos tag che identificano stop word
 	// final static String[] stopPos = OpeNER.stop_pos;
@@ -441,86 +442,86 @@ public class WatsonTranslateToken {
 	 *            dopo la sostituzione delgi elementi semantici individuati
 	 * @return lista di token contenti i frammenti non idividuati
 	 */
-	private ArrayList<Token> fragment(String input) {
-		// aggiungo un char alla fine per non impazzire con condizioni strane di
-		// terminazione
-
-		input += nullChar;
-
-		ArrayList<Token> result = new ArrayList<>();
-
-		char[] array = input.toCharArray();
-		// Identifico i NUMERI interi o Float
-		String fragment = "";
-		int start = 0;
-		int end = array.length;
-		boolean digit = false;
-		boolean floating = false;
-		String newInput = "";
-
-		for (int index = 0; index < array.length; index++) {
-
-			char now = array[index];
-
-			if (Character.isDigit(now)) {
-
-				fragment += now;
-				now = nullChar;
-				digit = true;
-
-			} else if (digit && !floating && (now == '.' || now == ',') && Character.isDigit(array[index + 1])) {
-
-				fragment += now;
-				floating = true;
-				now = nullChar;
-
-			} else if (digit && floating) {
-
-				end = index;
-				fragment = fragment.replace(',', '.');
-				float value = Float.valueOf(fragment);
-
-				JSONObject token = new JSONObject();
-				token.accumulate("token", value);
-				token.accumulate("category", "number");
-				token.accumulate("name", "float");
-				String jsonResult = token.toString();
-
-				result.add(new Token(start, end, jsonResult, 1d));
-
-				start = index + 1;
-				fragment = "";
-				digit = false;
-				floating = false;
-
-			} else if (digit && !floating) {
-
-				end = index;
-				Integer value = Integer.valueOf(fragment);
-
-				JSONObject token = new JSONObject();
-				token.accumulate("token", value);
-				token.accumulate("category", "number");
-				token.accumulate("name", "integer");
-				String jsonResult = token.toString();
-
-				result.add(new Token(start, end, jsonResult, 1d));
-
-				start = index + 1;
-				fragment = "";
-				digit = false;
-
-			} else {
-				start = index + 1;
-			}
-			newInput += now;
-		}
-
-		// aggiungo al risultato i frammenti contenti testo non classificato
-		// Opener
-		// result.addAll(fragment_text(newInput));
-		return result;
-	}
+//	private ArrayList<Token> fragment(String input) {
+//		// aggiungo un char alla fine per non impazzire con condizioni strane di
+//		// terminazione
+//
+//		input += nullChar;
+//
+//		ArrayList<Token> result = new ArrayList<>();
+//
+//		char[] array = input.toCharArray();
+//		// Identifico i NUMERI interi o Float
+//		String fragment = "";
+//		int start = 0;
+//		int end = array.length;
+//		boolean digit = false;
+//		boolean floating = false;
+//		String newInput = "";
+//
+//		for (int index = 0; index < array.length; index++) {
+//
+//			char now = array[index];
+//
+//			if (Character.isDigit(now)) {
+//
+//				fragment += now;
+//				now = nullChar;
+//				digit = true;
+//
+//			} else if (digit && !floating && (now == '.' || now == ',') && Character.isDigit(array[index + 1])) {
+//
+//				fragment += now;
+//				floating = true;
+//				now = nullChar;
+//
+//			} else if (digit && floating) {
+//
+//				end = index;
+//				fragment = fragment.replace(',', '.');
+//				float value = Float.valueOf(fragment);
+//
+//				JSONObject token = new JSONObject();
+//				token.accumulate("token", value);
+//				token.accumulate("category", "number");
+//				token.accumulate("name", "float");
+//				String jsonResult = token.toString();
+//
+//				result.add(new Token(start, end, jsonResult, 1d));
+//
+//				start = index + 1;
+//				fragment = "";
+//				digit = false;
+//				floating = false;
+//
+//			} else if (digit && !floating) {
+//
+//				end = index;
+//				Integer value = Integer.valueOf(fragment);
+//
+//				JSONObject token = new JSONObject();
+//				token.accumulate("token", value);
+//				token.accumulate("category", "number");
+//				token.accumulate("name", "integer");
+//				String jsonResult = token.toString();
+//
+//				result.add(new Token(start, end, jsonResult, 1d));
+//
+//				start = index + 1;
+//				fragment = "";
+//				digit = false;
+//
+//			} else {
+//				start = index + 1;
+//			}
+//			newInput += now;
+//		}
+//
+//		// aggiungo al risultato i frammenti contenti testo non classificato
+//		// Opener
+//		// result.addAll(fragment_text(newInput));
+//		return result;
+//	}
 
 	/**
 	 * Metodo che si occupa di indentificare i frammenti di testo non
@@ -627,92 +628,92 @@ public class WatsonTranslateToken {
 	 *            parzialmente elaborato in forma di char array
 	 * @return
 	 */
-	private String substitution(String input, JSONObject element) {
-		char[] pattern = (char[]) element.get("pattern");
-		char[] text = (char[]) element.get("text");
-		int start = element.getInt("index");
-		int end = element.getInt("end");
-
-		String result = input;
-
-		if (text.length != result.length()) {
-
-			if (DEEP_DEBUG) {
-				System.out.println("esiste un gap nel testo.");
-				System.out.println("input lenght: " + input.length());
-				System.out.println("text lenght: " + text.length);
-				System.out.println("pattern lenght: " + pattern.length);
-			}
-
-			int diff = Math.abs(text.length - result.length());
-
-			boolean insertion_start = false;
-
-			for (int i = start; i < end; i++) {
-
-				if (text[i] == nullChar && i < pattern.length) {
-
-					insertion_start = (i == start);
-
-					char[] newPattern = new char[pattern.length - 1];
-					for (int x = 0; x < pattern.length; x++) {
-						if (x < i) {
-							newPattern[x] = pattern[x];
-						} else if (x > i) {
-							newPattern[x - 1] = pattern[x];
-						}
-					}
-
-					pattern = newPattern;
-				}
-
-			}
-
-			if (insertion_start) {
-				element.remove("index");
-				element.accumulate("index", start + diff);
-			} else {
-				element.remove("end");
-				element.accumulate("end", end - diff);
-			}
-		}
-
-		for (int i = 0; i < pattern.length && i < result.length(); i++) {
-
-			if (pattern[i] != nullChar) {
-				if (i < input.length() - 1) {
-					result = result.substring(0, i) + nullChar + result.substring(i + 1, result.length());
-				} else {
-					result = result.substring(0, i) + nullChar;
-				}
-			}
-
-		}
-		return result;
-	}
-
-	private String substitutionToken(String input, ArrayList<Token> tokens) {
-		if (DEBUG) {
-			System.out.println("SUB TOKEN");
-			System.out.println("START INPUT: " + input);
-		}
-		for (Token t : tokens) {
-			if (DEBUG) {
-				System.out.println("TOKEN: " + t);
-			}
-			int start = t.getStart();
-			int end = t.getEnd();
-			String nullString = "";
-			for (int i = start; i < end; i++) {
-				nullString += nullChar;
-			}
-			input = input.substring(0, start) + nullString + input.substring(end);
-			if (DEBUG) {
-				System.out.println("INPUT AFTER: " + input);
-			}
-		}
-		return input;
-	}
+//	private String substitution(String input, JSONObject element) {
+//		char[] pattern = (char[]) element.get("pattern");
+//		char[] text = (char[]) element.get("text");
+//		int start = element.getInt("index");
+//		int end = element.getInt("end");
+//
+//		String result = input;
+//
+//		if (text.length != result.length()) {
+//
+//			if (DEEP_DEBUG) {
+//				System.out.println("esiste un gap nel testo.");
+//				System.out.println("input lenght: " + input.length());
+//				System.out.println("text lenght: " + text.length);
+//				System.out.println("pattern lenght: " + pattern.length);
+//			}
+//
+//			int diff = Math.abs(text.length - result.length());
+//
+//			boolean insertion_start = false;
+//
+//			for (int i = start; i < end; i++) {
+//
+//				if (text[i] == nullChar && i < pattern.length) {
+//
+//					insertion_start = (i == start);
+//
+//					char[] newPattern = new char[pattern.length - 1];
+//					for (int x = 0; x < pattern.length; x++) {
+//						if (x < i) {
+//							newPattern[x] = pattern[x];
+//						} else if (x > i) {
+//							newPattern[x - 1] = pattern[x];
+//						}
+//					}
+//
+//					pattern = newPattern;
+//				}
+//
+//			}
+//
+//			if (insertion_start) {
+//				element.remove("index");
+//				element.accumulate("index", start + diff);
+//			} else {
+//				element.remove("end");
+//				element.accumulate("end", end - diff);
+//			}
+//		}
+//
+//		for (int i = 0; i < pattern.length && i < result.length(); i++) {
+//
+//			if (pattern[i] != nullChar) {
+//				if (i < input.length() - 1) {
+//					result = result.substring(0, i) + nullChar + result.substring(i + 1, result.length());
+//				} else {
+//					result = result.substring(0, i) + nullChar;
+//				}
+//			}
+//
+//		}
+//		return result;
+//	}
+//
+//	private String substitutionToken(String input, ArrayList<Token> tokens) {
+//		if (DEBUG) {
+//			System.out.println("SUB TOKEN");
+//			System.out.println("START INPUT: " + input);
+//		}
+//		for (Token t : tokens) {
+//			if (DEBUG) {
+//				System.out.println("TOKEN: " + t);
+//			}
+//			int start = t.getStart();
+//			int end = t.getEnd();
+//			String nullString = "";
+//			for (int i = start; i < end; i++) {
+//				nullString += nullChar;
+//			}
+//			input = input.substring(0, start) + nullString + input.substring(end);
+//			if (DEBUG) {
+//				System.out.println("INPUT AFTER: " + input);
+//			}
+//		}
+//		return input;
+//	}
 
 	public String toString() {
 		String result = "{\n";

@@ -94,56 +94,56 @@ public class SemanticPool implements Serializable,Comparable<SemanticPool> {
 	 *            frase di input
 	 * @return tag del SemanticElement se persente, null altrimenti
 	 */
-	public JSONObject bestSemanticElement(String input) {
-		JSONObject result = null;
-		double bestScore = 0d;
-		int bestPatternSize=0;
-		int bestStart=-1;
-		int bestStop=-1;
-		//x ogni elemento del pool
-		for (SemanticElement e : pool) {
-			//ottengo il miglior pattern
-			JSONObject confidence = e.confidence(input);
-			//se esite un pattern
-			if (confidence != null) {
-				//estraggo score e pattern size
-				double score=confidence.getDouble("score");
-				int patternSize=confidence.getInt("size");
-				int start=confidence.getInt("index");
-				int stop=confidence.getInt("end");
-				if (score == bestScore && score > threshold && start==bestStart && stop==bestStop) {
-					confidence.accumulate("tag",e.getTag());
-					result.accumulate("result", confidence);
-				}else
-				//se lo score è uguale al migliore verifico la lunghezza del miglior pattern
-				if (score == bestScore && score > threshold && patternSize>bestPatternSize) {
-					if (DEBUG) {
-						System.out.println("change best for length " + confidence + " " + e.getTag() + " treshold " + threshold);
-					}
-					bestScore = score;
-					bestPatternSize= patternSize;
-					confidence.accumulate("tag",e.getTag());
-					result=new JSONObject();
-					result.accumulate("result", confidence);
-					bestStart=start;
-					bestStop=stop;
-				}else if (score > bestScore && score > threshold) {
-					//se lo score è maggiore cambio a prescindere dalla lunghezza
-					if (DEBUG) {
-						System.out.println("change best for score " + confidence + " " + e.getTag() + " treshold " + threshold);
-					}
-					bestScore = score;
-					bestPatternSize= patternSize;
-					confidence.accumulate("tag",e.getTag());
-					result=new JSONObject();
-					result.accumulate("result", confidence);
-					bestStart=start;
-					bestStop=stop;
-				}
-			}
-		}
-		return result;
-	}
+//	public JSONObject bestSemanticElement(String input) {
+//		JSONObject result = null;
+//		double bestScore = 0d;
+//		int bestPatternSize=0;
+//		int bestStart=-1;
+//		int bestStop=-1;
+//		//x ogni elemento del pool
+//		for (SemanticElement e : pool) {
+//			//ottengo il miglior pattern
+//			JSONObject confidence = e.confidence(input);
+//			//se esite un pattern
+//			if (confidence != null) {
+//				//estraggo score e pattern size
+//				double score=confidence.getDouble("score");
+//				int patternSize=confidence.getInt("size");
+//				int start=confidence.getInt("index");
+//				int stop=confidence.getInt("end");
+//				if (score == bestScore && score > threshold && start==bestStart && stop==bestStop) {
+//					confidence.accumulate("tag",e.getTag());
+//					result.accumulate("result", confidence);
+//				}else
+//				//se lo score è uguale al migliore verifico la lunghezza del miglior pattern
+//				if (score == bestScore && score > threshold && patternSize>bestPatternSize) {
+//					if (DEBUG) {
+//						System.out.println("change best for length " + confidence + " " + e.getTag() + " treshold " + threshold);
+//					}
+//					bestScore = score;
+//					bestPatternSize= patternSize;
+//					confidence.accumulate("tag",e.getTag());
+//					result=new JSONObject();
+//					result.accumulate("result", confidence);
+//					bestStart=start;
+//					bestStop=stop;
+//				}else if (score > bestScore && score > threshold) {
+//					//se lo score è maggiore cambio a prescindere dalla lunghezza
+//					if (DEBUG) {
+//						System.out.println("change best for score " + confidence + " " + e.getTag() + " treshold " + threshold);
+//					}
+//					bestScore = score;
+//					bestPatternSize= patternSize;
+//					confidence.accumulate("tag",e.getTag());
+//					result=new JSONObject();
+//					result.accumulate("result", confidence);
+//					bestStart=start;
+//					bestStop=stop;
+//				}
+//			}
+//		}
+//		return result;
+//	}
 
 	public String getCategory() {
 		return category;

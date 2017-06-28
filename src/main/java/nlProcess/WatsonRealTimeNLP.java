@@ -1,4 +1,4 @@
-package patternMatching;
+package nlProcess;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -44,6 +44,15 @@ public class WatsonRealTimeNLP {
 		URL call=new URL(url);
 		URLConnection connection=call.openConnection();
 		connection.connect();
+		BufferedReader buff=new BufferedReader(new InputStreamReader(connection.getInputStream()));
+//		String content="";
+//		String line=null;
+//		while((line=buff.readLine())!=null){
+//			content+=line+"\n";
+//		}
+//		JSONObject response=new JSONObject(content);
+//		System.out.println(response.toString());
+		buff.close();
 	}
 	
 	

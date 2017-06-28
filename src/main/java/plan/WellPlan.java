@@ -1,6 +1,8 @@
 package plan;
 
 import configuration.Config;
+import dialogManager.DialogManager;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +19,7 @@ public class WellPlan implements ActionPlan {
 	}
 
 	@Override
-	public List<JSONObject> execute(JSONObject sem, KnowledgeBase net,Config conf,int epoch,String id_user) {
+	public List<JSONObject> execute(JSONObject sem, KnowledgeBase net,Config conf,int epoch,String id_user,DialogManager dm) {
 		List<JSONObject> result=new ArrayList<>();
 		result.add(new JSONObject().accumulate("query", sem));
 		JSONObject obj=new JSONObject();

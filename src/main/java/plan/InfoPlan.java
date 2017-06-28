@@ -1,6 +1,8 @@
 package plan;
 
 import configuration.Config;
+import dialogManager.DialogManager;
+
 import java.util.ArrayList;
 import java.util.List;
 import knowledge.KnowledgeBase;
@@ -19,7 +21,7 @@ public class InfoPlan implements ActionPlan {
 	}
 
 	@Override
-	public List<JSONObject> execute(JSONObject sem,KnowledgeBase net,Config conf,int epoch,String id_user) {
+	public List<JSONObject> execute(JSONObject sem,KnowledgeBase net,Config conf,int epoch,String id_user,DialogManager dm) {
 		JSONObject result=new JSONObject();
 		result.accumulate("category", "dialog");
 		result.accumulate("name", "name_question");

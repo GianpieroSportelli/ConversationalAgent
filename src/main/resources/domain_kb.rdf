@@ -4,209 +4,227 @@
     xmlns:j.0="http://project.article#output/"
     xmlns:j.1="http://project.article#class/"
     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-    xmlns:j.2="http://project.article#input/"
     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
-    xmlns:j.3="http://project.article#" > 
+    xmlns:j.2="http://project.article#" > 
   <rdf:Description rdf:nodeID="A0">
-    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-    <rdf:first rdf:resource="http://project.article#class/dialog"/>
+    <rdf:rest rdf:nodeID="A1"/>
+    <rdf:first rdf:resource="http://project.article#class/mod"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A1">
-    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-    <rdf:first rdf:resource="http://project.article#class/domain"/>
+  <rdf:Description rdf:about="http://project.article/no_call_police">
+    <j.0:message_not>no</j.0:message_not>
+    <j.0:message_plural></j.0:message_plural>
+    <j.0:message_singular></j.0:message_singular>
+    <rdf:type rdf:resource="http://project.article#class/value"/>
+    <j.2:name>no_call_police</j.2:name>
   </rdf:Description>
-  <rdf:Description rdf:about="http://project.article#class/speechAct">
-    <j.3:classRelation rdf:resource="http://project.article#class/action"/>
-    <j.3:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">speechAct</j.3:name>
-    <j.3:salience rdf:datatype="http://www.w3.org/2001/XMLSchema#long">0</j.3:salience>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  <rdf:Description rdf:about="http://project.article/plan.DesirePlan">
+    <j.0:message_not></j.0:message_not>
+    <j.0:message_plural></j.0:message_plural>
+    <j.0:message_singular></j.0:message_singular>
+    <rdf:type rdf:resource="http://project.article#class/plan"/>
+    <j.2:name>plan.DesirePlan</j.2:name>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A2">
+    <rdf:rest rdf:nodeID="A3"/>
+    <rdf:first rdf:resource="http://project.article/call_police"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A4">
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+    <rdf:first rdf:resource="http://project.article/plateProp"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://project.article/no_call_ambulance">
+    <j.0:message_not>no</j.0:message_not>
+    <j.0:message_plural></j.0:message_plural>
+    <j.0:message_singular></j.0:message_singular>
+    <rdf:type rdf:resource="http://project.article#class/value"/>
+    <j.2:name>no_call_ambulance</j.2:name>
   </rdf:Description>
   <rdf:Description rdf:about="http://project.article/plateProp">
-    <j.3:oneToStar rdf:resource="http://project.article/plate"/>
-    <j.3:default rdf:resource="http://project.article/preventivo"/>
+    <j.2:oneToStar rdf:resource="http://project.article/plate"/>
+    <j.2:default rdf:resource="http://project.article/preventivo"/>
     <j.0:message_not>con targa</j.0:message_not>
     <j.0:message_plural></j.0:message_plural>
     <j.0:message_singular></j.0:message_singular>
     <rdf:type rdf:resource="http://project.article#class/property"/>
-    <j.3:name>plateProp</j.3:name>
+    <j.2:name>plateProp</j.2:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://project.article/location">
+    <j.2:default rdf:resource="http://project.article/complaint"/>
+    <j.2:oneToMany rdf:resource="http://project.article/address"/>
+    <j.0:message_not>
+ indirizzo:</j.0:message_not>
+    <j.0:message_plural></j.0:message_plural>
+    <j.0:message_singular></j.0:message_singular>
+    <rdf:type rdf:resource="http://project.article#class/property"/>
+    <j.2:name>location</j.2:name>
   </rdf:Description>
   <rdf:Description rdf:about="http://project.article#class/property">
-    <j.3:classRelation rdf:resource="http://project.article#class/mod"/>
-    <j.3:template rdf:nodeID="A2"/>
-    <j.3:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">property</j.3:name>
-    <j.3:salience rdf:datatype="http://www.w3.org/2001/XMLSchema#long">80</j.3:salience>
+    <j.2:classRelation rdf:resource="http://project.article#class/mod"/>
+    <j.2:template rdf:nodeID="A5"/>
+    <j.2:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">property</j.2:name>
+    <j.2:salience rdf:datatype="http://www.w3.org/2001/XMLSchema#long">80</j.2:salience>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://project.article#input/example">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://project.article#output/message_singular">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  <rdf:Description rdf:nodeID="A6">
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+    <rdf:first rdf:resource="http://project.article/location"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://project.article#class/noAnswer">
-    <j.3:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">noAnswer</j.3:name>
-    <j.3:salience rdf:datatype="http://www.w3.org/2001/XMLSchema#long">-1</j.3:salience>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://project.article/plate">
-    <j.3:default rdf:resource="http://project.article/plateProp"/>
-    <j.0:message_not>{value:token}</j.0:message_not>
+  <rdf:Description rdf:about="http://project.article/yes_call_police">
+    <j.0:message_not>si</j.0:message_not>
     <j.0:message_plural></j.0:message_plural>
     <j.0:message_singular></j.0:message_singular>
     <rdf:type rdf:resource="http://project.article#class/value"/>
-    <j.3:name>plate</j.3:name>
+    <j.2:name>yes_call_police</j.2:name>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A3">
-    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-    <rdf:first rdf:resource="http://project.article/injuredProp"/>
+  <rdf:Description rdf:about="http://project.article/affermative">
+    <j.0:message_not></j.0:message_not>
+    <j.0:message_plural></j.0:message_plural>
+    <j.0:message_singular></j.0:message_singular>
+    <rdf:type rdf:resource="http://project.article#class/speechAct"/>
+    <j.2:name>affermative</j.2:name>
   </rdf:Description>
   <rdf:Description rdf:about="http://project.article#output/message_not">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://project.article#classRelation">
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://project.article#oneToMany">
-    <j.3:maxCardinality>N</j.3:maxCardinality>
-    <j.3:minCardinality>0</j.3:minCardinality>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-  </rdf:Description>
   <rdf:Description rdf:about="http://project.article#class/action">
-    <j.3:classRelation rdf:resource="http://project.article#class/domain"/>
-    <j.3:template rdf:nodeID="A1"/>
-    <j.3:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">action</j.3:name>
-    <j.3:salience rdf:datatype="http://www.w3.org/2001/XMLSchema#long">100</j.3:salience>
+    <j.2:classRelation rdf:resource="http://project.article#class/domain"/>
+    <j.2:template rdf:nodeID="A7"/>
+    <j.2:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">action</j.2:name>
+    <j.2:salience rdf:datatype="http://www.w3.org/2001/XMLSchema#long">100</j.2:salience>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A4">
+  <rdf:Description rdf:about="http://project.article/address">
+    <j.0:message_not>{value:token}</j.0:message_not>
+    <j.0:message_plural></j.0:message_plural>
+    <j.0:message_singular></j.0:message_singular>
+    <rdf:type rdf:resource="http://project.article#class/value"/>
+    <j.2:name>address</j.2:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://project.article/call_tow_truck">
+    <j.2:default rdf:resource="http://project.article/complaint"/>
+    <j.2:oneToOne rdf:resource="http://project.article/yes_call_tow_truck"/>
+    <j.2:oneToOne rdf:resource="http://project.article/no_call_tow_truck"/>
+    <j.0:message_not>
+ richiede carroattrezzi: </j.0:message_not>
+    <j.0:message_plural></j.0:message_plural>
+    <j.0:message_singular></j.0:message_singular>
+    <rdf:type rdf:resource="http://project.article#class/property"/>
+    <j.2:name>call_tow_truck</j.2:name>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A8">
+    <rdf:rest rdf:nodeID="A9"/>
+    <rdf:first rdf:resource="http://project.article#class/property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://project.article/vehicle">
+    <j.2:default rdf:resource="http://project.article/complaint"/>
+    <j.2:oneToOne rdf:resource="http://project.article/integer"/>
+    <j.0:message_not>
+ veicoli:</j.0:message_not>
+    <j.0:message_plural></j.0:message_plural>
+    <j.0:message_singular></j.0:message_singular>
+    <rdf:type rdf:resource="http://project.article#class/property"/>
+    <j.2:name>vehicle</j.2:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://project.article#class/domain">
+    <j.2:classRelation rdf:resource="http://project.article#class/property"/>
+    <j.2:template rdf:nodeID="A8"/>
+    <j.2:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">domain</j.2:name>
+    <j.2:salience rdf:datatype="http://www.w3.org/2001/XMLSchema#long">90</j.2:salience>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://project.article/call_police">
+    <j.2:oneToOne rdf:resource="http://project.article/yes_call_police"/>
+    <j.2:default rdf:resource="http://project.article/complaint"/>
+    <j.2:oneToOne rdf:resource="http://project.article/no_call_police"/>
+    <j.0:message_not>
+ richiede polizia: </j.0:message_not>
+    <j.0:message_plural></j.0:message_plural>
+    <j.0:message_singular></j.0:message_singular>
+    <rdf:type rdf:resource="http://project.article#class/property"/>
+    <j.2:name>call_police</j.2:name>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A10">
     <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
     <rdf:first rdf:resource="http://project.article#class/domain"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A5">
-    <rdf:rest rdf:nodeID="A6"/>
-    <rdf:first rdf:resource="http://project.article#class/number"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://project.article#class/value">
-    <j.3:template rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-    <j.3:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">value</j.3:name>
-    <j.3:salience rdf:datatype="http://www.w3.org/2001/XMLSchema#long">40</j.3:salience>
+  <rdf:Description rdf:about="http://project.article#class/number">
+    <j.2:classRelation rdf:resource="http://project.article#class/unit"/>
+    <j.2:template rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+    <j.2:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">number</j.2:name>
+    <j.2:salience rdf:datatype="http://www.w3.org/2001/XMLSchema#long">50</j.2:salience>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://project.article/complaint">
-    <j.3:template rdf:nodeID="A3"/>
-    <j.3:oneToMany rdf:resource="http://project.article/injuredProp"/>
-    <j.3:default rdf:resource="http://project.article/desire"/>
-    <j.0:message_not>una denuncia</j.0:message_not>
-    <j.0:message_plural></j.0:message_plural>
-    <j.0:message_singular></j.0:message_singular>
-    <rdf:type rdf:resource="http://project.article#class/domain"/>
-    <j.3:name>complaint</j.3:name>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A2">
-    <rdf:rest rdf:nodeID="A7"/>
+  <rdf:Description rdf:nodeID="A5">
+    <rdf:rest rdf:nodeID="A0"/>
     <rdf:first rdf:resource="http://project.article#class/value"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://project.article/injuredProp">
-    <j.3:oneToOne rdf:resource="http://project.article/integer"/>
-    <j.3:default rdf:resource="http://project.article/complaint"/>
+  <rdf:Description rdf:about="http://project.article#class/mod">
+    <j.2:classRelation rdf:resource="http://project.article#class/number"/>
+    <j.2:template rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+    <j.2:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">mod</j.2:name>
+    <j.2:salience rdf:datatype="http://www.w3.org/2001/XMLSchema#long">70</j.2:salience>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://project.article#oneToOne">
+    <j.2:maxCardinality>1</j.2:maxCardinality>
+    <j.2:minCardinality>1</j.2:minCardinality>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://project.article#class/plan">
+    <j.2:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">plan</j.2:name>
+    <j.2:salience rdf:datatype="http://www.w3.org/2001/XMLSchema#long">0</j.2:salience>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A11">
+    <rdf:rest rdf:nodeID="A2"/>
+    <rdf:first rdf:resource="http://project.article/vehicle"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A12">
+    <rdf:rest rdf:nodeID="A6"/>
+    <rdf:first rdf:resource="http://project.article/call_tow_truck"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://project.article/dead">
+    <j.2:default rdf:resource="http://project.article/complaint"/>
+    <j.2:oneToOne rdf:resource="http://project.article/integer"/>
+    <j.0:message_not>
+ deceduti:</j.0:message_not>
+    <j.0:message_plural></j.0:message_plural>
+    <j.0:message_singular></j.0:message_singular>
+    <rdf:type rdf:resource="http://project.article#class/property"/>
+    <j.2:name>dead</j.2:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://project.article/injured">
+    <j.2:default rdf:resource="http://project.article/complaint"/>
+    <j.2:oneToOne rdf:resource="http://project.article/integer"/>
     <j.0:message_not>
  feriti:</j.0:message_not>
     <j.0:message_plural></j.0:message_plural>
     <j.0:message_singular></j.0:message_singular>
     <rdf:type rdf:resource="http://project.article#class/property"/>
-    <j.3:name>injuredProp</j.3:name>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://project.article#name">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://project.article#class/domain">
-    <j.3:classRelation rdf:resource="http://project.article#class/property"/>
-    <j.3:template rdf:nodeID="A8"/>
-    <j.3:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">domain</j.3:name>
-    <j.3:salience rdf:datatype="http://www.w3.org/2001/XMLSchema#long">90</j.3:salience>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://project.article#class/dialog">
-    <j.3:classRelation rdf:resource="http://project.article#class/action"/>
-    <j.3:template rdf:nodeID="A4"/>
-    <j.3:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">dialog</j.3:name>
-    <j.3:salience rdf:datatype="http://www.w3.org/2001/XMLSchema#long">20</j.3:salience>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A8">
-    <rdf:rest rdf:nodeID="A0"/>
-    <rdf:first rdf:resource="http://project.article#class/property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://project.article#class/number">
-    <j.3:classRelation rdf:resource="http://project.article#class/unit"/>
-    <j.3:template rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-    <j.3:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">number</j.3:name>
-    <j.3:salience rdf:datatype="http://www.w3.org/2001/XMLSchema#long">50</j.3:salience>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://project.article#oneToStar">
-    <j.3:maxCardinality>1</j.3:maxCardinality>
-    <j.3:minCardinality>0</j.3:minCardinality>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://project.article#class/mod">
-    <j.3:classRelation rdf:resource="http://project.article#class/number"/>
-    <j.3:template rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-    <j.3:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">mod</j.3:name>
-    <j.3:salience rdf:datatype="http://www.w3.org/2001/XMLSchema#long">70</j.3:salience>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://project.article#output/message_plural">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://project.article#oneToOne">
-    <j.3:maxCardinality>1</j.3:maxCardinality>
-    <j.3:minCardinality>1</j.3:minCardinality>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://project.article#class/plan">
-    <j.3:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">plan</j.3:name>
-    <j.3:salience rdf:datatype="http://www.w3.org/2001/XMLSchema#long">0</j.3:salience>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <j.2:name>injured</j.2:name>
   </rdf:Description>
   <rdf:Description rdf:about="http://project.article/integer">
     <j.0:message_not>{value:token}</j.0:message_not>
     <j.0:message_plural></j.0:message_plural>
     <j.0:message_singular></j.0:message_singular>
     <rdf:type rdf:resource="http://project.article#class/number"/>
-    <j.3:name>integer</j.3:name>
+    <j.2:name>integer</j.2:name>
   </rdf:Description>
   <rdf:Description rdf:about="http://project.article/preventivo">
-    <j.3:template rdf:nodeID="A9"/>
-    <j.3:default rdf:resource="http://project.article/desire"/>
-    <j.3:oneToMany rdf:resource="http://project.article/plateProp"/>
+    <j.2:template rdf:nodeID="A4"/>
+    <j.2:default rdf:resource="http://project.article/desire"/>
+    <j.2:oneToMany rdf:resource="http://project.article/plateProp"/>
     <j.0:message_not>un preventivo per un'auto</j.0:message_not>
     <j.0:message_plural></j.0:message_plural>
     <j.0:message_singular></j.0:message_singular>
     <rdf:type rdf:resource="http://project.article#class/domain"/>
-    <j.3:name>preventivo</j.3:name>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A9">
-    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-    <rdf:first rdf:resource="http://project.article/plateProp"/>
+    <j.2:name>preventivo</j.2:name>
   </rdf:Description>
   <rdf:Description rdf:about="http://project.article#planLink">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A6">
-    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-    <rdf:first rdf:resource="http://project.article#class/unit"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://project.article#class/unit">
-    <j.3:classRelation rdf:resource="http://project.article#class/value"/>
-    <j.3:template rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-    <j.3:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">unit</j.3:name>
-    <j.3:salience rdf:datatype="http://www.w3.org/2001/XMLSchema#long">60</j.3:salience>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A7">
-    <rdf:rest rdf:nodeID="A5"/>
-    <rdf:first rdf:resource="http://project.article#class/mod"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://project.article#template">
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
@@ -214,25 +232,163 @@
   <rdf:Description rdf:about="http://project.article#speechAct">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://project.article/desire">
-    <j.3:oneToOne rdf:resource="http://project.article/complaint"/>
-    <j.3:oneToOne rdf:resource="http://project.article/preventivo"/>
-    <j.0:message_not>vuoi fare</j.0:message_not>
-    <j.0:message_plural></j.0:message_plural>
-    <j.0:message_singular></j.0:message_singular>
-    <rdf:type rdf:resource="http://project.article#class/action"/>
-    <j.3:name>desire</j.3:name>
+  <rdf:Description rdf:nodeID="A7">
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+    <rdf:first rdf:resource="http://project.article#class/domain"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://project.article#default">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://project.article/quantifies">
+  <rdf:Description rdf:nodeID="A13">
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+    <rdf:first rdf:resource="http://project.article#class/unit"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://project.article#class/speechAct">
+    <j.2:classRelation rdf:resource="http://project.article#class/action"/>
+    <j.2:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">speechAct</j.2:name>
+    <j.2:salience rdf:datatype="http://www.w3.org/2001/XMLSchema#long">0</j.2:salience>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A14">
+    <rdf:rest rdf:nodeID="A11"/>
+    <rdf:first rdf:resource="http://project.article/call_ambulance"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://project.article/negative">
     <j.0:message_not></j.0:message_not>
     <j.0:message_plural></j.0:message_plural>
     <j.0:message_singular></j.0:message_singular>
-    <j.2:example>dimmi</j.2:example>
-    <j.2:example>quanto</j.2:example>
     <rdf:type rdf:resource="http://project.article#class/speechAct"/>
-    <j.3:name>quantifies</j.3:name>
+    <j.2:name>negative</j.2:name>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A3">
+    <rdf:rest rdf:nodeID="A12"/>
+    <rdf:first rdf:resource="http://project.article/dead"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://project.article#output/message_singular">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://project.article#class/noAnswer">
+    <j.2:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">noAnswer</j.2:name>
+    <j.2:salience rdf:datatype="http://www.w3.org/2001/XMLSchema#long">-1</j.2:salience>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://project.article/plate">
+    <j.2:default rdf:resource="http://project.article/plateProp"/>
+    <j.0:message_not>{value:token}</j.0:message_not>
+    <j.0:message_plural></j.0:message_plural>
+    <j.0:message_singular></j.0:message_singular>
+    <rdf:type rdf:resource="http://project.article#class/value"/>
+    <j.2:name>plate</j.2:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://project.article#classRelation">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://project.article#oneToMany">
+    <j.2:maxCardinality>N</j.2:maxCardinality>
+    <j.2:minCardinality>0</j.2:minCardinality>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://project.article#class/value">
+    <j.2:template rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+    <j.2:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">value</j.2:name>
+    <j.2:salience rdf:datatype="http://www.w3.org/2001/XMLSchema#long">40</j.2:salience>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://project.article/yes_call_ambulance">
+    <j.0:message_not>si</j.0:message_not>
+    <j.0:message_plural></j.0:message_plural>
+    <j.0:message_singular></j.0:message_singular>
+    <rdf:type rdf:resource="http://project.article#class/value"/>
+    <j.2:name>yes_call_ambulance</j.2:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://project.article/complaint">
+    <j.0:message_plural></j.0:message_plural>
+    <j.2:oneToMany rdf:resource="http://project.article/call_tow_truck"/>
+    <j.2:oneToMany rdf:resource="http://project.article/location"/>
+    <rdf:type rdf:resource="http://project.article#class/domain"/>
+    <j.2:oneToMany rdf:resource="http://project.article/vehicle"/>
+    <j.2:oneToMany rdf:resource="http://project.article/dead"/>
+    <j.2:name>complaint</j.2:name>
+    <j.0:message_singular></j.0:message_singular>
+    <j.2:template rdf:nodeID="A15"/>
+    <j.2:oneToMany rdf:resource="http://project.article/injured"/>
+    <j.2:oneToMany rdf:resource="http://project.article/call_police"/>
+    <j.2:oneToMany rdf:resource="http://project.article/call_ambulance"/>
+    <j.0:message_not>una denuncia sinistro</j.0:message_not>
+    <j.2:default rdf:resource="http://project.article/desire"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://project.article#name">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://project.article#class/dialog">
+    <j.2:classRelation rdf:resource="http://project.article#class/action"/>
+    <j.2:template rdf:nodeID="A10"/>
+    <j.2:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">dialog</j.2:name>
+    <j.2:salience rdf:datatype="http://www.w3.org/2001/XMLSchema#long">20</j.2:salience>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A1">
+    <rdf:rest rdf:nodeID="A13"/>
+    <rdf:first rdf:resource="http://project.article#class/number"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://project.article/no_call_tow_truck">
+    <j.0:message_not>no</j.0:message_not>
+    <j.0:message_plural></j.0:message_plural>
+    <j.0:message_singular></j.0:message_singular>
+    <rdf:type rdf:resource="http://project.article#class/value"/>
+    <j.2:name>no_call_tow_truck</j.2:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://project.article#oneToStar">
+    <j.2:maxCardinality>1</j.2:maxCardinality>
+    <j.2:minCardinality>0</j.2:minCardinality>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://project.article#output/message_plural">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A15">
+    <rdf:rest rdf:nodeID="A14"/>
+    <rdf:first rdf:resource="http://project.article/injured"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://project.article/call_ambulance">
+    <j.2:default rdf:resource="http://project.article/complaint"/>
+    <j.2:oneToOne rdf:resource="http://project.article/yes_call_ambulance"/>
+    <j.2:oneToOne rdf:resource="http://project.article/no_call_ambulance"/>
+    <j.0:message_not>
+ richiede ambulanza: </j.0:message_not>
+    <j.0:message_plural></j.0:message_plural>
+    <j.0:message_singular></j.0:message_singular>
+    <rdf:type rdf:resource="http://project.article#class/property"/>
+    <j.2:name>call_ambulance</j.2:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://project.article/yes_call_tow_truck">
+    <j.0:message_not>si</j.0:message_not>
+    <j.0:message_plural></j.0:message_plural>
+    <j.0:message_singular></j.0:message_singular>
+    <rdf:type rdf:resource="http://project.article#class/value"/>
+    <j.2:name>yes_call_tow_truck</j.2:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://project.article#class/unit">
+    <j.2:classRelation rdf:resource="http://project.article#class/value"/>
+    <j.2:template rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+    <j.2:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">unit</j.2:name>
+    <j.2:salience rdf:datatype="http://www.w3.org/2001/XMLSchema#long">60</j.2:salience>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://project.article/desire">
+    <j.0:message_singular></j.0:message_singular>
+    <rdf:type rdf:resource="http://project.article#class/action"/>
+    <j.2:oneToOne rdf:resource="http://project.article/complaint"/>
+    <j.2:planLink rdf:resource="http://project.article/plan.DesirePlan"/>
+    <j.2:speechAct rdf:resource="http://project.article/affermative"/>
+    <j.0:message_not>vuoi fare</j.0:message_not>
+    <j.0:message_plural></j.0:message_plural>
+    <j.2:speechAct rdf:resource="http://project.article/negative"/>
+    <j.2:name>desire</j.2:name>
+    <j.2:oneToOne rdf:resource="http://project.article/preventivo"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A9">
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+    <rdf:first rdf:resource="http://project.article#class/dialog"/>
   </rdf:Description>
 </rdf:RDF>
