@@ -415,11 +415,15 @@ public class KnowledgeBase {
         }
 
         for (Resource r : listR) {
-            result.addAll(readChild(r, deep + 1));
+        	List<String> result1=readChild(r, deep + 1);
+            for(String r1:result1){
+            	if(!result.contains(r1)){
+            		result.add(r1);
+            	}
+            }
         }
         return result;
     }
-
     public List<String> getHierarchy() {
         return hierarchy;
     }
