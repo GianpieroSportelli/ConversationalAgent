@@ -391,10 +391,10 @@ public class SemanticNet {
         String queryString = null;
         if (father == null) {
             queryString = "SELECT ?n \n WHERE{ ?n <" + RDF.type + "> <" + RDFS.Class + ">.\n OPTIONAL{?a <"
-                    + Vocabulary.relation + "> ?n .}\n  FILTER(!bound(?a))}";
+                    + Ontology.relation + "> ?n .}\n  FILTER(!bound(?a))}";
         } else {
-            queryString = "SELECT ?n \n WHERE { ?n <" + Vocabulary.name + "> ?name.\n <" + father + "> <"
-                    + Vocabulary.relation + "> ?n }";
+            queryString = "SELECT ?n \n WHERE { ?n <" + Ontology.name + "> ?name.\n <" + father + "> <"
+                    + Ontology.relation + "> ?n }";
         }
          //System.out.println("Query: " + queryString);
         Query query = QueryFactory.create(queryString);
@@ -415,7 +415,12 @@ public class SemanticNet {
         }
 
         for (Resource r : listR) {
-            result.addAll(readChild(r, deep + 1));
+        	List<String> result1=readChild(r, deep + 1);
+            for(String r1:result1){
+            	if(!result.contains(r1)){
+            		result.add(r1);
+            	}
+            }
         }
         return result;
     }
