@@ -391,10 +391,10 @@ public class SemanticNet {
         String queryString = null;
         if (father == null) {
             queryString = "SELECT ?n \n WHERE{ ?n <" + RDF.type + "> <" + RDFS.Class + ">.\n OPTIONAL{?a <"
-                    + Ontology.relation + "> ?n .}\n  FILTER(!bound(?a))}";
+                    + Vocabulary.relation + "> ?n .}\n  FILTER(!bound(?a))}";
         } else {
-            queryString = "SELECT ?n \n WHERE { ?n <" + Ontology.name + "> ?name.\n <" + father + "> <"
-                    + Ontology.relation + "> ?n }";
+            queryString = "SELECT ?n \n WHERE { ?n <" + Vocabulary.name + "> ?name.\n <" + father + "> <"
+                    + Vocabulary.relation + "> ?n }";
         }
          //System.out.println("Query: " + queryString);
         Query query = QueryFactory.create(queryString);
