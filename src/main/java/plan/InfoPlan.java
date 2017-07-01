@@ -21,7 +21,7 @@ public class InfoPlan implements ActionPlan {
 	}
 
 	@Override
-	public List<JSONObject> execute(JSONObject sem,KnowledgeBase net,Config conf,int epoch,String id_user,DialogManager dm) {
+	public List<JSONObject> execute(JSONObject sem,KnowledgeBase net,Config conf,int epoch,String id_user,DialogManager dm,boolean DEBUG) {
 		JSONObject result=new JSONObject();
 		result.accumulate("category", "dialog");
 		result.accumulate("name", "name_question");

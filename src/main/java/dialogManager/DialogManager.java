@@ -142,7 +142,7 @@ public class DialogManager {
 						System.out.println(sem.toString(4));
 					}
 					ActionPlan plan = new ResolveAmbiguityPlan();
-					List<JSONObject> resultplan = plan.execute(sem, net, conf, epoch, id_user, this);
+					List<JSONObject> resultplan = plan.execute(sem, net, conf, epoch, id_user, this,DEBUG);
 					int i = 0;
 					for (JSONObject r : resultplan) {
 						if (DEBUG) {
@@ -161,10 +161,12 @@ public class DialogManager {
 					}
 					String planClass = net.getPlan(sem);
 					if (planClass != null) {
-						System.out.println("c'è un piano!!!");
+						if (DEBUG) {
+							System.out.println("c'è un piano!!!");
+						}
 						try {
 							ActionPlan plan = KnowledgePlan.plan(planClass);
-							List<JSONObject> resultplan = plan.execute(sem, net, conf, epoch, id_user, this);
+							List<JSONObject> resultplan = plan.execute(sem, net, conf, epoch, id_user, this,DEBUG);
 							int i = 0;
 							for (JSONObject r : resultplan) {
 								if (DEBUG) {
@@ -192,7 +194,7 @@ public class DialogManager {
 				}
 			}
 		} else {
-			JSONObject result_fake=new JSONObject();
+			JSONObject result_fake = new JSONObject();
 			result_fake.accumulate("category", "dialog");
 			result_fake.accumulate("name", "fake");
 			result_fake.accumulate(Ontology.MESSAGE, "non ti ho capito. puoi ripetere?");
@@ -415,17 +417,17 @@ public class DialogManager {
 	}
 
 	private void refine() {
-		if(DEBUG)
+		if (DEBUG)
 			System.out.println("Processo di raffinamento");
 		if (resultToken.size() > 0) {
-			if(DEBUG)
+			if (DEBUG)
 				System.out.println("ci sono risultati");
 			if (resultToken.size() == 1) {
-				if(DEBUG)
+				if (DEBUG)
 					System.out.println("unico risultato");
 				String result = resultToken.get(0);
 				if (JSON_utils.isJSONObject(result)) {
-					if(DEBUG)
+					if (DEBUG)
 						System.out.println("è non ambiguo");
 					JSONObject obj = new JSONObject(result);
 					if (obj.getString("category").equals(Ontology.speechActClassName)) {
@@ -464,7 +466,8 @@ public class DialogManager {
 					}
 				}
 			} else {
-				//più risultati, provare a legare lo speech act presenti agli elementi arrivati in seguito FORSE
+				// più risultati, provare a legare lo speech act presenti agli
+				// elementi arrivati in seguito FORSE
 			}
 		}
 
@@ -612,8 +615,9 @@ public class DialogManager {
 					if (DEBUG) {
 						System.out.println("il livello " + super_category + " è ambiguo!! cerco di ridurre!!!");
 					}
+					
 					JSONArray array_sup = new JSONArray(sup_val);
-
+					
 					for (int s = 0; s < array_sup.length(); s++) {
 
 						JSONObject real_in = array_sup.getJSONObject(s);
@@ -678,7 +682,7 @@ public class DialogManager {
 															System.out.println(
 																	potential.toString() + "\n" + obj.toString());
 														}
-														if (isGeneralization(potential, obj)) {
+														if (isGeneralization(potential, obj) && !net.isTerminal(obj)) {
 															if (DEBUG) {
 																System.out.println("is a generalization!!");
 															}

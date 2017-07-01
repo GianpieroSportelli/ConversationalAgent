@@ -25,8 +25,9 @@ public class DesirePlan implements ActionPlan {
 
 	@Override
 	public List<JSONObject> execute(JSONObject sem, KnowledgeBase net, Config conf, int current_epoch, String id_user,
-			DialogManager dm) {
-		System.out.println("PLAN DESIRE ==========================================");
+			DialogManager dm, boolean DEBUG) {
+		if (DEBUG)
+			System.out.println("PLAN DESIRE ==========================================");
 		List<JSONObject> question = init_question();
 		List<JSONObject> context = init_context(net, current_epoch);
 
@@ -40,7 +41,7 @@ public class DesirePlan implements ActionPlan {
 				obj.accumulate("name", "M_Preventivo");
 				obj.accumulate(Ontology.MESSAGE,
 						"sono felice che tu voglia fare un preventivo, oggi non posso aiutarti chiedimi domaini...");
-				;
+				result.add(obj);
 			} else if (domName.equals("complaint")) {
 				JSONArray properties = null;
 				if (domain.has("property")) {
@@ -61,15 +62,19 @@ public class DesirePlan implements ActionPlan {
 					}
 
 					if (!find) {
-						System.out.println("non ho trovato " + qProp
-								+ " sull'oggetto del dominio, provo a verificare se questo è una risposta a un messaggio");
+						if (DEBUG)
+							System.out.println("non ho trovato " + qProp
+									+ " sull'oggetto del dominio, provo a verificare se questo è una risposta a un messaggio");
 
 						if (sem.has(Ontology.speechActClassName)) {
-							System.out.println("c'è uno speech ACT");
+							if (DEBUG)
+								System.out.println("c'è uno speech ACT");
 							JSONObject speechAct = sem.getJSONObject(Ontology.speechActClassName);
 							boolean affermative = speechAct.getString("name").equals("affermative");
-							System.out.println("è affermativa?? " + affermative);
-							System.out.println(qProp + "==" + property[0] + ":" + qProp.equals(property[0]));
+							if (DEBUG)
+								System.out.println("è affermativa?? " + affermative);
+							if (DEBUG)
+								System.out.println(qProp + "==" + property[0] + ":" + qProp.equals(property[0]));
 							if (qProp.equals(property[0])) {
 								if (!affermative) {
 									JSONObject prop = new JSONObject();
@@ -209,7 +214,8 @@ public class DesirePlan implements ActionPlan {
 
 							}
 						} else {
-							System.out.println("niente da fare, provo a chiedere.");
+							if (DEBUG)
+								System.out.println("niente da fare, provo a chiedere.");
 							result.add(question.get(p));
 							dm.addDiscourseMemory(context.get(p).toString());
 							try {
@@ -291,7 +297,7 @@ public class DesirePlan implements ActionPlan {
 			obj = new JSONObject();
 			obj.accumulate("category", "property");
 			obj.accumulate("name", prop);
-			obj.accumulate("epoch", current_epoch+1);
+			obj.accumulate("epoch", current_epoch + 1);
 			obj = new JSONObject(net.enrich(obj.toString()));
 			result.add(obj);
 		}

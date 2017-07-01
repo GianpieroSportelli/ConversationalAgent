@@ -1252,6 +1252,30 @@ public class KnowledgeBase_Creator {
 //		// END LITERAL
 //		// END--- KNOWLEDGE BASE
 		
+		String greetings_name = "greetings";
+		String message_greetings = "ciao";
+		Node greetings = new Node( message_greetings, greetings_name,
+						Ontology.dialogClass);
+		list.add(greetings);
+		
+		String agreement_name = "agreement";
+		String message_agreement = "lieto di esserti utile.";
+		Node agreement = new Node( message_agreement, agreement_name,
+						Ontology.dialogClass);
+		list.add(agreement);
+		
+		String capabilities_name = "capabilities";
+		String message_capabilities = "prendo nota di denunce di sinistri e inizio a capire come fare un preventivo per una poliza auto.";
+		Node capabilities = new Node( message_capabilities, capabilities_name,
+						Ontology.dialogClass);
+		list.add(capabilities);
+		
+		String example_phrase_name = "example_phrase";
+		String message_example_phrase = "una frase tipica è \"ho fatto un incidente, puoi chiamare la polizia\".";
+		Node example_phrase = new Node( message_example_phrase, example_phrase_name,
+						Ontology.dialogClass);
+		list.add(example_phrase);
+		
 		String speechActAffermativeName = "affermative";
 		Node speechActAffermative = new Node("", speechActAffermativeName,
 				Ontology.speechActClass);

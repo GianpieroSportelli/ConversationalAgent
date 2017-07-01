@@ -28,7 +28,7 @@ public class ResolveAmbiguityPlan implements ActionPlan{
     }
 
     @Override
-    public List<JSONObject> execute(JSONObject sem, KnowledgeBase net, Config conf, int current_epoch, String id_user,DialogManager dm) {
+    public List<JSONObject> execute(JSONObject sem, KnowledgeBase net, Config conf, int current_epoch, String id_user,DialogManager dm,boolean DEBUG) {
         List<JSONObject> result=new ArrayList<>();
         JSONObject question=new JSONObject().accumulate("category", "dialog").accumulate("name", "ambiguityQuestion").accumulate(Ontology.MESSAGE, "cosa intendevi?");
         if(sem.has("amb")){

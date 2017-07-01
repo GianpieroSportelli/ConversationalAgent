@@ -5,12 +5,16 @@
     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
     xmlns:j.0="http://project.article#" > 
   <rdf:Description rdf:nodeID="A0">
-    <rdf:rest rdf:nodeID="A1"/>
-    <rdf:first rdf:resource="http://project.article#class/mod"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A2">
     <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-    <rdf:first rdf:resource="http://project.article#class/unit"/>
+    <rdf:first rdf:resource="http://project.article#class/domain"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A1">
+    <rdf:rest rdf:nodeID="A2"/>
+    <rdf:first rdf:resource="http://project.article#class/value"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A3">
+    <rdf:rest rdf:nodeID="A4"/>
+    <rdf:first rdf:resource="http://project.article#class/number"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://project.article#class/speechAct">
     <j.0:classRelation rdf:resource="http://project.article#class/action"/>
@@ -20,10 +24,14 @@
   </rdf:Description>
   <rdf:Description rdf:about="http://project.article#class/property">
     <j.0:classRelation rdf:resource="http://project.article#class/mod"/>
-    <j.0:template rdf:nodeID="A3"/>
+    <j.0:template rdf:nodeID="A1"/>
     <j.0:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">property</j.0:name>
     <j.0:salience rdf:datatype="http://www.w3.org/2001/XMLSchema#long">80</j.0:salience>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A5">
+    <rdf:rest rdf:nodeID="A6"/>
+    <rdf:first rdf:resource="http://project.article#class/property"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://project.article#input/example">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
@@ -38,7 +46,7 @@
   </rdf:Description>
   <rdf:Description rdf:about="http://project.article#class/action">
     <j.0:classRelation rdf:resource="http://project.article#class/domain"/>
-    <j.0:template rdf:nodeID="A4"/>
+    <j.0:template rdf:nodeID="A7"/>
     <j.0:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">action</j.0:name>
     <j.0:salience rdf:datatype="http://www.w3.org/2001/XMLSchema#long">100</j.0:salience>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
@@ -60,10 +68,6 @@
     <j.0:salience rdf:datatype="http://www.w3.org/2001/XMLSchema#long">40</j.0:salience>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A5">
-    <rdf:rest rdf:nodeID="A6"/>
-    <rdf:first rdf:resource="http://project.article#class/property"/>
-  </rdf:Description>
   <rdf:Description rdf:about="http://project.article#name">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
   </rdf:Description>
@@ -76,18 +80,14 @@
   </rdf:Description>
   <rdf:Description rdf:about="http://project.article#class/dialog">
     <j.0:classRelation rdf:resource="http://project.article#class/action"/>
-    <j.0:template rdf:nodeID="A7"/>
+    <j.0:template rdf:nodeID="A0"/>
     <j.0:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">dialog</j.0:name>
     <j.0:salience rdf:datatype="http://www.w3.org/2001/XMLSchema#long">20</j.0:salience>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A1">
-    <rdf:rest rdf:nodeID="A2"/>
-    <rdf:first rdf:resource="http://project.article#class/number"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A7">
-    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-    <rdf:first rdf:resource="http://project.article#class/domain"/>
+  <rdf:Description rdf:nodeID="A2">
+    <rdf:rest rdf:nodeID="A3"/>
+    <rdf:first rdf:resource="http://project.article#class/mod"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://project.article#class/number">
     <j.0:classRelation rdf:resource="http://project.article#class/unit"/>
@@ -96,9 +96,9 @@
     <j.0:salience rdf:datatype="http://www.w3.org/2001/XMLSchema#long">50</j.0:salience>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A3">
-    <rdf:rest rdf:nodeID="A0"/>
-    <rdf:first rdf:resource="http://project.article#class/value"/>
+  <rdf:Description rdf:nodeID="A4">
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+    <rdf:first rdf:resource="http://project.article#class/unit"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://project.article#oneToStar">
     <j.0:maxCardinality>1</j.0:maxCardinality>
@@ -125,18 +125,20 @@
     <j.0:minCardinality>1</j.0:minCardinality>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
   </rdf:Description>
+  <rdf:Description rdf:nodeID="A6">
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+    <rdf:first rdf:resource="http://project.article#class/dialog"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A7">
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+    <rdf:first rdf:resource="http://project.article#class/domain"/>
+  </rdf:Description>
   <rdf:Description rdf:about="http://project.article#planLink">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://project.article#class/unit">
     <j.0:classRelation rdf:resource="http://project.article#class/value"/>
     <j.0:template rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-    <j.0:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">unit</j.0:name>
-    <j.0:salience rdf:datatype="http://www.w3.org/2001/XMLSchema#long">60</j.0:salience>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://project.article#template">
-    <rdf:type rdf:resourceurce="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
     <j.0:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">unit</j.0:name>
     <j.0:salience rdf:datatype="http://www.w3.org/2001/XMLSchema#long">60</j.0:salience>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
