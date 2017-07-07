@@ -588,7 +588,7 @@ public class DialogManager {
 													}
 												}
 											}
-											if (insert) {
+											if (insert && !net.onlyOne(real_in, obj)) {
 												if (DEBUG) {
 													System.out.println("Non contiene l'elemento, lo inserisco");
 												}
