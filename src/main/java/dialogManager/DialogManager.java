@@ -54,13 +54,21 @@ public class DialogManager {
 
 	private final int memoryLenght = 15;
 	public String id_user;
+	
+	String hostname;
+	String port;
+	String collection;
 
 	public DialogManager(KnowledgeBase net, float t, JSONObject read, Config conf) {
 		id_user = "DEVELOP";
 		this.conf = conf;
 		threshold = t;
 		this.net = net;
-		translater = new WatsonTranslateToken(read, t);
+		collection=conf.WEX_COLLECTION;
+		hostname=conf.WEX_HOSTNAME;
+		port=conf.WEX_PORT;
+		
+		translater = new WatsonTranslateToken(read, t,hostname,port,collection);
 		workingMemory = new HashMap<>();
 		discourseMemory = new HashMap<>();
 		hierarchy = net.getHierarchy();
@@ -77,7 +85,11 @@ public class DialogManager {
 		this.conf = conf;
 		threshold = t;
 		this.net = net;
-		translater = new WatsonTranslateToken(read, t);
+		collection=conf.WEX_COLLECTION;
+		hostname=conf.WEX_HOSTNAME;
+		port=conf.WEX_PORT;
+		
+		translater = new WatsonTranslateToken(read, t,hostname,port,collection);
 		workingMemory = new HashMap<>();
 		discourseMemory = new HashMap<>();
 		hierarchy = net.getHierarchy();

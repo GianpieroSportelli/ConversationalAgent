@@ -19,7 +19,7 @@ public class TestTranslateToken {
 		String url = Config.getPathSemanticNet();
 		float threshold=0.9f;
 		JSONObject read=KnowledgeBase_Reader.readNLU(KnowledgeBase_Reader.readModel(url));
-		WatsonTranslateToken translater=new WatsonTranslateToken(read, threshold);
+		WatsonTranslateToken translater=new WatsonTranslateToken(read, threshold,"localhost","8393","bot_unipol");
 		System.out.println(translater);
 		String input = "";
 		s = new Scanner(System.in);

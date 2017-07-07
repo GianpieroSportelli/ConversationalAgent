@@ -42,6 +42,10 @@ public class Config {
     public static String TELEGRAM_TOKEN;
 
     private static boolean DEEP_DEBUG_ACTION;
+    
+    public static String WEX_HOSTNAME;
+    public static String WEX_PORT;
+    public static String WEX_COLLECTION;
 
     private Config() {
 
@@ -68,14 +72,8 @@ public class Config {
         Properties prop = new Properties();
         InputStream inputStream = new FileInputStream(new File(file_name));
         try {
-            if (inputStream != null) {
-
-                prop.load(inputStream);
-                properties = prop;
-
-            } else {
-                throw new FileNotFoundException("property file '" + propFileName + "' not found in the classpath");
-            }
+            prop.load(inputStream);
+			properties = prop;
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -100,6 +98,10 @@ public class Config {
     }
 
     private static void fillProperties() {
+    	WEX_HOSTNAME=properties.getProperty("watson.hostname");
+    	WEX_PORT=properties.getProperty("watson.port");
+    	WEX_COLLECTION=properties.getProperty("watson.collection");
+    	
         TELEGRAM_TOKEN = properties.getProperty("token.telegram");
         PATH_MEMORY = properties.getProperty("path.memory");
         MEMORY_EXT = properties.getProperty("path.memory.ext");

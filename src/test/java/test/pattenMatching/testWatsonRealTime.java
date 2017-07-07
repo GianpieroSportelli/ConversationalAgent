@@ -14,7 +14,7 @@ public class testWatsonRealTime {
 
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
-		WatsonRealTimeNLP.analysis("vorrei 2,6 preventivo");
+		WatsonRealTimeNLP.analysis("vorrei 2,6 preventivo","localhost","8393","bot_unipol");
 //		String path="C:/Users/gi.sportelli/Desktop/morph-it_048.csv";
 //		File csv=new File(path);
 //		BufferedReader buff=new BufferedReader(new FileReader(csv));

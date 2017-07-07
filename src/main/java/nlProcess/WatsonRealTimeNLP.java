@@ -15,11 +15,11 @@ import Utils.JSON_utils;
 
 public class WatsonRealTimeNLP {
 
-	public static JSONArray analysis(String text) throws IOException{
+	public static JSONArray analysis(String text,String hostname,String port,String collection) throws IOException{
 		JSONArray result=null;
 		text=text.replaceAll(" ", "%20");
-		addInLog(text);
-		String url="http://localhost:8393/api/v10/analysis/text?collection=bot_unipol&language=it&output=application/json&text="+text;
+		addInLog(text,hostname,port,collection);
+		String url="http://"+hostname+":"+port+"/api/v10/analysis/text?collection="+collection+"&language=it&output=application/json&text="+text;
 		URL call=new URL(url);
 		URLConnection connection=call.openConnection();
 		connection.connect();
@@ -39,8 +39,8 @@ public class WatsonRealTimeNLP {
 		return result;
 	}
 
-	private static void addInLog(String text) throws IOException {
-		String url="http://localhost:8393/api/v10/search?collection=bot_unipol&output=application/json&query="+text;
+	private static void addInLog(String text,String hostname,String port,String collection) throws IOException {
+		String url="http://"+hostname+":"+port+"/api/v10/search?collection="+collection+"&output=application/json&query="+text;
 		URL call=new URL(url);
 		URLConnection connection=call.openConnection();
 		connection.connect();
