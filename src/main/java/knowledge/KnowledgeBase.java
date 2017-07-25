@@ -313,8 +313,6 @@ public class KnowledgeBase {
 
     public String getPlan(JSONObject obj) {
         String result = null;
-//        System.out.println("FIND PLAN: \n"+obj.toString(4));
-//        System.out.println(Ontology.planName);
         if (obj.has(Ontology.planName)) {
             result = obj.getString(Ontology.planName);
         }

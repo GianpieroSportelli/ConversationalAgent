@@ -6,11 +6,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.concurrent.ThreadLocalRandom;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
-
 import Utils.JSON_utils;
 import configuration.Config;
 import java.io.BufferedReader;
@@ -26,7 +23,6 @@ import knowledge.Ontology;
 import nlGeneration.NLG;
 import patternMatching.Token;
 import patternMatching.WatsonTranslateToken;
-//import patternMatching.TranslateToken;
 import plan.ActionPlan;
 import plan.ResolveAmbiguityPlan;
 
@@ -54,21 +50,14 @@ public class DialogManager {
 
 	private final int memoryLenght = 15;
 	public String id_user;
-	
-	String hostname;
-	String port;
-	String collection;
 
+	@SuppressWarnings("static-access")
 	public DialogManager(KnowledgeBase net, float t, JSONObject read, Config conf) {
 		id_user = "DEVELOP";
 		this.conf = conf;
 		threshold = t;
 		this.net = net;
-		collection=conf.WEX_COLLECTION;
-		hostname=conf.WEX_HOSTNAME;
-		port=conf.WEX_PORT;
-		
-		translater = new WatsonTranslateToken(read, t,hostname,port,collection);
+		translater = new WatsonTranslateToken(read, t, conf.WEX_HOSTNAME, conf.WEX_PORT, conf.WEX_COLLECTION);
 		workingMemory = new HashMap<>();
 		discourseMemory = new HashMap<>();
 		hierarchy = net.getHierarchy();
@@ -80,16 +69,13 @@ public class DialogManager {
 		}
 	}
 
+	@SuppressWarnings("static-access")
 	public DialogManager(KnowledgeBase net, float t, JSONObject read, Config conf, String user_id) {
 		this.id_user = user_id;
 		this.conf = conf;
 		threshold = t;
 		this.net = net;
-		collection=conf.WEX_COLLECTION;
-		hostname=conf.WEX_HOSTNAME;
-		port=conf.WEX_PORT;
-		
-		translater = new WatsonTranslateToken(read, t,hostname,port,collection);
+		translater = new WatsonTranslateToken(read, t, conf.WEX_HOSTNAME, conf.WEX_PORT, conf.WEX_COLLECTION);
 		workingMemory = new HashMap<>();
 		discourseMemory = new HashMap<>();
 		hierarchy = net.getHierarchy();
@@ -154,7 +140,7 @@ public class DialogManager {
 						System.out.println(sem.toString(4));
 					}
 					ActionPlan plan = new ResolveAmbiguityPlan();
-					List<JSONObject> resultplan = plan.execute(sem, net, conf, epoch, id_user, this,DEBUG);
+					List<JSONObject> resultplan = plan.execute(sem, net, conf, epoch, id_user, this, DEBUG);
 					int i = 0;
 					for (JSONObject r : resultplan) {
 						if (DEBUG) {
@@ -178,7 +164,7 @@ public class DialogManager {
 						}
 						try {
 							ActionPlan plan = KnowledgePlan.plan(planClass);
-							List<JSONObject> resultplan = plan.execute(sem, net, conf, epoch, id_user, this,DEBUG);
+							List<JSONObject> resultplan = plan.execute(sem, net, conf, epoch, id_user, this, DEBUG);
 							int i = 0;
 							for (JSONObject r : resultplan) {
 								if (DEBUG) {
@@ -627,9 +613,9 @@ public class DialogManager {
 					if (DEBUG) {
 						System.out.println("il livello " + super_category + " è ambiguo!! cerco di ridurre!!!");
 					}
-					
+
 					JSONArray array_sup = new JSONArray(sup_val);
-					
+
 					for (int s = 0; s < array_sup.length(); s++) {
 
 						JSONObject real_in = array_sup.getJSONObject(s);
@@ -1497,36 +1483,42 @@ public class DialogManager {
 							}
 						}
 					}
-				} else if (false) {
-					// prova ad aggiungere lo speechact a qualcosa presente in
-					// memoria
-					Map<String, Integer> findBest = new HashMap<String, Integer>();
-					for (String possible : element) {
-						JSONObject speechPossible = new JSONObject(possible);
-						String speech_category = speechPossible.getString("category");
-						String speech_name = speechPossible.getString("name");
-						if (discourseMemory.containsKey(speech_category)) {
-							List<String> dis_category = discourseMemory.get(speech_category);
-							for (String dis_element : dis_category) {
-								JSONObject dis_obj = new JSONObject(dis_element);
-								if (dis_obj.getString("name").equals(speech_name)) {
-									findBest.put(dis_element, dis_obj.getInt("epoch"));
-								}
-							}
-						}
-					}
-					int max = 0;
-					String win = null;
-					for (String candidate : findBest.keySet()) {
-						if (findBest.get(candidate) > max) {
-							win = new JSONObject(candidate).put(Ontology.speechActClassName, obj).toString();
-							max = findBest.get(candidate);
-						}
-					}
-					if (win != null) {
-						resultToken.add(win);
-					}
 				}
+				// else if (false) {
+				// // prova ad aggiungere lo speechact a qualcosa presente in
+				// // memoria
+				// Map<String, Integer> findBest = new HashMap<String,
+				// Integer>();
+				// for (String possible : element) {
+				// JSONObject speechPossible = new JSONObject(possible);
+				// String speech_category =
+				// speechPossible.getString("category");
+				// String speech_name = speechPossible.getString("name");
+				// if (discourseMemory.containsKey(speech_category)) {
+				// List<String> dis_category =
+				// discourseMemory.get(speech_category);
+				// for (String dis_element : dis_category) {
+				// JSONObject dis_obj = new JSONObject(dis_element);
+				// if (dis_obj.getString("name").equals(speech_name)) {
+				// findBest.put(dis_element, dis_obj.getInt("epoch"));
+				// }
+				// }
+				// }
+				// }
+				// int max = 0;
+				// String win = null;
+				// for (String candidate : findBest.keySet()) {
+				// if (findBest.get(candidate) > max) {
+				// win = new
+				// JSONObject(candidate).put(Ontology.speechActClassName,
+				// obj).toString();
+				// max = findBest.get(candidate);
+				// }
+				// }
+				// if (win != null) {
+				// resultToken.add(win);
+				// }
+				// }
 			}
 		}
 
@@ -1745,6 +1737,59 @@ public class DialogManager {
 			}
 		}
 
+	}
+
+	public JSONObject difference(JSONObject owner, JSONObject guest) {
+		JSONObject result = null;
+		if (owner.getString("name").equals(guest.get("name"))) {
+			if (net.has_rel_out(owner)) {
+				JSONArray out = JSON_utils.convertJSONArray(owner.get("rel_out").toString());
+				List<String> list_category = new ArrayList<>();
+				for (int i = 0; i < out.length(); i++) {
+					JSONObject out_obj = out.getJSONObject(i);
+					String out_category = out_obj.getString("category");
+					if (!list_category.contains(out_category)) {
+						list_category.add(out_category);
+						if (owner.has(out_category)) {
+							JSONArray diff_out = new JSONArray();
+							JSONArray owner_out = JSON_utils.convertJSONArray(owner.get(out_category).toString());
+							if (guest.has(out_category)) {
+								JSONArray guest_out = JSON_utils.convertJSONArray(guest.get(out_category).toString());
+								for(int j=0;j<owner_out.length();j++){
+									JSONObject owner_obj=owner_out.getJSONObject(j);
+									for(int l=0;l<guest_out.length();l++){
+										JSONObject guest_obj=guest_out.getJSONObject(l);
+										if(owner_obj.getString("name").equals(guest_obj.getString("name"))){
+											JSONObject diff=difference(owner_obj, guest_obj);
+											if(diff!=null){
+												diff_out.put(diff);
+											}
+											break;
+										}
+									}
+								}
+							} else {
+								diff_out = owner_out;
+							}
+							if(diff_out.length()>0){
+								if(result==null){
+									result=new JSONObject();
+									result.accumulate("name", owner.getString("name"));
+									result.accumulate("category", owner.getString("category"));
+									result=new JSONObject(net.enrich(result.toString()));
+								}
+								result.put(out_category, diff_out);
+							}
+						}
+					}
+				}
+			}else{
+				//caso terminale
+			}
+		} else {
+			result = owner;
+		}
+		return result;
 	}
 
 	// BACK UP
