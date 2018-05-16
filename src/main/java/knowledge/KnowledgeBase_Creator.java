@@ -190,6 +190,10 @@ public class KnowledgeBase_Creator {
 		Node well_plan = new Node(message_null, well_plan_info, Ontology.planClass);
 		well.addRel(Ontology.plan, well_plan);
 		list.add(well_plan);
+		
+		String search_plan_info = "plan.SearchPlan";
+		Node search_plan = new Node(message_null, search_plan_info, Ontology.planClass);
+		list.add(search_plan);
 
 		// END------PLAN
 
@@ -198,7 +202,9 @@ public class KnowledgeBase_Creator {
 		// BEGIN----ACTION
 		String search_name = "search";
 		String message_search = "stai cercando";
-		Node search = new Node(message_search, search_name, Ontology.actionClass);
+		String message_search_not = "Non ho trovato quello che stavi cercando,";
+		Node search = new Node(new String[] {},message_search_not,message_search,message_search, search_name, Ontology.actionClass);
+		search.addRel(Ontology.plan, search_plan);
 		list.add(search);
 
 		// //END----ACTION
@@ -211,21 +217,23 @@ public class KnowledgeBase_Creator {
 		Node capsule = new Node(ex_capsule, message_capsule, capsule_name, Ontology.domainClass);
 		search.addRel(Ontology.oneToOne, capsule);
 		capsule.addRel(Ontology._default, search);
+		search.addInTemplate(capsule);
 		list.add(capsule);
 
 		String[] ex_machine = { "macchina da caffè", "macchina caffè" };
 		String name_machine_domain = "machine";
-		String message_machine = "machine";
+		String message_machine = "macchine da caffè";
 		Node machine = new Node(ex_machine, message_machine, name_machine_domain, Ontology.domainClass);
 		search.addRel(Ontology.oneToOne, machine);
 		machine.addRel(Ontology._default, search);
+		search.addInTemplate(machine);
 		list.add(machine);
 
 		// END----DOMAIN OBJECT
 
 		// BEGIN----PROPERTY
 		String[] exbill = { "prezzo", "costo", "budget", "budjet", "importo" };
-		String bill_name = "bill";
+		String bill_name = "price";
 
 		String message_bill = "importo";
 

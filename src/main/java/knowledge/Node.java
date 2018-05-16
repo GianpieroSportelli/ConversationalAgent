@@ -37,8 +37,8 @@ public class Node {
             this.example = new String[0];
 		this.name = name;
 		rdf_semClass = semClass;
-		singular = "";
-		plural = "";
+		singular = message;
+		plural = message;
 		not = message;
 		rel = new HashMap<>();
 		template = new ArrayList<>();
@@ -48,8 +48,8 @@ public class Node {
             this.example = example;
 		this.name = name;
 		rdf_semClass = semClass;
-		singular = "";
-		plural = "";
+		singular = message;
+		plural = message;
 		not = message;
 		rel = new HashMap<>();
 		template = new ArrayList<>();

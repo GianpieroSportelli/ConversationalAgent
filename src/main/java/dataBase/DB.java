@@ -334,11 +334,18 @@ public class DB {
 				}
 			}
 
-			if (!result_json.has("query")) {
-				result_json.accumulate("query", query);
+			// se si hanno problemi con il modulo decommentare questes e commentare quelle sotto
+//			if (!result_json.has("query")) {
+//				result_json.accumulate("query", query);
+//			}
+//
+//			result.add(result_json);
+			
+			if (result_json.has("query")) {
+				result.add(result_json);
 			}
 
-			result.add(result_json);
+			
 		}
 
 		return result;
