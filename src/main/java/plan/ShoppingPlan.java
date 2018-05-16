@@ -160,6 +160,11 @@ public class ShoppingPlan implements ActionPlan {
                         result.add(error);
                         Logger.getLogger(RegisterPlan.class.getName()).log(Level.SEVERE, null, ex);
                     }
+                }else if(sa.getString("name").equals("what")) {
+                	result = new ArrayList<>();
+                	JSONObject messageResponse = new JSONObject().accumulate("category", "dialog").accumulate("name", "messageWhat");
+                    messageResponse.put(Vocabulary.MESSAGE, "hai speso soldi ovviamente, presumo EURO.");
+                	result.add(messageResponse);
                 }
             }
         }
