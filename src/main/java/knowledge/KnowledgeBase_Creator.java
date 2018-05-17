@@ -28,10 +28,10 @@ public class KnowledgeBase_Creator {
 				"buoneos dias", "buena noche", "scemo", "buon pomeriggio" };
 		String greetings_name = "greetings";
 
-		String message_not_greetings = "Hola";
+		String message_greetings = "Ciao";
 		String message_null = "";
 
-		Node greetings = new Node(exGreetings, message_not_greetings, message_null, message_null, greetings_name,
+		Node greetings = new Node(exGreetings, message_greetings, greetings_name,
 				Ontology.dialogClass);
 		list.add(greetings);
 
@@ -588,7 +588,7 @@ public class KnowledgeBase_Creator {
 
 		// 2
 		String[] exoneToOneFantasiaPLUS = { "fantasia plus", "electrolux fantasia plus" };
-		String fantasiaPLUS_name = "fantasia plus";
+		String fantasiaPLUS_name = "fantasia_plus";
 
 		Node fantasiaPLUS = new Node(exoneToOneFantasiaPLUS, fantasiaPLUS_name, fantasiaPLUS_name, fantasiaPLUS_name,
 				fantasiaPLUS_name, Ontology.valueClass);
@@ -614,7 +614,7 @@ public class KnowledgeBase_Creator {
 		// 5
 		String[] exoneToOneMinuCaffeLatte = { "minù caffè latte", "lavazza minù caffè latte", "minu caffè latte",
 				"lavazza minu caffè latte" };
-		String minuCaffeLatte_name = "minù caffè latte";
+		String minuCaffeLatte_name = "minù_caffè_latte";
 
 		Node minuCaffeLatte = new Node(exoneToOneMinuCaffeLatte, minuCaffeLatte_name, minuCaffeLatte_name,
 				minuCaffeLatte_name, minuCaffeLatte_name, Ontology.valueClass);
@@ -623,7 +623,7 @@ public class KnowledgeBase_Creator {
 
 		// 6
 		String[] exoneToOneMagiaplus = { "magia plus", "electrolux magia plus" };
-		String magiaplus_name = "magia plus";
+		String magiaplus_name = "magia_plus";
 
 		Node magiaplus = new Node(exoneToOneMagiaplus, magiaplus_name, magiaplus_name, magiaplus_name, magiaplus_name,
 				Ontology.valueClass);
@@ -661,7 +661,7 @@ public class KnowledgeBase_Creator {
 		//
 		// 8
 		String[] exoneToOneEspriaPlus = { "espria plus", "electrolux espria plus" };
-		String espriaplus_name = "espria plus";
+		String espriaplus_name = "espria_plus";
 
 		Node espriaplus = new Node(exoneToOneEspriaPlus, espriaplus_name, espriaplus_name, espriaplus_name,
 				espriaplus_name, Ontology.valueClass);
