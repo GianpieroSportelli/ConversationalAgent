@@ -202,8 +202,8 @@ public class KnowledgeBase_Creator {
 		// BEGIN----ACTION
 		String search_name = "search";
 		String message_search = "stai cercando";
-		String message_search_not = "Non ho trovato quello che stavi cercando,";
-		Node search = new Node(new String[] {},message_search_not,message_search,message_search, search_name, Ontology.actionClass);
+		//String message_search_not = "Non ho trovato quello che stavi cercando,";
+		Node search = new Node(message_search, search_name, Ontology.actionClass);
 		search.addRel(Ontology.plan, search_plan);
 		list.add(search);
 
@@ -719,7 +719,7 @@ public class KnowledgeBase_Creator {
 		list.add(grey);
 
 		String[] exoneToOneLightBlue = { "azzurro" };
-		String lightBlue_name = "light blue";
+		String lightBlue_name = "light_blue";
 
 		String message_lightblue = "azzur";
 

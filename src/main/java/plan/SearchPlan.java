@@ -23,7 +23,6 @@ public class SearchPlan implements ActionPlan {
 
 	@Override
 	public List<JSONObject> execute(JSONObject sem, KnowledgeBase net, Config conf, int epoch, String id_user) {
-		System.out.println(sem.toString(4));
 		DB.init();
 		List<String> q = new ArrayList<>();
 		q.add(sem.toString());
@@ -34,8 +33,16 @@ public class SearchPlan implements ActionPlan {
 			list= new ArrayList<>();
 			list.add(firstMessage);
 		}else {
+			if(list.size()==1) {
+				if(!list.get(0).has("result")) {
+					firstMessage.accumulate(Ontology.MESSAGE, "Non ci sono risultati :(");
+					list= new ArrayList<>();
+					list.add(firstMessage);
+				}
+			}else {
 			firstMessage.accumulate(Ontology.MESSAGE, "Ecco ciò che ho trovato:");
 			list.add(0, firstMessage);
+			}
 		}
 		return list;
 	}

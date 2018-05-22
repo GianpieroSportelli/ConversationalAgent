@@ -49,6 +49,21 @@
     <rdf:type rdf:resource="http://project.article#class/value"/>
     <j.3:name>lavazza divino</j.3:name>
   </rdf:Description>
+  <rdf:Description rdf:nodeID="A0">
+    <rdf:rest rdf:nodeID="A1"/>
+    <rdf:first rdf:resource="http://project.article#class/property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://project.article/minù_caffè_latte">
+    <j.0:message_not>minù_caffè_latte</j.0:message_not>
+    <j.0:message_plural>minù_caffè_latte</j.0:message_plural>
+    <j.0:message_singular>minù_caffè_latte</j.0:message_singular>
+    <j.2:example>lavazza minu caffè latte</j.2:example>
+    <j.2:example>minu caffè latte</j.2:example>
+    <j.2:example>lavazza minù caffè latte</j.2:example>
+    <j.2:example>minù caffè latte</j.2:example>
+    <rdf:type rdf:resource="http://project.article#class/value"/>
+    <j.3:name>minù_caffè_latte</j.3:name>
+  </rdf:Description>
   <rdf:Description rdf:about="http://project.article/cheap">
     <j.3:oneToStar rdf:resource="http://project.article/false_cheap"/>
     <j.3:oneToStar rdf:resource="http://project.article/true_cheap"/>
@@ -71,14 +86,10 @@
   </rdf:Description>
   <rdf:Description rdf:about="http://project.article#class/property">
     <j.3:classRelation rdf:resource="http://project.article#class/mod"/>
-    <j.3:template rdf:nodeID="A0"/>
+    <j.3:template rdf:nodeID="A2"/>
     <j.3:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">property</j.3:name>
     <j.3:salience rdf:datatype="http://www.w3.org/2001/XMLSchema#long">80</j.3:salience>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A1">
-    <rdf:rest rdf:nodeID="A2"/>
-    <rdf:first rdf:resource="http://project.article/autoOFF"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://project.article/why">
     <j.0:message_not></j.0:message_not>
@@ -115,6 +126,10 @@
     <rdf:type rdf:resource="http://project.article#class/value"/>
     <j.3:name>lavazza orzo</j.3:name>
   </rdf:Description>
+  <rdf:Description rdf:nodeID="A3">
+    <rdf:rest rdf:nodeID="A4"/>
+    <rdf:first rdf:resource="http://project.article/cheap"/>
+  </rdf:Description>
   <rdf:Description rdf:about="http://project.article/arabic">
     <j.0:message_not>miscela arabica</j.0:message_not>
     <j.0:message_plural>miscela arabica</j.0:message_plural>
@@ -150,10 +165,6 @@
   <rdf:Description rdf:about="http://project.article#output/message_not">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A3">
-    <rdf:rest rdf:nodeID="A4"/>
-    <rdf:first rdf:resource="http://project.article/promo"/>
-  </rdf:Description>
   <rdf:Description rdf:about="http://project.article/slow">
     <j.3:oneToOne rdf:resource="http://project.article/false_slow"/>
     <j.3:oneToOne rdf:resource="http://project.article/true_slow"/>
@@ -178,24 +189,20 @@
     <j.2:example>capacità serbatoio</j.2:example>
     <j.3:oneToStar rdf:resource="http://project.article/more"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A5">
-    <rdf:rest rdf:nodeID="A6"/>
-    <rdf:first rdf:resource="http://project.article#class/number"/>
-  </rdf:Description>
   <rdf:Description rdf:about="http://project.article#class/domain">
     <j.3:classRelation rdf:resource="http://project.article#class/property"/>
-    <j.3:template rdf:nodeID="A7"/>
+    <j.3:template rdf:nodeID="A0"/>
     <j.3:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">domain</j.3:name>
     <j.3:salience rdf:datatype="http://www.w3.org/2001/XMLSchema#long">90</j.3:salience>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://project.article/light blue">
-    <j.0:message_not>azzur</j.0:message_not>
-    <j.0:message_plural>azzur</j.0:message_plural>
-    <j.0:message_singular>azzur</j.0:message_singular>
-    <j.2:example>azzurro</j.2:example>
-    <rdf:type rdf:resource="http://project.article#class/value"/>
-    <j.3:name>light blue</j.3:name>
+  <rdf:Description rdf:nodeID="A5">
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+    <rdf:first rdf:resource="http://project.article#class/domain"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A6">
+    <rdf:rest rdf:nodeID="A7"/>
+    <rdf:first rdf:resource="http://project.article/name_capsule"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://project.article/lavazza soave">
     <j.0:message_not>lavazza soave</j.0:message_not>
@@ -205,10 +212,6 @@
     <j.2:example>soave</j.2:example>
     <rdf:type rdf:resource="http://project.article#class/value"/>
     <j.3:name>lavazza soave</j.3:name>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A2">
-    <rdf:rest rdf:nodeID="A8"/>
-    <rdf:first rdf:resource="http://project.article/programmable"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://project.article/liters">
     <j.0:message_not>L</j.0:message_not>
@@ -225,6 +228,7 @@
     <j.3:oneToMany rdf:resource="http://project.article/brand"/>
     <j.0:message_singular>macchine da caffè</j.0:message_singular>
     <rdf:type rdf:resource="http://project.article#class/domain"/>
+    <j.3:template rdf:nodeID="A8"/>
     <j.0:message_plural>macchine da caffè</j.0:message_plural>
     <j.3:oneToMany rdf:resource="http://project.article/tank_capacity"/>
     <j.3:oneToMany rdf:resource="http://project.article/thermoblock"/>
@@ -240,7 +244,6 @@
     <j.0:message_not>macchine da caffè</j.0:message_not>
     <j.3:oneToMany rdf:resource="http://project.article/autoOFF"/>
     <j.3:oneToMany rdf:resource="http://project.article/milkProgram"/>
-    <j.3:template rdf:nodeID="A9"/>
     <j.3:oneToMany rdf:resource="http://project.article/weight"/>
     <j.3:oneToMany rdf:resource="http://project.article/time_ready"/>
     <j.3:oneToMany rdf:resource="http://project.article/heavy"/>
@@ -293,10 +296,6 @@
     <rdf:type rdf:resource="http://project.article#class/value"/>
     <j.3:name>lavazza aromatico</j.3:name>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A10">
-    <rdf:rest rdf:nodeID="A11"/>
-    <rdf:first rdf:resource="http://project.article/expensive"/>
-  </rdf:Description>
   <rdf:Description rdf:about="http://project.article/false_promo">
     <j.0:message_not>non in promozione</j.0:message_not>
     <j.0:message_plural>non in promozione</j.0:message_plural>
@@ -306,13 +305,18 @@
     <rdf:type rdf:resource="http://project.article#class/value"/>
     <j.3:name>false_promo</j.3:name>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A6">
-    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-    <rdf:first rdf:resource="http://project.article#class/unit"/>
+  <rdf:Description rdf:nodeID="A9">
+    <rdf:rest rdf:nodeID="A3"/>
+    <rdf:first rdf:resource="http://project.article/roasting"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A4">
-    <rdf:rest rdf:nodeID="A12"/>
-    <rdf:first rdf:resource="http://project.article/cheap"/>
+  <rdf:Description rdf:about="http://project.article/espria_plus">
+    <j.0:message_not>espria_plus</j.0:message_not>
+    <j.0:message_plural>espria_plus</j.0:message_plural>
+    <j.0:message_singular>espria_plus</j.0:message_singular>
+    <j.2:example>electrolux espria plus</j.2:example>
+    <j.2:example>espria plus</j.2:example>
+    <rdf:type rdf:resource="http://project.article#class/value"/>
+    <j.3:name>espria_plus</j.3:name>
   </rdf:Description>
   <rdf:Description rdf:about="http://project.article/plan.InfoPlan">
     <j.0:message_not></j.0:message_not>
@@ -337,26 +341,9 @@
   <rdf:Description rdf:about="http://project.article#classRelation">
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://project.article/fantasia plus">
-    <j.0:message_not>fantasia plus</j.0:message_not>
-    <j.0:message_plural>fantasia plus</j.0:message_plural>
-    <j.0:message_singular>fantasia plus</j.0:message_singular>
-    <j.2:example>electrolux fantasia plus</j.2:example>
-    <j.2:example>fantasia plus</j.2:example>
-    <rdf:type rdf:resource="http://project.article#class/value"/>
-    <j.3:name>fantasia plus</j.3:name>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A0">
-    <rdf:rest rdf:nodeID="A13"/>
-    <rdf:first rdf:resource="http://project.article#class/value"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A14">
+  <rdf:Description rdf:nodeID="A1">
     <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-    <rdf:first rdf:resource="http://project.article/brand"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A15">
-    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-    <rdf:first rdf:resource="http://project.article/brand"/>
+    <rdf:first rdf:resource="http://project.article#class/dialog"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://project.article/true_fast">
     <j.0:message_not>veloce</j.0:message_not>
@@ -385,17 +372,6 @@
     <rdf:type rdf:resource="http://project.article#class/value"/>
     <j.3:name>milk</j.3:name>
   </rdf:Description>
-  <rdf:Description rdf:about="http://project.article/minù caffè latte">
-    <j.0:message_not>minù caffè latte</j.0:message_not>
-    <j.0:message_plural>minù caffè latte</j.0:message_plural>
-    <j.0:message_singular>minù caffè latte</j.0:message_singular>
-    <j.2:example>lavazza minu caffè latte</j.2:example>
-    <j.2:example>minu caffè latte</j.2:example>
-    <j.2:example>lavazza minù caffè latte</j.2:example>
-    <j.2:example>minù caffè latte</j.2:example>
-    <rdf:type rdf:resource="http://project.article#class/value"/>
-    <j.3:name>minù caffè latte</j.3:name>
-  </rdf:Description>
   <rdf:Description rdf:about="http://project.article/lavazza deck cremoso">
     <j.0:message_not>lavazza deck cremoso</j.0:message_not>
     <j.0:message_plural>lavazza deck cremoso</j.0:message_plural>
@@ -406,10 +382,6 @@
     <j.2:example>deck cremoso</j.2:example>
     <rdf:type rdf:resource="http://project.article#class/value"/>
     <j.3:name>lavazza deck cremoso</j.3:name>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A16">
-    <rdf:rest rdf:nodeID="A1"/>
-    <rdf:first rdf:resource="http://project.article/light"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://project.article/true_cheap">
     <j.0:message_not>economiche</j.0:message_not>
@@ -465,14 +437,6 @@
     <j.0:message_not>maggiore di</j.0:message_not>
     <j.2:example>maggiore</j.2:example>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A13">
-    <rdf:rest rdf:nodeID="A5"/>
-    <rdf:first rdf:resource="http://project.article#class/mod"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A9">
-    <rdf:rest rdf:nodeID="A3"/>
-    <rdf:first rdf:resource="http://project.article/price"/>
-  </rdf:Description>
   <rdf:Description rdf:about="http://project.article/noAnswer">
     <j.0:message_not></j.0:message_not>
     <j.0:message_plural></j.0:message_plural>
@@ -489,6 +453,7 @@
     <j.3:oneToOne rdf:resource="http://project.article/black"/>
     <j.2:example>colorazione</j.2:example>
     <j.3:oneToOne rdf:resource="http://project.article/white"/>
+    <j.3:oneToOne rdf:resource="http://project.article/light_blue"/>
     <j.0:message_plural>di colore</j.0:message_plural>
     <j.3:oneToOne rdf:resource="http://project.article/grey"/>
     <j.2:example>colore</j.2:example>
@@ -498,7 +463,14 @@
     <j.3:oneToOne rdf:resource="http://project.article/yellow"/>
     <j.3:oneToOne rdf:resource="http://project.article/green"/>
     <j.3:oneToOne rdf:resource="http://project.article/red"/>
-    <j.3:oneToOne rdf:resource="http://project.article/light blue"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A10">
+    <rdf:rest rdf:nodeID="A11"/>
+    <rdf:first rdf:resource="http://project.article/dec"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A12">
+    <rdf:rest rdf:nodeID="A13"/>
+    <rdf:first rdf:resource="http://project.article/milkProgram"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://project.article/true_heavy">
     <j.0:message_not>pesante</j.0:message_not>
@@ -507,6 +479,14 @@
     <j.2:example>pesante</j.2:example>
     <rdf:type rdf:resource="http://project.article#class/value"/>
     <j.3:name>true_heavy</j.3:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://project.article/light_blue">
+    <j.0:message_not>azzur</j.0:message_not>
+    <j.0:message_plural>azzur</j.0:message_plural>
+    <j.0:message_singular>azzur</j.0:message_singular>
+    <j.2:example>azzurro</j.2:example>
+    <rdf:type rdf:resource="http://project.article#class/value"/>
+    <j.3:name>light_blue</j.3:name>
   </rdf:Description>
   <rdf:Description rdf:about="http://project.article/what">
     <j.0:message_not></j.0:message_not>
@@ -538,6 +518,14 @@
   <rdf:Description rdf:about="http://project.article#input/example">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
   </rdf:Description>
+  <rdf:Description rdf:nodeID="A14">
+    <rdf:rest rdf:nodeID="A15"/>
+    <rdf:first rdf:resource="http://project.article/capsule"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A16">
+    <rdf:rest rdf:nodeID="A17"/>
+    <rdf:first rdf:resource="http://project.article/fast"/>
+  </rdf:Description>
   <rdf:Description rdf:about="http://project.article/how">
     <j.0:message_not></j.0:message_not>
     <j.0:message_plural></j.0:message_plural>
@@ -557,18 +545,10 @@
   </rdf:Description>
   <rdf:Description rdf:about="http://project.article#class/action">
     <j.3:classRelation rdf:resource="http://project.article#class/domain"/>
-    <j.3:template rdf:nodeID="A17"/>
+    <j.3:template rdf:nodeID="A5"/>
     <j.3:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">action</j.3:name>
     <j.3:salience rdf:datatype="http://www.w3.org/2001/XMLSchema#long">100</j.3:salience>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A18">
-    <rdf:rest rdf:nodeID="A19"/>
-    <rdf:first rdf:resource="http://project.article/quantity"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A20">
-    <rdf:rest rdf:nodeID="A21"/>
-    <rdf:first rdf:resource="http://project.article/weight"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://project.article/composition">
     <j.0:message_plural>composte da</j.0:message_plural>
@@ -587,6 +567,14 @@
     <j.3:oneToStar rdf:resource="http://project.article/tea"/>
     <j.2:example>composizione</j.2:example>
     <j.3:oneToStar rdf:resource="http://project.article/robusto"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A18">
+    <rdf:rest rdf:nodeID="A10"/>
+    <rdf:first rdf:resource="http://project.article/promo"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A19">
+    <rdf:rest rdf:nodeID="A12"/>
+    <rdf:first rdf:resource="http://project.article/thermoblock"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://project.article/red">
     <j.0:message_not>rosso</j.0:message_not>
@@ -622,6 +610,14 @@
     <j.2:example>caro</j.2:example>
     <rdf:type rdf:resource="http://project.article#class/value"/>
     <j.3:name>true_expensive</j.3:name>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A20">
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+    <rdf:first rdf:resource="http://project.article#class/domain"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A21">
+    <rdf:rest rdf:nodeID="A16"/>
+    <rdf:first rdf:resource="http://project.article/expensive"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://project.article/lavazza tierra">
     <j.0:message_not>lavazza tierra</j.0:message_not>
@@ -659,10 +655,6 @@
   <rdf:Description rdf:about="http://project.article#speechAct">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A19">
-    <rdf:rest rdf:nodeID="A14"/>
-    <rdf:first rdf:resource="http://project.article/intensity"/>
-  </rdf:Description>
   <rdf:Description rdf:about="http://project.article/addioNode">
     <j.0:message_not>addio per sempre...</j.0:message_not>
     <j.0:message_plural>addio per sempre...</j.0:message_plural>
@@ -681,10 +673,6 @@
     <rdf:type rdf:resource="http://project.article#class/property"/>
     <j.3:name>milkProgram</j.3:name>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A21">
-    <rdf:rest rdf:nodeID="A15"/>
-    <rdf:first rdf:resource="http://project.article/name_machine"/>
-  </rdf:Description>
   <rdf:Description rdf:about="http://project.article/false_light">
     <j.0:message_not>non leggera</j.0:message_not>
     <j.0:message_plural>non leggera</j.0:message_plural>
@@ -693,6 +681,10 @@
     <j.2:example>non leggero</j.2:example>
     <rdf:type rdf:resource="http://project.article#class/value"/>
     <j.3:name>false_light</j.3:name>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A22">
+    <rdf:rest rdf:nodeID="A6"/>
+    <rdf:first rdf:resource="http://project.article/composition"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://project.article/false_programmable">
     <j.0:message_not>con erogazione non programmabile</j.0:message_not>
@@ -712,6 +704,10 @@
     <rdf:type rdf:resource="http://project.article#class/value"/>
     <j.3:name>jolie</j.3:name>
   </rdf:Description>
+  <rdf:Description rdf:nodeID="A23">
+    <rdf:rest rdf:nodeID="A9"/>
+    <rdf:first rdf:resource="http://project.article/price"/>
+  </rdf:Description>
   <rdf:Description rdf:about="http://project.article/robusto">
     <j.0:message_not>miscela robusta</j.0:message_not>
     <j.0:message_plural>miscela robusta</j.0:message_plural>
@@ -719,6 +715,10 @@
     <j.2:example>robusto</j.2:example>
     <rdf:type rdf:resource="http://project.article#class/value"/>
     <j.3:name>robusto</j.3:name>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A24">
+    <rdf:rest rdf:nodeID="A25"/>
+    <rdf:first rdf:resource="http://project.article/heavy"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://project.article/minù">
     <j.0:message_not>minù</j.0:message_not>
@@ -766,9 +766,13 @@
     <rdf:type rdf:resource="http://project.article#class/dialog"/>
     <j.3:name>name_question</j.3:name>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A22">
-    <rdf:rest rdf:nodeID="A23"/>
-    <rdf:first rdf:resource="http://project.article/tank_capacity"/>
+  <rdf:Description rdf:nodeID="A11">
+    <rdf:rest rdf:nodeID="A22"/>
+    <rdf:first rdf:resource="http://project.article/bio"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A13">
+    <rdf:rest rdf:nodeID="A26"/>
+    <rdf:first rdf:resource="http://project.article/color"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://project.article/lavazza dolce">
     <j.0:message_not>lavazza dolce</j.0:message_not>
@@ -784,6 +788,14 @@
     <j.3:minCardinality>0</j.3:minCardinality>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
   </rdf:Description>
+  <rdf:Description rdf:nodeID="A15">
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+    <rdf:first rdf:resource="http://project.article/machine"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A17">
+    <rdf:rest rdf:nodeID="A24"/>
+    <rdf:first rdf:resource="http://project.article/slow"/>
+  </rdf:Description>
   <rdf:Description rdf:about="http://project.article/average">
     <j.0:message_not>media</j.0:message_not>
     <j.0:message_plural>media</j.0:message_plural>
@@ -791,10 +803,6 @@
     <j.2:example>media</j.2:example>
     <rdf:type rdf:resource="http://project.article#class/value"/>
     <j.3:name>average</j.3:name>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A23">
-    <rdf:rest rdf:nodeID="A20"/>
-    <rdf:first rdf:resource="http://project.article/time_ready"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://project.article/quantifies">
     <j.0:message_not></j.0:message_not>
@@ -830,10 +838,6 @@
     <rdf:type rdf:resource="http://project.article#class/value"/>
     <j.3:name>lavazza intenso</j.3:name>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A24">
-    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-    <rdf:first rdf:resource="http://project.article#class/dialog"/>
-  </rdf:Description>
   <rdf:Description rdf:about="http://project.article/promo">
     <j.3:oneToStar rdf:resource="http://project.article/false_promo"/>
     <j.3:oneToStar rdf:resource="http://project.article/true_promo"/>
@@ -842,6 +846,14 @@
     <j.0:message_singular></j.0:message_singular>
     <rdf:type rdf:resource="http://project.article#class/property"/>
     <j.3:name>promo</j.3:name>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A25">
+    <rdf:rest rdf:nodeID="A27"/>
+    <rdf:first rdf:resource="http://project.article/light"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A8">
+    <rdf:rest rdf:nodeID="A28"/>
+    <rdf:first rdf:resource="http://project.article/price"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://project.article/electrolux">
     <j.0:message_not>electrolux</j.0:message_not>
@@ -870,6 +882,10 @@
     <j.0:message_singular></j.0:message_singular>
     <rdf:type rdf:resource="http://project.article#class/property"/>
     <j.3:name>dec</j.3:name>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A29">
+    <rdf:rest rdf:nodeID="A30"/>
+    <rdf:first rdf:resource="http://project.article#class/mod"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://project.article/intensity">
     <j.3:oneToOne rdf:resource="http://project.article/float"/>
@@ -948,6 +964,10 @@
     <rdf:type rdf:resource="http://project.article#class/value"/>
     <j.3:name>true_programmable</j.3:name>
   </rdf:Description>
+  <rdf:Description rdf:nodeID="A31">
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+    <rdf:first rdf:resource="http://project.article/brand"/>
+  </rdf:Description>
   <rdf:Description rdf:about="http://project.article/false_cheap">
     <j.0:message_not>non economiche</j.0:message_not>
     <j.0:message_plural>non economiche</j.0:message_plural>
@@ -958,6 +978,15 @@
     <j.2:example>non economico</j.2:example>
     <rdf:type rdf:resource="http://project.article#class/value"/>
     <j.3:name>false_cheap</j.3:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://project.article/magia_plus">
+    <j.0:message_not>magia_plus</j.0:message_not>
+    <j.0:message_plural>magia_plus</j.0:message_plural>
+    <j.0:message_singular>magia_plus</j.0:message_singular>
+    <j.2:example>electrolux magia plus</j.2:example>
+    <j.2:example>magia plus</j.2:example>
+    <rdf:type rdf:resource="http://project.article#class/value"/>
+    <j.3:name>magia_plus</j.3:name>
   </rdf:Description>
   <rdf:Description rdf:about="http://project.article/integer">
     <j.0:message_not>{value:token}</j.0:message_not>
@@ -980,6 +1009,22 @@
   <rdf:Description rdf:about="http://project.article#default">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
   </rdf:Description>
+  <rdf:Description rdf:nodeID="A2">
+    <rdf:rest rdf:nodeID="A29"/>
+    <rdf:first rdf:resource="http://project.article#class/value"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A32">
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+    <rdf:first rdf:resource="http://project.article/brand"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A4">
+    <rdf:rest rdf:nodeID="A18"/>
+    <rdf:first rdf:resource="http://project.article/expensive"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A33">
+    <rdf:rest rdf:nodeID="A19"/>
+    <rdf:first rdf:resource="http://project.article/programmable"/>
+  </rdf:Description>
   <rdf:Description rdf:about="http://project.article/scongiuroNode">
     <j.0:message_not>amici come prima :)</j.0:message_not>
     <j.0:message_plural>amici come prima :)</j.0:message_plural>
@@ -989,10 +1034,6 @@
     <j.2:example>non te la prendere</j.2:example>
     <rdf:type rdf:resource="http://project.article#class/dialog"/>
     <j.3:name>scongiuroNode</j.3:name>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A25">
-    <rdf:rest rdf:nodeID="A18"/>
-    <rdf:first rdf:resource="http://project.article/name_capsule"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://project.article/false_slow">
     <j.0:message_not>non lenta</j.0:message_not>
@@ -1010,10 +1051,10 @@
     <j.2:example>caffè</j.2:example>
     <j.0:message_not>capsule</j.0:message_not>
     <j.0:message_singular>capsule</j.0:message_singular>
-    <j.3:template rdf:nodeID="A26"/>
     <j.3:oneToMany rdf:resource="http://project.article/price"/>
     <j.3:oneToMany rdf:resource="http://project.article/name_capsule"/>
     <j.3:name>capsule</j.3:name>
+    <j.3:template rdf:nodeID="A23"/>
     <j.2:example>capsule</j.2:example>
     <j.3:oneToMany rdf:resource="http://project.article/composition"/>
     <j.2:example>cialda</j.2:example>
@@ -1046,13 +1087,13 @@
     <rdf:type rdf:resource="http://project.article#class/dialog"/>
     <j.3:name>well</j.3:name>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A17">
+  <rdf:Description rdf:nodeID="A34">
     <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-    <rdf:first rdf:resource="http://project.article#class/domain"/>
+    <rdf:first rdf:resource="http://project.article#class/unit"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A27">
-    <rdf:rest rdf:nodeID="A28"/>
-    <rdf:first rdf:resource="http://project.article/roasting"/>
+  <rdf:Description rdf:nodeID="A35">
+    <rdf:rest rdf:nodeID="A21"/>
+    <rdf:first rdf:resource="http://project.article/cheap"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://project.article/tea">
     <j.0:message_not>tè</j.0:message_not>
@@ -1082,9 +1123,9 @@
     <rdf:type rdf:resource="http://project.article#class/value"/>
     <j.3:name>lavazza caffè ginseng</j.3:name>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A7">
-    <rdf:rest rdf:nodeID="A24"/>
-    <rdf:first rdf:resource="http://project.article#class/property"/>
+  <rdf:Description rdf:nodeID="A27">
+    <rdf:rest rdf:nodeID="A33"/>
+    <rdf:first rdf:resource="http://project.article/autoOFF"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://project.article/barley">
     <j.0:message_not>orzo</j.0:message_not>
@@ -1121,11 +1162,9 @@
   </rdf:Description>
   <rdf:Description rdf:about="http://project.article/greetings">
     <j.2:example>buonanotte</j.2:example>
-    <j.0:message_plural></j.0:message_plural>
     <j.2:example>compari</j.2:example>
-    <j.0:message_not>Hola</j.0:message_not>
+    <j.0:message_plural>Ciao</j.0:message_plural>
     <rdf:type rdf:resource="http://project.article#class/dialog"/>
-    <j.0:message_singular></j.0:message_singular>
     <j.2:example>scemo</j.2:example>
     <j.2:example>salve</j.2:example>
     <j.2:example>ehi</j.2:example>
@@ -1137,6 +1176,8 @@
     <j.2:example>buondì</j.2:example>
     <j.2:example>i miei ossequi</j.2:example>
     <j.2:example>ciao</j.2:example>
+    <j.0:message_not>Ciao</j.0:message_not>
+    <j.0:message_singular>Ciao</j.0:message_singular>
     <j.2:example>buoneos dias</j.2:example>
     <j.2:example>trmò</j.2:example>
     <j.2:example>gutentag</j.2:example>
@@ -1147,6 +1188,10 @@
     <j.2:example>buena noche</j.2:example>
     <j.3:name>greetings</j.3:name>
     <j.2:example>hola</j.2:example>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A30">
+    <rdf:rest rdf:nodeID="A34"/>
+    <rdf:first rdf:resource="http://project.article#class/number"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://project.article/false_expensive">
     <j.2:example>meno costoso</j.2:example>
@@ -1162,8 +1207,8 @@
     <j.2:example>ne' caro</j.2:example>
   </rdf:Description>
   <rdf:Description rdf:nodeID="A28">
-    <rdf:rest rdf:nodeID="A10"/>
-    <rdf:first rdf:resource="http://project.article/cheap"/>
+    <rdf:rest rdf:nodeID="A35"/>
+    <rdf:first rdf:resource="http://project.article/promo"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://project.article/euro">
     <j.0:message_not>euro</j.0:message_not>
@@ -1191,14 +1236,6 @@
     <rdf:type rdf:resource="http://project.article#class/plan"/>
     <j.3:name>plan.WellPlan</j.3:name>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A29">
-    <rdf:rest rdf:nodeID="A30"/>
-    <rdf:first rdf:resource="http://project.article/bio"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A31">
-    <rdf:rest rdf:nodeID="A22"/>
-    <rdf:first rdf:resource="http://project.article/color"/>
-  </rdf:Description>
   <rdf:Description rdf:about="http://project.article/well_done">
     <j.0:message_not>tu?</j.0:message_not>
     <j.0:message_plural></j.0:message_plural>
@@ -1207,19 +1244,15 @@
     <j.3:name>well_done</j.3:name>
   </rdf:Description>
   <rdf:Description rdf:about="http://project.article/search">
-    <j.3:template rdf:nodeID="A32"/>
+    <j.3:template rdf:nodeID="A14"/>
     <j.3:planLink rdf:resource="http://project.article/plan.SearchPlan"/>
     <j.3:oneToOne rdf:resource="http://project.article/capsule"/>
     <j.3:oneToOne rdf:resource="http://project.article/machine"/>
-    <j.0:message_not>Non ho trovato quello che stavi cercando,</j.0:message_not>
+    <j.0:message_not>stai cercando</j.0:message_not>
     <j.0:message_plural>stai cercando</j.0:message_plural>
     <j.0:message_singular>stai cercando</j.0:message_singular>
     <rdf:type rdf:resource="http://project.article#class/action"/>
     <j.3:name>search</j.3:name>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A33">
-    <rdf:rest rdf:nodeID="A34"/>
-    <rdf:first rdf:resource="http://project.article/slow"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://project.article/seconds">
     <j.0:message_not>sec</j.0:message_not>
@@ -1230,18 +1263,9 @@
     <rdf:type rdf:resource="http://project.article#class/unit"/>
     <j.3:name>seconds</j.3:name>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A35">
-    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-    <rdf:first rdf:resource="http://project.article/machine"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://project.article/espria plus">
-    <j.0:message_not>espria plus</j.0:message_not>
-    <j.0:message_plural>espria plus</j.0:message_plural>
-    <j.0:message_singular>espria plus</j.0:message_singular>
-    <j.2:example>electrolux espria plus</j.2:example>
-    <j.2:example>espria plus</j.2:example>
-    <rdf:type rdf:resource="http://project.article#class/value"/>
-    <j.3:name>espria plus</j.3:name>
+  <rdf:Description rdf:nodeID="A36">
+    <rdf:rest rdf:nodeID="A37"/>
+    <rdf:first rdf:resource="http://project.article/time_ready"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://project.article/okNode">
     <j.0:message_not>:)</j.0:message_not>
@@ -1269,10 +1293,6 @@
     <j.3:oneToStar rdf:resource="http://project.article/less"/>
     <j.3:oneToOne rdf:resource="http://project.article/seconds"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A30">
-    <rdf:rest rdf:nodeID="A25"/>
-    <rdf:first rdf:resource="http://project.article/composition"/>
-  </rdf:Description>
   <rdf:Description rdf:about="http://project.article#class/plan">
     <j.3:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">plan</j.3:name>
     <j.3:salience rdf:datatype="http://www.w3.org/2001/XMLSchema#long">0</j.3:salience>
@@ -1293,14 +1313,6 @@
     <rdf:type rdf:resource="http://project.article#class/property"/>
     <j.0:message_singular>con dimensione scatola</j.0:message_singular>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A26">
-    <rdf:rest rdf:nodeID="A27"/>
-    <rdf:first rdf:resource="http://project.article/price"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A34">
-    <rdf:rest rdf:nodeID="A16"/>
-    <rdf:first rdf:resource="http://project.article/heavy"/>
-  </rdf:Description>
   <rdf:Description rdf:about="http://project.article/brand">
     <j.3:oneToOne rdf:resource="http://project.article/caffitaly"/>
     <j.2:example>azienda</j.2:example>
@@ -1319,6 +1331,10 @@
   <rdf:Description rdf:about="http://project.article#planLink">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
   </rdf:Description>
+  <rdf:Description rdf:nodeID="A26">
+    <rdf:rest rdf:nodeID="A36"/>
+    <rdf:first rdf:resource="http://project.article/tank_capacity"/>
+  </rdf:Description>
   <rdf:Description rdf:about="http://project.article/true_slow">
     <j.0:message_not>lenta</j.0:message_not>
     <j.0:message_plural>lenta</j.0:message_plural>
@@ -1334,10 +1350,6 @@
     <rdf:type rdf:resource="http://project.article#class/speechAct"/>
     <j.3:name>insert</j.3:name>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A11">
-    <rdf:rest rdf:nodeID="A36"/>
-    <rdf:first rdf:resource="http://project.article/promo"/>
-  </rdf:Description>
   <rdf:Description rdf:about="http://project.article/true_dec">
     <j.0:message_not>senza caffeina</j.0:message_not>
     <j.0:message_plural>senza caffeina</j.0:message_plural>
@@ -1348,10 +1360,6 @@
     <rdf:type rdf:resource="http://project.article#class/value"/>
     <j.3:name>true_dec</j.3:name>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A8">
-    <rdf:rest rdf:nodeID="A37"/>
-    <rdf:first rdf:resource="http://project.article/thermoblock"/>
-  </rdf:Description>
   <rdf:Description rdf:about="http://project.article#class/speechAct">
     <j.3:classRelation rdf:resource="http://project.article#class/action"/>
     <j.3:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">speechAct</j.3:name>
@@ -1360,19 +1368,19 @@
   </rdf:Description>
   <rdf:Description rdf:about="http://project.article/name_machine">
     <j.0:message_not>dal nome</j.0:message_not>
-    <j.3:oneToOne rdf:resource="http://project.article/magia plus"/>
     <j.3:oneToOne rdf:resource="http://project.article/minù"/>
-    <j.3:oneToOne rdf:resource="http://project.article/espria plus"/>
     <j.0:message_singular>dal nome</j.0:message_singular>
+    <j.3:oneToOne rdf:resource="http://project.article/minù_caffè_latte"/>
     <j.0:message_plural>dal nome</j.0:message_plural>
     <j.2:example>nome</j.2:example>
     <rdf:type rdf:resource="http://project.article#class/property"/>
-    <j.3:oneToOne rdf:resource="http://project.article/minù caffè latte"/>
+    <j.3:oneToOne rdf:resource="http://project.article/fantasia_plus"/>
+    <j.3:oneToOne rdf:resource="http://project.article/magia_plus"/>
     <j.2:example>chiama</j.2:example>
-    <j.3:oneToOne rdf:resource="http://project.article/fantasia plus"/>
     <j.3:oneToOne rdf:resource="http://project.article/jolie"/>
     <j.3:name>name_machine</j.3:name>
     <j.2:example>chiamare</j.2:example>
+    <j.3:oneToOne rdf:resource="http://project.article/espria_plus"/>
     <j.3:oneToOne rdf:resource="http://project.article/fantasia"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://project.article/false_heavy">
@@ -1383,15 +1391,6 @@
     <j.2:example>non pesante</j.2:example>
     <rdf:type rdf:resource="http://project.article#class/value"/>
     <j.3:name>false_heavy</j.3:name>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://project.article/magia plus">
-    <j.0:message_not>magia plus</j.0:message_not>
-    <j.0:message_plural>magia plus</j.0:message_plural>
-    <j.0:message_singular>magia plus</j.0:message_singular>
-    <j.2:example>electrolux magia plus</j.2:example>
-    <j.2:example>magia plus</j.2:example>
-    <rdf:type rdf:resource="http://project.article#class/value"/>
-    <j.3:name>magia plus</j.3:name>
   </rdf:Description>
   <rdf:Description rdf:about="http://project.article/lavazza passionale">
     <j.0:message_not>lavazza passionale</j.0:message_not>
@@ -1445,14 +1444,6 @@
     <rdf:type rdf:resource="http://project.article#class/value"/>
     <j.3:name>false_bio</j.3:name>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A38">
-    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-    <rdf:first rdf:resource="http://project.article#class/domain"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A12">
-    <rdf:rest rdf:nodeID="A39"/>
-    <rdf:first rdf:resource="http://project.article/expensive"/>
-  </rdf:Description>
   <rdf:Description rdf:about="http://project.article/question">
     <j.0:message_not></j.0:message_not>
     <j.0:message_plural></j.0:message_plural>
@@ -1474,6 +1465,14 @@
   <rdf:Description rdf:about="http://project.article#name">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
   </rdf:Description>
+  <rdf:Description rdf:nodeID="A38">
+    <rdf:rest rdf:nodeID="A32"/>
+    <rdf:first rdf:resource="http://project.article/intensity"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A39">
+    <rdf:rest rdf:nodeID="A31"/>
+    <rdf:first rdf:resource="http://project.article/name_machine"/>
+  </rdf:Description>
   <rdf:Description rdf:about="http://project.article/grey">
     <j.0:message_not>grigio</j.0:message_not>
     <j.0:message_plural>grigio</j.0:message_plural>
@@ -1484,7 +1483,7 @@
     <j.3:name>grey</j.3:name>
   </rdf:Description>
   <rdf:Description rdf:about="http://project.article#class/dialog">
-    <j.3:template rdf:nodeID="A38"/>
+    <j.3:template rdf:nodeID="A20"/>
     <j.3:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">dialog</j.3:name>
     <j.3:salience rdf:datatype="http://www.w3.org/2001/XMLSchema#long">20</j.3:salience>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
@@ -1506,10 +1505,6 @@
     <rdf:type rdf:resource="http://project.article#class/value"/>
     <j.3:name>lavazza qualità rossa</j.3:name>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A36">
-    <rdf:rest rdf:nodeID="A29"/>
-    <rdf:first rdf:resource="http://project.article/dec"/>
-  </rdf:Description>
   <rdf:Description rdf:about="http://project.article/lime">
     <j.0:message_not>lime</j.0:message_not>
     <j.0:message_plural>lime</j.0:message_plural>
@@ -1519,10 +1514,6 @@
     <j.2:example>lime</j.2:example>
     <rdf:type rdf:resource="http://project.article#class/value"/>
     <j.3:name>lime</j.3:name>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A37">
-    <rdf:rest rdf:nodeID="A31"/>
-    <rdf:first rdf:resource="http://project.article/milkProgram"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://project.article/heavy">
     <j.3:oneToOne rdf:resource="http://project.article/true_heavy"/>
@@ -1576,6 +1567,15 @@
     <rdf:type rdf:resource="http://project.article#class/value"/>
     <j.3:name>ginseng</j.3:name>
   </rdf:Description>
+  <rdf:Description rdf:about="http://project.article/fantasia_plus">
+    <j.0:message_not>fantasia_plus</j.0:message_not>
+    <j.0:message_plural>fantasia_plus</j.0:message_plural>
+    <j.0:message_singular>fantasia_plus</j.0:message_singular>
+    <j.2:example>electrolux fantasia plus</j.2:example>
+    <j.2:example>fantasia plus</j.2:example>
+    <rdf:type rdf:resource="http://project.article#class/value"/>
+    <j.3:name>fantasia_plus</j.3:name>
+  </rdf:Description>
   <rdf:Description rdf:about="http://project.article/black">
     <j.0:message_singular>scura</j.0:message_singular>
     <rdf:type rdf:resource="http://project.article#class/value"/>
@@ -1590,14 +1590,6 @@
     <j.2:example>forte</j.2:example>
     <j.0:message_not>ner</j.0:message_not>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A32">
-    <rdf:rest rdf:nodeID="A35"/>
-    <rdf:first rdf:resource="http://project.article/capsule"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A39">
-    <rdf:rest rdf:nodeID="A33"/>
-    <rdf:first rdf:resource="http://project.article/fast"/>
-  </rdf:Description>
   <rdf:Description rdf:about="http://project.article/true_thermoblock">
     <j.0:message_not>con thermoblock</j.0:message_not>
     <j.0:message_plural>con thermoblock</j.0:message_plural>
@@ -1606,5 +1598,13 @@
     <j.2:example>thermoblock</j.2:example>
     <rdf:type rdf:resource="http://project.article#class/value"/>
     <j.3:name>true_thermoblock</j.3:name>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A7">
+    <rdf:rest rdf:nodeID="A38"/>
+    <rdf:first rdf:resource="http://project.article/quantity"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A37">
+    <rdf:rest rdf:nodeID="A39"/>
+    <rdf:first rdf:resource="http://project.article/weight"/>
   </rdf:Description>
 </rdf:RDF>
