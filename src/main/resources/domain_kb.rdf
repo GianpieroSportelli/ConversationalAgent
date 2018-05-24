@@ -7,6 +7,10 @@
     xmlns:j.2="http://project.contabile#class/"
     xmlns:j.3="http://project.contabile#input/"
     xmlns:xsd="http://www.w3.org/2001/XMLSchema#" > 
+  <rdf:Description rdf:nodeID="A0">
+    <rdf:rest rdf:nodeID="A1"/>
+    <rdf:first rdf:resource="http://project.contabile#class/value"/>
+  </rdf:Description>
   <rdf:Description rdf:about="http://eu.reply.it/plan.ShoppingPlan">
     <j.1:message_not></j.1:message_not>
     <j.1:message_plural></j.1:message_plural>
@@ -16,10 +20,6 @@
   </rdf:Description>
   <rdf:Description rdf:about="http://project.contabile#default">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A0">
-    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-    <rdf:first rdf:resource="http://project.contabile#class/domain"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://eu.reply.it/shopping">
     <j.0:speechAct rdf:resource="http://eu.reply.it/question"/>
@@ -46,6 +46,10 @@
     <rdf:type rdf:resource="http://project.contabile#class/speechAct"/>
     <j.0:name>question</j.0:name>
   </rdf:Description>
+  <rdf:Description rdf:nodeID="A2">
+    <rdf:rest rdf:nodeID="A3"/>
+    <rdf:first rdf:resource="http://project.contabile#class/property"/>
+  </rdf:Description>
   <rdf:Description rdf:about="http://eu.reply.it/howMuch">
     <j.1:message_not>quanti euri? scrivilo a numeri pls</j.1:message_not>
     <j.1:message_plural></j.1:message_plural>
@@ -58,9 +62,13 @@
     <j.0:salience rdf:datatype="http://www.w3.org/2001/XMLSchema#long">-1</j.0:salience>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
   </rdf:Description>
+  <rdf:Description rdf:nodeID="A4">
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+    <rdf:first rdf:resource="http://eu.reply.it/gain"/>
+  </rdf:Description>
   <rdf:Description rdf:about="http://project.contabile#class/property">
     <j.0:classRelation rdf:resource="http://project.contabile#class/mod"/>
-    <j.0:template rdf:nodeID="A1"/>
+    <j.0:template rdf:nodeID="A0"/>
     <j.0:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">property</j.0:name>
     <j.0:salience rdf:datatype="http://www.w3.org/2001/XMLSchema#long">80</j.0:salience>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
@@ -98,6 +106,7 @@
   </rdf:Description>
   <rdf:Description rdf:about="http://eu.reply.it/balance">
     <j.3:example>saldo</j.3:example>
+    <j.3:example>storico</j.3:example>
     <j.0:name>balance</j.0:name>
     <j.1:message_singular>bilancio</j.1:message_singular>
     <j.3:example>totale</j.3:example>
@@ -110,7 +119,7 @@
   </rdf:Description>
   <rdf:Description rdf:about="http://project.contabile#class/action">
     <j.0:classRelation rdf:resource="http://project.contabile#class/domain"/>
-    <j.0:template rdf:nodeID="A0"/>
+    <j.0:template rdf:nodeID="A5"/>
     <j.0:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">action</j.0:name>
     <j.0:salience rdf:datatype="http://www.w3.org/2001/XMLSchema#long">100</j.0:salience>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
@@ -121,24 +130,24 @@
   <rdf:Description rdf:about="http://project.contabile#output/message_singular">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A2">
-    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-    <rdf:first rdf:resource="http://project.contabile#class/unit"/>
+  <rdf:Description rdf:nodeID="A1">
+    <rdf:rest rdf:nodeID="A6"/>
+    <rdf:first rdf:resource="http://project.contabile#class/mod"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A3">
-    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-    <rdf:first rdf:resource="http://eu.reply.it/balance"/>
+  <rdf:Description rdf:nodeID="A7">
+    <rdf:rest rdf:nodeID="A8"/>
+    <rdf:first rdf:resource="http://eu.reply.it/shop"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://project.contabile#class/domain">
     <j.0:classRelation rdf:resource="http://project.contabile#class/property"/>
-    <j.0:template rdf:nodeID="A4"/>
+    <j.0:template rdf:nodeID="A2"/>
     <j.0:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">domain</j.0:name>
     <j.0:salience rdf:datatype="http://www.w3.org/2001/XMLSchema#long">90</j.0:salience>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://eu.reply.it/shop">
-    <j.0:default rdf:resource="http://eu.reply.it/shopping"/>
     <j.0:oneToOne rdf:resource="http://eu.reply.it/bill"/>
+    <j.0:default rdf:resource="http://eu.reply.it/shopping"/>
     <j.1:message_not>spesa</j.1:message_not>
     <j.1:message_plural></j.1:message_plural>
     <j.1:message_singular></j.1:message_singular>
@@ -166,7 +175,7 @@
     <j.0:name>insert</j.0:name>
   </rdf:Description>
   <rdf:Description rdf:about="http://eu.reply.it/qtRegSpesa">
-    <j.0:template rdf:nodeID="A5"/>
+    <j.0:template rdf:nodeID="A9"/>
     <j.1:message_not>l'ammontare della</j.1:message_not>
     <j.1:message_plural></j.1:message_plural>
     <j.1:message_singular></j.1:message_singular>
@@ -180,12 +189,12 @@
     <rdf:type rdf:resource="http://project.contabile#class/plan"/>
     <j.0:name>plan.AddingPlan</j.0:name>
   </rdf:Description>
+  <rdf:Description rdf:nodeID="A3">
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+    <rdf:first rdf:resource="http://project.contabile#class/dialog"/>
+  </rdf:Description>
   <rdf:Description rdf:about="http://project.contabile#output/message_not">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A4">
-    <rdf:rest rdf:nodeID="A6"/>
-    <rdf:first rdf:resource="http://project.contabile#class/property"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://eu.reply.it/howReg">
     <j.1:message_not>registro tutto su un file dentro di me XD</j.1:message_not>
@@ -224,10 +233,6 @@
     <rdf:type rdf:resource="http://project.contabile#class/dialog"/>
     <j.0:name>regNoGain</j.0:name>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A1">
-    <rdf:rest rdf:nodeID="A7"/>
-    <rdf:first rdf:resource="http://project.contabile#class/value"/>
-  </rdf:Description>
   <rdf:Description rdf:about="http://eu.reply.it/capabilities">
     <j.1:message_not>Posso aiutarti a gestire i tuoi conti, prendo nota delle spese e degli accrediti e ti fornisco sempre il bilancio aggiornato</j.1:message_not>
     <j.1:message_plural></j.1:message_plural>
@@ -238,9 +243,9 @@
     <rdf:type rdf:resource="http://project.contabile#class/dialog"/>
     <j.0:name>capabilities</j.0:name>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A8">
-    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-    <rdf:first rdf:resource="http://project.contabile#class/domain"/>
+  <rdf:Description rdf:nodeID="A6">
+    <rdf:rest rdf:nodeID="A10"/>
+    <rdf:first rdf:resource="http://project.contabile#class/number"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://eu.reply.it/creator_info">
     <j.1:message_not>Sono stato creato da Gianpiero Sportelli.</j.1:message_not>
@@ -267,9 +272,9 @@
     <j.3:example>costo</j.3:example>
     <j.3:example>prezzo</j.3:example>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A5">
-    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-    <rdf:first rdf:resource="http://eu.reply.it/shop"/>
+  <rdf:Description rdf:nodeID="A8">
+    <rdf:rest rdf:nodeID="A11"/>
+    <rdf:first rdf:resource="http://eu.reply.it/gain"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://eu.reply.it/plan.RegisterPlan">
     <j.1:message_not></j.1:message_not>
@@ -361,10 +366,6 @@
     <j.0:name>contability</j.0:name>
     <j.3:example>ricordare</j.3:example>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A6">
-    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-    <rdf:first rdf:resource="http://project.contabile#class/dialog"/>
-  </rdf:Description>
   <rdf:Description rdf:about="http://eu.reply.it/okNode">
     <j.1:message_not>:)</j.1:message_not>
     <j.1:message_plural></j.1:message_plural>
@@ -375,10 +376,6 @@
     <j.3:example>ok</j.3:example>
     <rdf:type rdf:resource="http://project.contabile#class/dialog"/>
     <j.0:name>okNode</j.0:name>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="A7">
-    <rdf:rest rdf:nodeID="A9"/>
-    <rdf:first rdf:resource="http://project.contabile#class/mod"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://eu.reply.it/addioNode">
     <j.1:message_not>addio per sempre...</j.1:message_not>
@@ -435,8 +432,8 @@
     <j.3:example>buon pomeriggio</j.3:example>
   </rdf:Description>
   <rdf:Description rdf:nodeID="A10">
-    <rdf:rest rdf:nodeID="A11"/>
-    <rdf:first rdf:resource="http://eu.reply.it/shop"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+    <rdf:first rdf:resource="http://project.contabile#class/unit"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://project.contabile#name">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
@@ -455,9 +452,9 @@
     <rdf:type rdf:resource="http://project.contabile#class/dialog"/>
     <j.0:name>registerNotDomain</j.0:name>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A12">
+  <rdf:Description rdf:nodeID="A11">
     <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-    <rdf:first rdf:resource="http://eu.reply.it/gain"/>
+    <rdf:first rdf:resource="http://eu.reply.it/balance"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://project.contabile#oneToMany">
     <j.0:maxCardinality>N</j.0:maxCardinality>
@@ -494,7 +491,7 @@
     <j.0:name>whyReg</j.0:name>
   </rdf:Description>
   <rdf:Description rdf:about="http://eu.reply.it/registerOK">
-    <j.0:template rdf:nodeID="A10"/>
+    <j.0:template rdf:nodeID="A7"/>
     <j.1:message_not>ho preso nota: </j.1:message_not>
     <j.1:message_plural></j.1:message_plural>
     <j.1:message_singular></j.1:message_singular>
@@ -556,6 +553,10 @@
     <rdf:type rdf:resource="http://project.contabile#class/speechAct"/>
     <j.0:name>how</j.0:name>
   </rdf:Description>
+  <rdf:Description rdf:nodeID="A5">
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+    <rdf:first rdf:resource="http://project.contabile#class/domain"/>
+  </rdf:Description>
   <rdf:Description rdf:about="http://eu.reply.it/gain">
     <j.1:message_plural></j.1:message_plural>
     <j.3:example>stipendio</j.3:example>
@@ -569,7 +570,7 @@
     <rdf:type rdf:resource="http://project.contabile#class/domain"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://project.contabile#class/dialog">
-    <j.0:template rdf:nodeID="A8"/>
+    <j.0:template rdf:nodeID="A12"/>
     <j.0:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">dialog</j.0:name>
     <j.0:salience rdf:datatype="http://www.w3.org/2001/XMLSchema#long">20</j.0:salience>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
@@ -581,10 +582,6 @@
     <rdf:type rdf:resource="http://project.contabile#class/dialog"/>
     <j.0:name>name_question</j.0:name>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A9">
-    <rdf:rest rdf:nodeID="A2"/>
-    <rdf:first rdf:resource="http://project.contabile#class/number"/>
-  </rdf:Description>
   <rdf:Description rdf:about="http://eu.reply.it/well_done">
     <j.1:message_not>tu?</j.1:message_not>
     <j.1:message_plural></j.1:message_plural>
@@ -592,9 +589,9 @@
     <rdf:type rdf:resource="http://project.contabile#class/dialog"/>
     <j.0:name>well_done</j.0:name>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A11">
-    <rdf:rest rdf:nodeID="A3"/>
-    <rdf:first rdf:resource="http://eu.reply.it/gain"/>
+  <rdf:Description rdf:nodeID="A12">
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+    <rdf:first rdf:resource="http://project.contabile#class/domain"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://project.contabile#class/value">
     <j.0:classRelation rdf:resource="http://project.contabile#class/unit"/>
@@ -607,12 +604,16 @@
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://eu.reply.it/qtRegGain">
-    <j.0:template rdf:nodeID="A12"/>
+    <j.0:template rdf:nodeID="A4"/>
     <j.1:message_not>l'</j.1:message_not>
     <j.1:message_plural></j.1:message_plural>
     <j.1:message_singular></j.1:message_singular>
     <rdf:type rdf:resource="http://project.contabile#class/dialog"/>
     <j.0:name>qtRegGain</j.0:name>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A9">
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+    <rdf:first rdf:resource="http://eu.reply.it/shop"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://eu.reply.it/well">
     <j.0:planLink rdf:resource="http://eu.reply.it/plan.WellPlan"/>

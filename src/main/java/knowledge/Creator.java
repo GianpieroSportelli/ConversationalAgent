@@ -382,7 +382,7 @@ public class Creator {
         rok.addInTemplate(gain);
         list.add(gain);
 
-        String[] exbalance = {"saldo", "resto", "totale", "bilancio"};
+        String[] exbalance = {"saldo", "resto", "totale", "bilancio","storico"};
         String balance_name = "balance";
 
         String messageBalance = "bilancio";
