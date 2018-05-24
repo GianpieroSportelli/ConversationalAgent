@@ -108,15 +108,15 @@ public class DialogManager {
 		String semanticMessage = "";
 		String relMessage = "";
 		resultToken = new ArrayList<>();
-		if (DEBUG) {
-			for (Token token : phrase) {
-				String message = token.getResult();
-				semanticMessage += message + "\n";
-				message = net.enrich(message);
-				token.setResult(message);
-				relMessage += message + "\n";
-			}
 
+		for (Token token : phrase) {
+			String message = token.getResult();
+			semanticMessage += message + "\n";
+			message = net.enrich(message);
+			token.setResult(message);
+			relMessage += message + "\n";
+		}
+		if (DEBUG) {
 			System.out.println("---------SEMANTIC REPRESENTATION----------");
 			System.out.println(semanticMessage);
 
@@ -152,7 +152,8 @@ public class DialogManager {
 					JSONObject sem = new JSONObject(res);
 					String planClass = net.getPlan(sem);
 					if (planClass != null) {
-						System.out.println("c'è un piano!!!");
+						if (DEBUG)
+							System.out.println("c'è un piano!!!");
 						try {
 							ActionPlan plan = KnowledgePlan.plan(planClass);
 							List<JSONObject> resultplan = plan.execute(sem, net, conf, epoch, id_user);
